@@ -20,7 +20,7 @@ public class Controller {
         
         
         //cria obj que tem conexao com banco e passa o parametro com valores populados
-        //DeviceRepository dr = new DeviceRepository();
-        //dr.cadastrar(operationalSystem);
+        DeviceRepository dr = new DeviceRepository();
+        dr.cadastrar(operationalSystem);
     }
 }

@@ -11,7 +11,7 @@ public class DeviceRepository {
     public void cadastrar (SO so) {
         Connection conn = null;
         try {
-            String sql = "INSERT INTO SO_information("
+            String sql = "INSERT INTO SO_infomation("
                     + "namesystem, "
                     + "systemversion, "
                     + "nameuser)"
