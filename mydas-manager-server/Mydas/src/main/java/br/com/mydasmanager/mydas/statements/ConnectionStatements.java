@@ -5,17 +5,30 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionStatements {
-
-    public static Connection StartConnection(){
-        String connectionUrl = "jdbc:sqlserver://mydasmanager.database.windows.net:1433;database=db.mydas.manager;user=mydas.manager@mydasmanager;password={Digital@2018};encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;loginTimeout=30;";
-
-        try (Connection con = DriverManager.getConnection(connectionUrl);) {
-            return DriverManager.getConnection(connectionUrl);        
+    
+    final String _URL = "jdbc:sqlserver://mydasmanager.database.windows.net:1433;database=mydas-manager;"
+                      + "user=mydas.manager@mydasmanager;password={Digital@2018};"
+                      + "encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;"
+                      + "loginTimeout=30;";
+            
+     public Connection getConnection() {
+        try {
+           Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+           System.out.println("Conectado");
+           return DriverManager.getConnection(_URL);
+        } 
+        catch (ClassNotFoundException | SQLException e) {
+            System.out.println("Erro ou classe não encontrada: "+e.getMessage());
+            return null;
         }
-        catch (SQLException e) {
-            e.getStackTrace();
+    }
+     
+    public static void closeConnection(Connection conn){
+        try {
+            if(conn != null)
+                conn.close();
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
         }
-        
-        return null;
     }
 }
