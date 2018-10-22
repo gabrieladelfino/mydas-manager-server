@@ -17,7 +17,7 @@ public class Controller {
         operationalSystem.setSystemVersion(os.getVersion().getVersion());
         operationalSystem.setNameUser(os.getNetworkParams().getDomainName());
         
-        SORepository dv = new SORepository();
-        dv.insertSOInformation(operationalSystem);
+        SORepository soRepository = new SORepository();
+        soRepository.insertSOInformation(operationalSystem);
     }
 }

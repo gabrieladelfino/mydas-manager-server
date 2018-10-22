@@ -1,5 +1,6 @@
 package br.com.mydasmanager.mydas.statements;
 
+import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -10,6 +11,7 @@ public class ConnectionStatements {
                       + "user=mydas.manager@mydasmanager;password={Digital@2018};"
                       + "encrypt=true;trustServerCertificate=false;hostNameInCertificate=*.database.windows.net;"
                       + "loginTimeout=30;";
+    
             
      public Connection getConnection() {
         try {
