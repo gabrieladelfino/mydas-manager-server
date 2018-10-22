@@ -5,9 +5,8 @@ import br.com.mydasmanager.mydas.statements.ConnectionStatements;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class DeviceRepository {
+public class SORepository {
    
-    
     public boolean insertSOInformation(SO so) {
 
         try {

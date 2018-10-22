@@ -1,7 +1,7 @@
 package br.com.mydasmanager.mydas;
 
 import br.com.mydasmanager.mydas.model.SO;
-import br.com.mydasmanager.mydas.repositories.DeviceRepository;
+import br.com.mydasmanager.mydas.repositories.SORepository;
 import oshi.SystemInfo;
 import oshi.software.os.OperatingSystem;
 
@@ -17,7 +17,7 @@ public class Controller {
         operationalSystem.setSystemVersion(os.getVersion().getVersion());
         operationalSystem.setNameUser(os.getNetworkParams().getDomainName());
         
-        DeviceRepository dv = new DeviceRepository();
+        SORepository dv = new SORepository();
         dv.insertSOInformation(operationalSystem);
     }
 }
