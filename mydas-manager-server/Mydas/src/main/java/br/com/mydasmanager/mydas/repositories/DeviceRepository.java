@@ -12,13 +12,15 @@ public class DeviceRepository {
         try {
 
             String sql = "INSERT INTO customer_device("
-                    + "useractive)"
-                    + "VALUES (?)";
+                    + "  nameuser"
+                    + ", customerid)"
+                    + "VALUES (?, ?)";
 
             Connection conn = new ConnectionStatements().getConnection();
             PreparedStatement pstm = conn.prepareStatement(sql);
 
             pstm.setString(1, device.getNameUser());
+            pstm.setInt(2, device.getCustomerId());
 
             pstm.execute();
 

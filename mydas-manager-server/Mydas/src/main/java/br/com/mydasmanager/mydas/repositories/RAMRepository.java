@@ -12,15 +12,19 @@ public class RAMRepository {
         try {
 
             String sql = "INSERT INTO ram("
-                    + "totalmemory, "
-                    + "freememory)"
-                    + "VALUES (?, ?)";
+                    + "  totalmemory"
+                    + ", freememory"
+                    + ", datecapture"
+                    + ", deviceid)"
+                    + "VALUES (?, ?, ?, ?)";
 
             Connection conn = new ConnectionStatements().getConnection();
             PreparedStatement pstm = conn.prepareStatement(sql);
 
             pstm.setDouble(1, ram.getTotalmemory());
             pstm.setDouble(2, ram.getFreememory());
+            pstm.setDate(3, ram.getDateCapture());
+            pstm.setInt(4, ram.getDeviceid());
 
             pstm.execute();
 

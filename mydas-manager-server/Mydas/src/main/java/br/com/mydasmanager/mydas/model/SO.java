@@ -8,6 +8,7 @@ public class SO {
     private String systemVersion;
     private String nameUser;
     private Date dateCapture;
+    private int deviceid;
 
     public String getNameSystem() {
         return nameSystem;
@@ -39,6 +40,14 @@ public class SO {
 
     public void setDateCapture(Date dateCapture) {
         this.dateCapture = dateCapture;
+    }
+
+    public int getDeviceid() {
+        return deviceid;
+    }
+
+    public void setDeviceid(int deviceid) {
+        this.deviceid = deviceid;
     }
     
     
