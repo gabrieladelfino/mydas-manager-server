@@ -1,26 +1,24 @@
 package br.com.mydasmanager.mydas.repositories;
 
-import br.com.mydasmanager.mydas.model.RAM;
+import br.com.mydasmanager.mydas.model.DeviceInformation;
 import br.com.mydasmanager.mydas.statements.ConnectionStatements;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-public class RAMRepository {
-
-    public boolean insertRAMInformation(RAM ram) {
+public class DeviceRepository {
+    
+    public boolean insertDeviceInformation(DeviceInformation device) {
 
         try {
 
-            String sql = "INSERT INTO RAM_infomation("
-                    + "totalmemory, "
-                    + "freememory)"
-                    + "VALUES (?, ?)";
+            String sql = "INSERT INTO customer_device("
+                    + "useractive)"
+                    + "VALUES (?)";
 
             Connection conn = new ConnectionStatements().getConnection();
             PreparedStatement pstm = conn.prepareStatement(sql);
 
-            pstm.setDouble(1, ram.getTotalmemory());
-            pstm.setDouble(2, ram.getFreememory());
+            pstm.setString(1, device.getNameUser());
 
             pstm.execute();
 
@@ -31,6 +29,5 @@ public class RAMRepository {
         }
 
         return false;
-    }
-
+    } 
 }

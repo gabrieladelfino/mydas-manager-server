@@ -1,14 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.mydasmanager.mydas.model;
 
-/**
- *
- * @author Aluno
- */
 public class RAM {
     
+    private int deviceid;
+    private long totalmemory;
+    private long freememory;
+
+    public int getDeviceid() {
+        return deviceid;
+    }
+    
+    public long getTotalmemory() {
+        return totalmemory;
+    }
+
+    public void setTotalMemory(long totalmemory) {
+        this.totalmemory = totalmemory;
+    }
+
+    public long getFreememory() {
+        return freememory;
+    }
+
+    public void setFreeMemory(long freememory) {
+         this.freememory = freememory;
+    }
 }

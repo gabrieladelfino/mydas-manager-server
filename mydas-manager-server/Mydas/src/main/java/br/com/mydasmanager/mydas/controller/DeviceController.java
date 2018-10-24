@@ -1,26 +1,25 @@
 package br.com.mydasmanager.mydas.controller;
 
-import br.com.mydasmanager.mydas.model.RAM;
-import br.com.mydasmanager.mydas.repositories.RAMRepository;
+import br.com.mydasmanager.mydas.model.DeviceInformation;
+import br.com.mydasmanager.mydas.repositories.DeviceRepository;
 import oshi.SystemInfo;
 
-public class RAMController {
+public class DeviceController {
     
     SystemInfo si = null;
-    RAM ram = null;
+    DeviceInformation device = null;
    
     public boolean CaptureInformation(){
         
         si = new SystemInfo();
-        ram = new RAM();
+        device = new DeviceInformation();
         
         try{
          
-            ram.setFreeMemory(si.getHardware().getMemory().getAvailable());
-            ram.setTotalMemory(si.getHardware().getMemory().getTotal());
+            device.setNameUser(si.getOperatingSystem().getProcess(0).getUser());
 
-            RAMRepository ramRepository = new RAMRepository();
-            ramRepository.insertRAMInformation(ram);
+            DeviceRepository deviceRepository = new DeviceRepository();
+            deviceRepository.insertDeviceInformation(device);
             
             System.out.println("Executou!");
             
@@ -32,5 +31,4 @@ public class RAMController {
         
         return false;
     }
-    
 }
