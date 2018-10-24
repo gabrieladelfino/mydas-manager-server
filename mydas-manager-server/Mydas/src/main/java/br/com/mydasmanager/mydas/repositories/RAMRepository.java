@@ -11,7 +11,7 @@ public class RAMRepository {
 
         try {
 
-            String sql = "INSERT INTO RAM_infomation("
+            String sql = "INSERT INTO ram("
                     + "totalmemory, "
                     + "freememory)"
                     + "VALUES (?, ?)";

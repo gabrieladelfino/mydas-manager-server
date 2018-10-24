@@ -1,10 +1,13 @@
 package br.com.mydasmanager.mydas.model;
 
+import java.sql.Date;
+
 public class RAM {
     
     private int deviceid;
     private long totalmemory;
     private long freememory;
+    private Date dateCapture;
 
     public int getDeviceid() {
         return deviceid;
@@ -24,5 +27,13 @@ public class RAM {
 
     public void setFreeMemory(long freememory) {
          this.freememory = freememory;
+    }
+
+    public Date getDateCapture() {
+        return dateCapture;
+    }
+
+    public void setDateCapture(Date dateCapture) {
+        this.dateCapture = dateCapture;
     }
 }

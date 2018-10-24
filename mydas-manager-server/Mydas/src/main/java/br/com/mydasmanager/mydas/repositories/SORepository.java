@@ -11,11 +11,12 @@ public class SORepository {
 
         try {
         
-            String sql = "INSERT INTO SO_infomation("
-                   + "namesystem, "
-                   + "systemversion, "
-                   + "nameuser)"
-                   + "VALUES (?, ?, ?)";
+            String sql = "INSERT INTO so("
+                   + "  namesystem "
+                   + ", systemversion "
+                   + ", nameuser"
+                   + ", datecapture)"
+                   + "VALUES (?, ?, ?,?)";
       
             Connection conn = new ConnectionStatements().getConnection();
             PreparedStatement pstm = conn.prepareStatement(sql);
@@ -23,6 +24,7 @@ public class SORepository {
             pstm.setString(1, so.getNameSystem());
             pstm.setString(2, so.getNameUser());
             pstm.setString(3, so.getSystemVersion());
+            pstm.setDate(4, so.getDateCapture());
             
             pstm.execute();
             
