@@ -1,9 +1,14 @@
 package br.com.mydasmanager.mydas.model;
 
+import java.sql.Date;
+
 public class SO {
+    
     private String nameSystem;
     private String systemVersion;
     private String nameUser;
+    private Date dateCapture;
+    private int deviceid;
 
     public String getNameSystem() {
         return nameSystem;
@@ -27,6 +32,22 @@ public class SO {
 
     public void setNameUser(String nameUser) {
         this.nameUser = nameUser;
+    }
+
+    public Date getDateCapture() {
+        return dateCapture;
+    }
+
+    public void setDateCapture(Date dateCapture) {
+        this.dateCapture = dateCapture;
+    }
+
+    public int getDeviceid() {
+        return deviceid;
+    }
+
+    public void setDeviceid(int deviceid) {
+        this.deviceid = deviceid;
     }
     
     

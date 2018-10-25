@@ -1,14 +1,40 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.mydasmanager.mydas.repositories;
 
-/**
- *
- * @author Aluno
- */
+import br.com.mydasmanager.mydas.model.RAM;
+import br.com.mydasmanager.mydas.statements.ConnectionStatements;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
 public class RAMRepository {
-    
+
+    public boolean insertRAMInformation(RAM ram) {
+
+        try {
+
+            String sql = "INSERT INTO ram("
+                    + "  totalmemory"
+                    + ", freememory"
+                    + ", datecapture"
+                    + ", deviceid)"
+                    + "VALUES (?, ?, ?, ?)";
+
+            Connection conn = new ConnectionStatements().getConnection();
+            PreparedStatement pstm = conn.prepareStatement(sql);
+
+            pstm.setDouble(1, ram.getTotalmemory());
+            pstm.setDouble(2, ram.getFreememory());
+            pstm.setDate(3, ram.getDateCapture());
+            pstm.setInt(4, ram.getDeviceid());
+
+            pstm.execute();
+
+            return true;
+
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
+
+        return false;
+    }
+
 }

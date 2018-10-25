@@ -1,28 +1,36 @@
 package br.com.mydasmanager.mydas.repositories;
 
+import br.com.mydasmanager.mydas.model.DeviceInformation;
 import br.com.mydasmanager.mydas.model.SO;
 import br.com.mydasmanager.mydas.statements.ConnectionStatements;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class SORepository {
    
+    Connection conn = new ConnectionStatements().getConnection();
+    
     public boolean insertSOInformation(SO so) {
 
         try {
         
-            String sql = "INSERT INTO SO_infomation("
-                   + "namesystem, "
-                   + "systemversion, "
-                   + "nameuser)"
-                   + "VALUES (?, ?, ?)";
+            String sql = "INSERT INTO so("
+                   + "  namesystem "
+                   + ", systemversion "
+                   + ", nameuser"
+                   + ", datecapture"
+                   + ", deviceid)"
+                   + "VALUES (?, ?, ?, ?, ?)";
       
-            Connection conn = new ConnectionStatements().getConnection();
             PreparedStatement pstm = conn.prepareStatement(sql);
                     
             pstm.setString(1, so.getNameSystem());
             pstm.setString(2, so.getNameUser());
             pstm.setString(3, so.getSystemVersion());
+            pstm.setDate(4, so.getDateCapture());
+            pstm.setInt(4, so.getDeviceid());
             
             pstm.execute();
             
@@ -35,6 +43,26 @@ public class SORepository {
        }
         
         return false;
+    }
+    
+    public int selectDeviceId(int customerid){
+        try {
+            int deviceid = 0;
+            Statement stmt = conn.createStatement();
+            ResultSet rs;
+        
+            rs = stmt.executeQuery("SELECT id FROM customer_device WHERE customer_id "+customerid);
+            
+            while (rs.next()) {
+               deviceid = rs.getInt("id");
+            }
+            
+            return deviceid;
+        }catch(Exception ex){
+            ex.getStackTrace();
+        }
+        
+        return 0;
     }
     
 }
