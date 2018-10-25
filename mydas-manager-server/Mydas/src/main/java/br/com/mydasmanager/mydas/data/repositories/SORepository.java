@@ -30,7 +30,7 @@ public class SORepository {
             pstm.setString(2, so.getNameUser());
             pstm.setString(3, so.getSystemVersion());
             pstm.setDate(4, so.getDateCapture());
-            pstm.setInt(4, so.getDeviceid());
+            pstm.setInt(5, so.getDeviceId());
             
             pstm.execute();
             

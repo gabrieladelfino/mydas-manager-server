@@ -22,6 +22,7 @@ public class RAM {
             ram.setFreeMemory(si.getHardware().getMemory().getAvailable());
             ram.setTotalMemory(si.getHardware().getMemory().getTotal());
             ram.setDateCapture(data);
+            ram.setDeviceId(1004);
             
             RAMRepository ramRepository = new RAMRepository();
             ramRepository.insertRAMInformation(ram);

@@ -32,7 +32,7 @@ public class SO {
             so.setNameSystem(operatingSystem.getFamily());
             so.setSystemVersion(operatingSystem.getVersion().getVersion());
             so.setNameUser(operatingSystem.getNetworkParams().getDomainName());
-            so.setDeviceid(deviceid);
+            so.setDeviceId(1005);
             
             soRepository.insertSOInformation(so);
          

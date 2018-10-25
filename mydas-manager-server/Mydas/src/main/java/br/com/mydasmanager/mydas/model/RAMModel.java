@@ -4,13 +4,17 @@ import java.sql.Date;
 
 public class RAMModel {
     
-    private int deviceid;
+    private int deviceId;
     private long totalmemory;
     private long freememory;
     private Date dateCapture;
 
-    public int getDeviceid() {
-        return deviceid;
+    public int getDeviceId() {
+        return deviceId;
+    }
+    
+    public void setDeviceId(int deviceId){
+        this.deviceId = deviceId;
     }
     
     public long getTotalmemory() {

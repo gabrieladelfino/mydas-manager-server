@@ -8,7 +8,7 @@ public class SOModel {
     private String systemVersion;
     private String nameUser;
     private Date dateCapture;
-    private int deviceid;
+    private int deviceId;
 
     public String getNameSystem() {
         return nameSystem;
@@ -42,12 +42,12 @@ public class SOModel {
         this.dateCapture = dateCapture;
     }
 
-    public int getDeviceid() {
-        return deviceid;
+    public int getDeviceId() {
+        return deviceId;
     }
 
-    public void setDeviceid(int deviceid) {
-        this.deviceid = deviceid;
+    public void setDeviceId(int deviceId) {
+        this.deviceId = deviceId;
     }
     
     

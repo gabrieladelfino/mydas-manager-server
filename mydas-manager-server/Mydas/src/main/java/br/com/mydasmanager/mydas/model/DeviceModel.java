@@ -14,6 +14,10 @@ public class DeviceModel {
         return customerId;
     }
 
+    public void setCustomerId(int customerid) {
+        this.customerId = customerid;
+    }
+    
     public String getNameUser() {
         return nameUser;
     }

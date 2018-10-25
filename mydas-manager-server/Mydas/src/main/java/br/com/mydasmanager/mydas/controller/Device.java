@@ -17,7 +17,8 @@ public class Device {
         try{
          
             device.setNameUser(si.getOperatingSystem().getProcess(0).getUser());
-
+            device.setCustomerId(100);
+            
             DeviceRepository deviceRepository = new DeviceRepository();
             deviceRepository.insertDeviceInformation(device);
             

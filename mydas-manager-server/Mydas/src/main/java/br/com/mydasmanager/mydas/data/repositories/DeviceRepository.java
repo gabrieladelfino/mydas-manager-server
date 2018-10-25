@@ -12,7 +12,7 @@ public class DeviceRepository {
         try {
 
             String sql = "INSERT INTO customer_device("
-                    + "  nameuser"
+                    + "  currentnameuser"
                     + ", customerid)"
                     + "VALUES (?, ?)";
 
