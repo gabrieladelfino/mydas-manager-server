@@ -2,7 +2,7 @@ package br.com.mydasmanager.mydas.model;
 
 import java.sql.Date;
 
-public class RAM {
+public class RAMModel {
     
     private int deviceid;
     private long totalmemory;

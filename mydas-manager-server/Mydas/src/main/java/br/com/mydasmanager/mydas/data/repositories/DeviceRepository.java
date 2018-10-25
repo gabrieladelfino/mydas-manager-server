@@ -1,13 +1,13 @@
-package br.com.mydasmanager.mydas.repositories;
+package br.com.mydasmanager.mydas.data.repositories;
 
-import br.com.mydasmanager.mydas.model.DeviceInformation;
-import br.com.mydasmanager.mydas.statements.ConnectionStatements;
+import br.com.mydasmanager.mydas.model.DeviceModel;
+import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 public class DeviceRepository {
     
-    public boolean insertDeviceInformation(DeviceInformation device) {
+    public boolean insertDeviceInformation(DeviceModel device) {
 
         try {
 

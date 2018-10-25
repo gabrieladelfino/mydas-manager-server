@@ -1,6 +1,6 @@
 package br.com.mydasmanager.mydas.model;
 
-public class DeviceInformation {
+public class DeviceModel {
     
     private int id;
     private int customerId;

@@ -1,8 +1,8 @@
-package br.com.mydasmanager.mydas.repositories;
+package br.com.mydasmanager.mydas.data.repositories;
 
-import br.com.mydasmanager.mydas.model.DeviceInformation;
-import br.com.mydasmanager.mydas.model.SO;
-import br.com.mydasmanager.mydas.statements.ConnectionStatements;
+import br.com.mydasmanager.mydas.model.DeviceModel;
+import br.com.mydasmanager.mydas.model.SOModel;
+import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,7 +12,7 @@ public class SORepository {
    
     Connection conn = new ConnectionStatements().getConnection();
     
-    public boolean insertSOInformation(SO so) {
+    public boolean insertSOInformation(SOModel so) {
 
         try {
         

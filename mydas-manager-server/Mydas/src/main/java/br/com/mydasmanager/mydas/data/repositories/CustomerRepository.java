@@ -1,4 +1,4 @@
-package br.com.mydasmanager.mydas.repositories;
+package br.com.mydasmanager.mydas.data.repositories;
 
 public class CustomerRepository {
     

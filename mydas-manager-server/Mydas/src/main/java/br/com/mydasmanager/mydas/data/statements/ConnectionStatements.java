@@ -1,6 +1,5 @@
-package br.com.mydasmanager.mydas.statements;
+package br.com.mydasmanager.mydas.data.statements;
 
-import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

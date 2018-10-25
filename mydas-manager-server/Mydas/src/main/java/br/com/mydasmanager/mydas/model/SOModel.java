@@ -2,7 +2,7 @@ package br.com.mydasmanager.mydas.model;
 
 import java.sql.Date;
 
-public class SO {
+public class SOModel {
     
     private String nameSystem;
     private String systemVersion;

@@ -1,13 +1,13 @@
-package br.com.mydasmanager.mydas.repositories;
+package br.com.mydasmanager.mydas.data.repositories;
 
-import br.com.mydasmanager.mydas.model.RAM;
-import br.com.mydasmanager.mydas.statements.ConnectionStatements;
+import br.com.mydasmanager.mydas.model.RAMModel;
+import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
 public class RAMRepository {
 
-    public boolean insertRAMInformation(RAM ram) {
+    public boolean insertRAMInformation(RAMModel ram) {
 
         try {
 

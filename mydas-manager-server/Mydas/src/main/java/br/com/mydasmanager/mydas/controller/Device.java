@@ -1,18 +1,18 @@
 package br.com.mydasmanager.mydas.controller;
 
-import br.com.mydasmanager.mydas.model.DeviceInformation;
-import br.com.mydasmanager.mydas.repositories.DeviceRepository;
+import br.com.mydasmanager.mydas.model.DeviceModel;
+import br.com.mydasmanager.mydas.data.repositories.DeviceRepository;
 import oshi.SystemInfo;
 
-public class DeviceController {
+public class Device {
     
     SystemInfo si = null;
-    DeviceInformation device = null;
+    DeviceModel device = null;
    
     public boolean CaptureInformation(){
         
         si = new SystemInfo();
-        device = new DeviceInformation();
+        device = new DeviceModel();
         
         try{
          
