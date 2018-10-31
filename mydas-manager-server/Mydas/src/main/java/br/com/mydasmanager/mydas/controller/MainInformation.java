@@ -1,7 +1,12 @@
 package br.com.mydasmanager.mydas.controller;
 
 import br.com.mydasmanager.mydas.data.repositories.CustomerRepository;
+import com.profesorfalken.jsensors.JSensors;
+import com.profesorfalken.jsensors.model.components.Components;
+import com.profesorfalken.jsensors.model.components.Cpu;
+import com.profesorfalken.jsensors.model.sensors.Fan;
 import java.sql.Date;
+import java.util.List;
 import oshi.SystemInfo;
 import oshi.software.os.OperatingSystem;
 
@@ -11,6 +16,10 @@ public abstract class MainInformation {
     protected OperatingSystem operatingSystem = systemInfo.getOperatingSystem();
     protected Date date = new Date(System.currentTimeMillis());
     
+    protected Components components = JSensors.get.components();
+    protected List<Cpu> cpus = components.cpus;
+    protected List<Fan> fans = null;
+            
     CustomerRepository customer = new CustomerRepository();
            
     protected int selectCustomerId(){
