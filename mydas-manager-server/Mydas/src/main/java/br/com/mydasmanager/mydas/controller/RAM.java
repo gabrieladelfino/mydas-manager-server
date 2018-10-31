@@ -13,7 +13,6 @@ public class RAM {
         try {
 
             ramRepository.insertRAMInformation(ram);
-            System.out.println("Executou.");
 
             return true;
 

@@ -20,8 +20,6 @@ public class DeviceRepository extends DeviceStatements {
             pstm.setInt(2, device.getCustomerId());
 
             pstm.execute();
-            
-            System.out.println("Executou.");
 
             return true;
 

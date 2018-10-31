@@ -28,8 +28,6 @@ public class SORepository extends SOStatements {
 
             pstm.execute();
 
-            System.out.println("Executou.");
-
             return true;
 
         } catch (SQLException e) {

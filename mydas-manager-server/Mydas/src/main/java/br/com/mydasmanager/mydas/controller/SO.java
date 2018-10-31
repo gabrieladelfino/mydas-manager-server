@@ -13,7 +13,6 @@ public class SO {
         try {
 
             soRepository.insertSOInformation(so);
-            System.out.println("Executou.");
 
             return true;
 

@@ -25,8 +25,6 @@ public class CustomerRepository extends CustomerStatements {
             while (rs.next()) {
                 customerId = rs.getInt("id");
             }
-
-            System.out.println("Executou.");
             
             return customerId;
 
