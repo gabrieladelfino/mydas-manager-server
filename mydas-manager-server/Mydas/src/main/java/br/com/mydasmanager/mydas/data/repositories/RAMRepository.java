@@ -9,7 +9,7 @@ import java.sql.SQLException;
 
 public class RAMRepository {
 
-    public boolean insertRAMInformation(RAMModel ram) {
+    public boolean insertRAM(RAMModel ram) {
 
         try {
 

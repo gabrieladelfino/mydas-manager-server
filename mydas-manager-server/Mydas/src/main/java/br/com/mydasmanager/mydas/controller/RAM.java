@@ -12,7 +12,7 @@ public class RAM {
 
         try {
 
-            ramRepository.insertRAMInformation(ram);
+            ramRepository.insertRAM(ram);
 
             return true;
 

@@ -12,7 +12,7 @@ public class SO {
 
         try {
 
-            soRepository.insertSOInformation(so);
+            soRepository.insertSO(so);
 
             return true;
 

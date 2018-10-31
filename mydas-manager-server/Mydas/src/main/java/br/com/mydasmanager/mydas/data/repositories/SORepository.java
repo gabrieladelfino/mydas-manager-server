@@ -14,7 +14,7 @@ public class SORepository {
     Connection conn = new ConnectionStatements().getConnection();
     int deviceid = 0;
 
-    public boolean insertSOInformation(SOModel so) {
+    public boolean insertSO(SOModel so) {
 
         try {
 

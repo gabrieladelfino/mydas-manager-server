@@ -2,23 +2,25 @@ package br.com.mydasmanager.mydas.model;
 
 import br.com.mydasmanager.mydas.controller.MainInformation;
 import java.sql.Date;
-import java.util.List;
 
 public class GPUModel extends MainInformation {
-  
-    public double getTemperature() {
-        return 0;
-    }
 
-    public List<String> getComponent() {
-        
+    private String cpuName;
+
+    public void setGpuName(String cpuName) {
         if (cpus != null) {
             cpus.forEach((cpu) -> {
-                this.add(cpu.name);
+                this.cpuName = cpu.name;
             });
         }
-       
-        return (List<String>) this;
+    }
+
+    public String getGpuName() {
+        return this.cpuName;
+    }
+    
+    public double getTemperature() {
+        return 0;
     }
 
     public String getFan() {
@@ -29,19 +31,11 @@ public class GPUModel extends MainInformation {
         return "";
     }
 
-    public int getCustomerId() {
-        return selectCustomerId();
-    }
-
     public Date getDateCapture() {
         return date;
     }
-    
-    public int getDeviceId(){
-        return selectDeviceId();
-    }
 
-    private void add(String name) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getDeviceId() {
+        return selectDeviceId();
     }
 }
