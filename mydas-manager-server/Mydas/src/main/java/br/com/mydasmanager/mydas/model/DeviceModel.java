@@ -1,5 +1,7 @@
 package br.com.mydasmanager.mydas.model;
 
+import br.com.mydasmanager.mydas.controller.MainInformation;
+
 public class DeviceModel extends MainInformation{
  
     public int getDeviceId() {

@@ -1,30 +1,24 @@
 package br.com.mydasmanager.mydas.data.repositories;
 
-import br.com.mydasmanager.mydas.model.DeviceModel;
 import br.com.mydasmanager.mydas.model.SOModel;
 import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
+import br.com.mydasmanager.mydas.data.statements.SOStatements;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
-public class SORepository {
+public class SORepository extends SOStatements {
    
     Connection conn = new ConnectionStatements().getConnection();
-    
+    int deviceid = 0;
+            
     public boolean insertSOInformation(SOModel so) {
 
         try {
-        
-            String sql = "INSERT INTO so("
-                   + "  namesystem "
-                   + ", systemversion "
-                   + ", nameuser"
-                   + ", datecapture"
-                   + ", deviceid)"
-                   + "VALUES (?, ?, ?, ?, ?)";
       
-            PreparedStatement pstm = conn.prepareStatement(sql);
+            PreparedStatement pstm = conn.prepareStatement(INSERT_SO);
                     
             pstm.setString(1, so.getNameSystem());
             pstm.setString(2, so.getNameUser());
@@ -38,7 +32,7 @@ public class SORepository {
             
             return true;
             
-       } catch (Exception e) {
+       } catch (SQLException e) {
             System.err.println(e.getMessage());
        }
         
@@ -47,11 +41,11 @@ public class SORepository {
     
     public int selectDeviceId(int customerid){
         try {
-            int deviceid = 0;
+            
             Statement stmt = conn.createStatement();
             ResultSet rs;
         
-            rs = stmt.executeQuery("SELECT id FROM customer_device WHERE customer_id "+customerid);
+            rs = stmt.executeQuery(SELECT_CUSTOMER_DEVICE_ID);
             
             while (rs.next()) {
                deviceid = rs.getInt("id");
