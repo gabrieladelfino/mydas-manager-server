@@ -8,11 +8,11 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DeviceRepository extends DeviceStatements {
-    
+
     public boolean insertDeviceInformation(DeviceModel device) {
 
         try {
-            
+
             Connection conn = new ConnectionStatements().getConnection();
             PreparedStatement pstm = conn.prepareStatement(INSERT_CUSTOMER_DEVICE);
 
@@ -28,5 +28,5 @@ public class DeviceRepository extends DeviceStatements {
         }
 
         return false;
-    } 
+    }
 }

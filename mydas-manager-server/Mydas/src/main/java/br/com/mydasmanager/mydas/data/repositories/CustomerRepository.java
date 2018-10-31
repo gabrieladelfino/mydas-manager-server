@@ -4,29 +4,34 @@ import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
 import br.com.mydasmanager.mydas.data.statements.CustomerStatements;
 import br.com.mydasmanager.mydas.model.CustomerModel;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
-public class CustomerRepository extends CustomerStatements{
-    
-    public boolean insertDeviceInformation(CustomerModel customer) {
+public class CustomerRepository extends CustomerStatements {
+
+    Connection conn = new ConnectionStatements().getConnection();
+    int customerId = 0;
+
+    public int selectCustomerId(CustomerModel customer) {
 
         try {
-            
-            Connection conn = new ConnectionStatements().getConnection();
-            PreparedStatement pstm = conn.prepareStatement(SELECT_CUSTOMER);
 
-            pstm.setString(1, customer.getUserName());
-          
-            pstm.execute();
+            Statement stmt = conn.createStatement();
+            ResultSet rs;
 
-            return true;
+            rs = stmt.executeQuery(SELECT_CUSTOMER);
 
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            while (rs.next()) {
+                customerId = rs.getInt("id");
+            }
+
+            return customerId;
+
+        } catch (Exception ex) {
+            ex.getStackTrace();
+
         }
 
-        return false;
-    } 
-
+        return 0;
+    }
 }

@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class RAMRepository extends RAMStatements{
+public class RAMRepository extends RAMStatements {
 
     public boolean insertRAMInformation(RAMModel ram) {
 
