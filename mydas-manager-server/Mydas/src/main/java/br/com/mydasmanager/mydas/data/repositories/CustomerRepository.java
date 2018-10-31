@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class CustomerRepository extends CustomerStatements {
+public class CustomerRepository {
 
     Connection conn = new ConnectionStatements().getConnection();
     int customerId = 0;
@@ -20,7 +20,7 @@ public class CustomerRepository extends CustomerStatements {
             Statement stmt = conn.createStatement();
             ResultSet rs;
 
-            rs = stmt.executeQuery(SELECT_CUSTOMER);
+            rs = stmt.executeQuery(CustomerStatements.SELECT_CUSTOMER);
 
             while (rs.next()) {
                 customerId = rs.getInt("id");
