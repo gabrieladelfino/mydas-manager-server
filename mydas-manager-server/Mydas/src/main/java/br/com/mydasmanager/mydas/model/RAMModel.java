@@ -10,14 +10,14 @@ public class RAMModel extends MainInformation {
     }
 
     public long getTotalmemory() {
-        return si.getHardware().getMemory().getTotal();
+        return systemInfo.getHardware().getMemory().getTotal();
     }
 
     public long getFreememory() {
-        return si.getHardware().getMemory().getAvailable();
+        return systemInfo.getHardware().getMemory().getAvailable();
     }
 
     public Date getDateCapture() {
-        return data;
+        return date;
     }
 }

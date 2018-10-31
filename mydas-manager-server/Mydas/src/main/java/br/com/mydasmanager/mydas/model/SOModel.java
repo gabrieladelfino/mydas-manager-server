@@ -18,7 +18,7 @@ public class SOModel extends MainInformation{
     }
 
     public Date getDateCapture() {
-        return data;
+        return date;
     }
 
     public int getDeviceId() {

@@ -7,9 +7,9 @@ import oshi.software.os.OperatingSystem;
 
 public abstract class MainInformation {
     
-    protected SystemInfo si = new SystemInfo();
-    protected OperatingSystem operatingSystem = si.getOperatingSystem();
-    protected Date data = new Date(System.currentTimeMillis());
+    protected SystemInfo systemInfo = new SystemInfo();
+    protected OperatingSystem operatingSystem = systemInfo.getOperatingSystem();
+    protected Date date = new Date(System.currentTimeMillis());
     
     CustomerRepository customer = new CustomerRepository();
            

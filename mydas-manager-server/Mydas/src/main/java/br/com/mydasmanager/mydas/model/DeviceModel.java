@@ -13,6 +13,6 @@ public class DeviceModel extends MainInformation{
     }
 
     public String getNameUser() {
-        return si.getOperatingSystem().getProcess(0).getUser();
+        return systemInfo.getOperatingSystem().getProcess(0).getUser();
     }
 }
