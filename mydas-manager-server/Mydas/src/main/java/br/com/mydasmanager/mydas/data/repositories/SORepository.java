@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class SORepository extends SOStatements {
+public class SORepository {
 
     Connection conn = new ConnectionStatements().getConnection();
     int deviceid = 0;
@@ -18,7 +18,7 @@ public class SORepository extends SOStatements {
 
         try {
 
-            PreparedStatement pstm = conn.prepareStatement(INSERT_SO);
+            PreparedStatement pstm = conn.prepareStatement(SOStatements.INSERT_SO);
 
             pstm.setString(1, so.getNameSystem());
             pstm.setString(2, so.getNameUser());
@@ -43,7 +43,7 @@ public class SORepository extends SOStatements {
             Statement stmt = conn.createStatement();
             ResultSet rs;
 
-            rs = stmt.executeQuery(SELECT_CUSTOMER_DEVICE_ID);
+            rs = stmt.executeQuery(SOStatements.SELECT_CUSTOMER_DEVICE_ID);
 
             while (rs.next()) {
                 deviceid = rs.getInt("id");

@@ -25,7 +25,7 @@ public class CustomerRepository {
             while (rs.next()) {
                 customerId = rs.getInt("id");
             }
-            
+
             return customerId;
 
         } catch (SQLException ex) {

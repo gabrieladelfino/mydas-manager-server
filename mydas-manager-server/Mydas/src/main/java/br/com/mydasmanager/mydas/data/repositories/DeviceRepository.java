@@ -7,14 +7,14 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class DeviceRepository extends DeviceStatements {
+public class DeviceRepository {
 
     public boolean insertDeviceInformation(DeviceModel device) {
 
         try {
 
             Connection conn = new ConnectionStatements().getConnection();
-            PreparedStatement pstm = conn.prepareStatement(INSERT_CUSTOMER_DEVICE);
+            PreparedStatement pstm = conn.prepareStatement(DeviceStatements.INSERT_CUSTOMER_DEVICE);
 
             pstm.setString(1, device.getNameUser());
             pstm.setInt(2, device.getCustomerId());
