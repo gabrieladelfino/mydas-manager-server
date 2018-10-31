@@ -1,21 +1,14 @@
 package br.com.mydasmanager.mydas.model;
 
+import br.com.mydasmanager.mydas.controller.MainInformation;
 import java.sql.Date;
-import oshi.SystemInfo;
 
-public class RAMModel {
-    
-    SystemInfo si = new SystemInfo();
-   
-    private int deviceId;
-    private long totalmemory;
-    private long freememory;
-    private Date dateCapture;
+public class RAMModel extends MainInformation {
 
     public int getDeviceId() {
         return 1004;
     }
-    
+
     public long getTotalmemory() {
         return si.getHardware().getMemory().getTotal();
     }
@@ -25,6 +18,6 @@ public class RAMModel {
     }
 
     public Date getDateCapture() {
-        return new Date(System.currentTimeMillis());
+        return data;
     }
 }

@@ -5,6 +5,7 @@ import br.com.mydasmanager.mydas.data.statements.CustomerStatements;
 import br.com.mydasmanager.mydas.model.CustomerModel;
 import java.sql.Connection;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 
 public class CustomerRepository extends CustomerStatements {
@@ -25,9 +26,11 @@ public class CustomerRepository extends CustomerStatements {
                 customerId = rs.getInt("id");
             }
 
+            System.out.println("Executou.");
+            
             return customerId;
 
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             ex.getStackTrace();
 
         }

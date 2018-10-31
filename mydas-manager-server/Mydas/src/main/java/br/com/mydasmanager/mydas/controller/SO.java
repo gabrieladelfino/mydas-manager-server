@@ -4,24 +4,23 @@ import br.com.mydasmanager.mydas.model.SOModel;
 import br.com.mydasmanager.mydas.data.repositories.SORepository;
 
 public class SO {
-    
-    SOModel so = null;
-    SORepository soRepository = null;
-            
-    public boolean CaptureInformation(){
-        
-        so = new SOModel();
-        soRepository = new SORepository();
-        
-        try{
+
+    SOModel so = new SOModel();
+    SORepository soRepository = new SORepository();
+
+    public boolean CaptureInformation() {
+
+        try {
+
             soRepository.insertSOInformation(so);
-         
+            System.out.println("Executou.");
+
             return true;
-            
-        }catch(Exception ex){
+
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        
+
         return false;
     }
 }

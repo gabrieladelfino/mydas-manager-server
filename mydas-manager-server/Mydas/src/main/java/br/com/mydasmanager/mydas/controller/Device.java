@@ -5,28 +5,23 @@ import br.com.mydasmanager.mydas.data.repositories.DeviceRepository;
 import oshi.SystemInfo;
 
 public class Device {
-    
-    SystemInfo si = null;
-    DeviceModel device = null;
-   
-    public boolean CaptureInformation(){
-        
-        si = new SystemInfo();
-        device = new DeviceModel();
-        
-        try{
-     
-            DeviceRepository deviceRepository = new DeviceRepository();
+
+    public boolean CaptureInformation() {
+
+        DeviceModel device = new DeviceModel();
+        DeviceRepository deviceRepository = new DeviceRepository();
+
+        try {
+
             deviceRepository.insertDeviceInformation(device);
-            
-            System.out.println("Executou!");
-            
+            System.out.println("Executou.");
+
             return true;
-            
-        }catch(Exception ex){
+
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        
+
         return false;
     }
 }

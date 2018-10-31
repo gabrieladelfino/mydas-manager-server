@@ -28,7 +28,7 @@ public class SORepository extends SOStatements {
 
             pstm.execute();
 
-            System.out.println("Executou!");
+            System.out.println("Executou.");
 
             return true;
 

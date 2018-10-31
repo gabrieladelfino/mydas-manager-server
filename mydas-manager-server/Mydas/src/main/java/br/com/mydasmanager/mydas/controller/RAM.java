@@ -4,27 +4,24 @@ import br.com.mydasmanager.mydas.model.RAMModel;
 import br.com.mydasmanager.mydas.data.repositories.RAMRepository;
 
 public class RAM {
-    
-    RAMModel ram = null;
-  
-    public boolean CaptureInformation(){
-        
-        ram = new RAMModel();
-        
-        try{
-        
-            RAMRepository ramRepository = new RAMRepository();
+
+    RAMModel ram = new RAMModel();
+    RAMRepository ramRepository = new RAMRepository();
+
+    public boolean CaptureInformation() {
+
+        try {
+
             ramRepository.insertRAMInformation(ram);
-            
-            System.out.println("Executou!");
-            
+            System.out.println("Executou.");
+
             return true;
-            
-        }catch(Exception ex){
+
+        } catch (Exception ex) {
             System.out.println(ex.getMessage());
         }
-        
+
         return false;
     }
-    
+
 }

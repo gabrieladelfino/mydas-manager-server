@@ -23,6 +23,8 @@ public class RAMRepository extends RAMStatements {
 
             pstm.execute();
 
+            System.out.println("Executou.");
+
             return true;
 
         } catch (SQLException e) {
