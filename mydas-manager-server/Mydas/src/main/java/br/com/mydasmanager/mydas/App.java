@@ -11,12 +11,10 @@ public class App {
         Device device = new Device();
         device.CaptureInformation();
         
-        if(device != null){
-            SO so = new SO();
-            so.CaptureInformation();
-
-            RAM ram = new RAM();
-            ram.CaptureInformation();
-        }
+        SO so = new SO();
+        so.CaptureInformation();
+        
+        RAM ram = new RAM();
+        ram.CaptureInformation();
     }
 }
