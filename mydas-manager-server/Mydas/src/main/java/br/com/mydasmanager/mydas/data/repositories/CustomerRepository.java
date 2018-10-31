@@ -14,7 +14,7 @@ public class CustomerRepository extends CustomerStatements{
         try {
             
             Connection conn = new ConnectionStatements().getConnection();
-            PreparedStatement pstm = conn.prepareStatement(INSERT_CUSTOMER);
+            PreparedStatement pstm = conn.prepareStatement(SELECT_CUSTOMER);
 
             pstm.setString(1, customer.getUserName());
           

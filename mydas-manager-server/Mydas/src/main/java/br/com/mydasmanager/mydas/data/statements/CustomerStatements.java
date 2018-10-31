@@ -2,5 +2,5 @@ package br.com.mydasmanager.mydas.data.statements;
 
 public class CustomerStatements {
     
-    protected final String INSERT_CUSTOMER = "";
+    protected final String SELECT_CUSTOMER = "";
 }
