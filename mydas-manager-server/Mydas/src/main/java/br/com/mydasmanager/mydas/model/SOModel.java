@@ -1,0 +1,27 @@
+package br.com.mydasmanager.mydas.model;
+
+import br.com.mydasmanager.mydas.controller.MainInformation;
+import java.sql.Date;
+
+public class SOModel extends MainInformation{
+    
+    public String getNameSystem() {
+        return operatingSystem.getFamily();
+    }
+
+    public String getSystemVersion() {
+        return operatingSystem.getVersion().getVersion();
+    }
+
+    public String getNameUser() {
+        return operatingSystem.getNetworkParams().getDomainName();
+    }
+
+    public Date getDateCapture() {
+        return date;
+    }
+
+    public int getDeviceId() {
+        return selectDeviceId();
+    }
+}

@@ -1,6 +1,5 @@
-package br.com.mydasmanager.mydas.statements;
+package br.com.mydasmanager.mydas.data.statements;
 
-import com.microsoft.sqlserver.jdbc.SQLServerDriver;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -16,7 +15,6 @@ public class ConnectionStatements {
      public Connection getConnection() {
         try {
            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-           System.out.println("Conectado");
            return DriverManager.getConnection(_URL);
         } 
         catch (ClassNotFoundException | SQLException e) {
