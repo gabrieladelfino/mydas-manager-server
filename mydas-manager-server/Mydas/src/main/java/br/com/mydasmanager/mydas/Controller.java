@@ -1,13 +1,14 @@
 package br.com.mydasmanager.mydas;
 
-import br.com.mydasmanager.mydas.controller.SOController;
+import br.com.mydasmanager.mydas.controller.CPU;
 
 public class Controller {
 
     public static void main(String[] args) {
 
-        SOController so = new SOController();
-        so.CaptureInformation();
+     
        
+        CPU cpu = new CPU();
+        cpu.CaptureInformation();
     }
 }
