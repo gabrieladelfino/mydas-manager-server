@@ -1,8 +1,8 @@
 package br.com.mydasmanager.mydas;
 
+import br.com.mydasmanager.mydas.controller.Device;
 import br.com.mydasmanager.mydas.controller.RAM;
 import br.com.mydasmanager.mydas.controller.SO;
-import br.com.mydasmanager.mydas.controller.Device;
 
 public class App {
 
@@ -11,12 +11,10 @@ public class App {
         Device device = new Device();
         device.CaptureInformation();
         
-        if(device != null){
-            SO so = new SO();
-            so.CaptureInformation();
-
-            RAM ram = new RAM();
-            ram.CaptureInformation();
-        }
+        RAM ram = new RAM();
+        ram.CaptureInformation();
+        
+        SO so = new SO();
+        so.CaptureInformation();
     }
 }

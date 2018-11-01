@@ -1,54 +1,27 @@
 package br.com.mydasmanager.mydas.model;
 
+import br.com.mydasmanager.mydas.controller.MainInformation;
 import java.sql.Date;
 
-public class SOModel {
+public class SOModel extends MainInformation{
     
-    private String nameSystem;
-    private String systemVersion;
-    private String nameUser;
-    private Date dateCapture;
-    private int deviceId;
-
     public String getNameSystem() {
-        return nameSystem;
-    }
-
-    public void setNameSystem(String nameSystem) {
-        this.nameSystem = nameSystem;
+        return operatingSystem.getFamily();
     }
 
     public String getSystemVersion() {
-        return systemVersion;
-    }
-
-    public void setSystemVersion(String systemVersion) {
-        this.systemVersion = systemVersion;
+        return operatingSystem.getVersion().getVersion();
     }
 
     public String getNameUser() {
-        return nameUser;
-    }
-
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
+        return operatingSystem.getNetworkParams().getDomainName();
     }
 
     public Date getDateCapture() {
-        return dateCapture;
-    }
-
-    public void setDateCapture(Date dateCapture) {
-        this.dateCapture = dateCapture;
+        return date;
     }
 
     public int getDeviceId() {
-        return deviceId;
+        return selectDeviceId();
     }
-
-    public void setDeviceId(int deviceId) {
-        this.deviceId = deviceId;
-    }
-    
-    
 }

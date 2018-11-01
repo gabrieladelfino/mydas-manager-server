@@ -1,43 +1,23 @@
 package br.com.mydasmanager.mydas.model;
 
+import br.com.mydasmanager.mydas.controller.MainInformation;
 import java.sql.Date;
 
-public class RAMModel {
-    
-    private int deviceId;
-    private long totalmemory;
-    private long freememory;
-    private Date dateCapture;
+public class RAMModel extends MainInformation {
 
     public int getDeviceId() {
-        return deviceId;
-    }
-    
-    public void setDeviceId(int deviceId){
-        this.deviceId = deviceId;
-    }
-    
-    public long getTotalmemory() {
-        return totalmemory;
+        return 1004;
     }
 
-    public void setTotalMemory(long totalmemory) {
-        this.totalmemory = totalmemory;
+    public long getTotalmemory() {
+        return systemInfo.getHardware().getMemory().getTotal();
     }
 
     public long getFreememory() {
-        return freememory;
-    }
-
-    public void setFreeMemory(long freememory) {
-         this.freememory = freememory;
+        return systemInfo.getHardware().getMemory().getAvailable();
     }
 
     public Date getDateCapture() {
-        return dateCapture;
-    }
-
-    public void setDateCapture(Date dateCapture) {
-        this.dateCapture = dateCapture;
+        return date;
     }
 }

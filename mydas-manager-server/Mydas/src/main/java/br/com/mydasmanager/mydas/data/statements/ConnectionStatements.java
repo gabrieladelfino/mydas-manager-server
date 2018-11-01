@@ -15,7 +15,6 @@ public class ConnectionStatements {
      public Connection getConnection() {
         try {
            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-           System.out.println("Conectado");
            return DriverManager.getConnection(_URL);
         } 
         catch (ClassNotFoundException | SQLException e) {

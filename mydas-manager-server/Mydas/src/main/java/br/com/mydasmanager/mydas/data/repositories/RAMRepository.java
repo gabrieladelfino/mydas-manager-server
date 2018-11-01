@@ -2,24 +2,19 @@ package br.com.mydasmanager.mydas.data.repositories;
 
 import br.com.mydasmanager.mydas.model.RAMModel;
 import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
+import br.com.mydasmanager.mydas.data.statements.RAMStatements;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 public class RAMRepository {
 
-    public boolean insertRAMInformation(RAMModel ram) {
+    public boolean insertRAM(RAMModel ram) {
 
         try {
 
-            String sql = "INSERT INTO ram("
-                    + "  totalmemory"
-                    + ", freememory"
-                    + ", datecapture"
-                    + ", deviceid)"
-                    + "VALUES (?, ?, ?, ?)";
-
             Connection conn = new ConnectionStatements().getConnection();
-            PreparedStatement pstm = conn.prepareStatement(sql);
+            PreparedStatement pstm = conn.prepareStatement(RAMStatements.INSERT_RAM);
 
             pstm.setDouble(1, ram.getTotalmemory());
             pstm.setDouble(2, ram.getFreememory());
@@ -30,7 +25,7 @@ public class RAMRepository {
 
             return true;
 
-        } catch (Exception e) {
+        } catch (SQLException e) {
             System.err.println(e.getMessage());
         }
 

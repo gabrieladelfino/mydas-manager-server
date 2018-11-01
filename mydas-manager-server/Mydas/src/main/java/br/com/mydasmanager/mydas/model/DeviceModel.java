@@ -1,28 +1,18 @@
 package br.com.mydasmanager.mydas.model;
 
-public class DeviceModel {
-    
-    private int id;
-    private int customerId;
-    private String nameUser;
+import br.com.mydasmanager.mydas.controller.MainInformation;
 
-    public int getId() {
-        return id;
+public class DeviceModel extends MainInformation{
+ 
+    public int getDeviceId() {
+        return selectDeviceId();
     }
 
     public int getCustomerId() {
-        return customerId;
+        return selectCustomerId();
     }
 
-    public void setCustomerId(int customerid) {
-        this.customerId = customerid;
-    }
-    
     public String getNameUser() {
-        return nameUser;
-    }
-
-    public void setNameUser(String nameUser) {
-        this.nameUser = nameUser;
+        return systemInfo.getOperatingSystem().getProcess(0).getUser();
     }
 }
