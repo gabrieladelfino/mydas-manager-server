@@ -5,21 +5,13 @@ import br.com.mydasmanager.mydas.data.repositories.SORepository;
 
 public class SO {
 
-    SOModel so = new SOModel();
-    SORepository soRepository = new SORepository();
+    public static void insert() {
+        SOModel m = new SOModel();
+        SORepository.insert(m);
+    }
 
-    public boolean CaptureInformation() {
-
-        try {
-
-            soRepository.insertSO(so);
-
-            return true;
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        return false;
+    public static void start() throws InterruptedException {
+        insert();
+        Thread.sleep(1000);
     }
 }

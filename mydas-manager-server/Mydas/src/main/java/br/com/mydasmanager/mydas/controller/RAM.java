@@ -5,22 +5,13 @@ import br.com.mydasmanager.mydas.data.repositories.RAMRepository;
 
 public class RAM {
 
-    RAMModel ram = new RAMModel();
-    RAMRepository ramRepository = new RAMRepository();
-
-    public boolean CaptureInformation() {
-
-        try {
-
-            ramRepository.insertRAM(ram);
-
-            return true;
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        return false;
+    public static void insert() {
+        RAMModel m = new RAMModel();
+        RAMRepository.insert(m);
     }
 
+    public static void start() throws InterruptedException {
+        insert();
+        Thread.sleep(1000);
+    }
 }

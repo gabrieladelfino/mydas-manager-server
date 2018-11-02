@@ -4,9 +4,9 @@ import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
 import br.com.mydasmanager.mydas.data.statements.CustomerStatements;
 import br.com.mydasmanager.mydas.model.CustomerModel;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class CustomerRepository {
 
@@ -17,20 +17,18 @@ public class CustomerRepository {
 
         try {
 
-            Statement stmt = conn.createStatement();
-            ResultSet rs;
+            PreparedStatement pstm = conn.prepareStatement(CustomerStatements.SELECT_CUSTOMER);
+            pstm.setString(1, customer.getUserName());
 
-            rs = stmt.executeQuery(CustomerStatements.SELECT_CUSTOMER);
+            ResultSet rs = pstm.executeQuery();
 
             while (rs.next()) {
                 customerId = rs.getInt("id");
             }
 
             return customerId;
-
         } catch (SQLException ex) {
             ex.getStackTrace();
-
         }
 
         return 0;

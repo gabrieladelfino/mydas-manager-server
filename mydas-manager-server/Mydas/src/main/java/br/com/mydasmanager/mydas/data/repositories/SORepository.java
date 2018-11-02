@@ -3,7 +3,6 @@ package br.com.mydasmanager.mydas.data.repositories;
 import br.com.mydasmanager.mydas.model.SOModel;
 import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
 import br.com.mydasmanager.mydas.data.statements.SOStatements;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,14 +10,13 @@ import java.sql.Statement;
 
 public class SORepository {
 
-    Connection conn = new ConnectionStatements().getConnection();
     int deviceid = 0;
 
-    public boolean insertSO(SOModel so) {
+    public static boolean insert(SOModel so) {
 
         try {
 
-            PreparedStatement pstm = conn.prepareStatement(SOStatements.INSERT_SO);
+            PreparedStatement pstm = ConnectionStatements.getConnection().prepareStatement(SOStatements.INSERT_SO);
 
             pstm.setString(1, so.getNameSystem());
             pstm.setString(2, so.getNameUser());
@@ -40,7 +38,7 @@ public class SORepository {
     public int selectDeviceId(int customerid) {
         try {
 
-            Statement stmt = conn.createStatement();
+            Statement stmt = ConnectionStatements.getConnection().createStatement();
             ResultSet rs;
 
             rs = stmt.executeQuery(SOStatements.SELECT_CUSTOMER_DEVICE_ID);
@@ -50,7 +48,7 @@ public class SORepository {
             }
 
             return deviceid;
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             ex.getStackTrace();
         }
 

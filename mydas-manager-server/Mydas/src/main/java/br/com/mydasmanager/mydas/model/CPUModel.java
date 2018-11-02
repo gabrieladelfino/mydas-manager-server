@@ -1,102 +1,43 @@
 package br.com.mydasmanager.mydas.model;
 
-public class CPUModel {
+import br.com.mydasmanager.mydas.controller.MainInformation;
+import java.sql.Date;
 
-    private String model;
-    
-    private String ghz;
+public class CPUModel extends MainInformation {
 
-    private String processorName;
-
-    private int core;
-
-    private String currentUse;
-
-    private long frequency;
-
-    private double temperature;
-
-    private String deviceId;
-    
-    private String dateCapture;
-
-    public String getDateCapture() {
-        return dateCapture;
+    public Date getDateCapture() {
+        return date;
     }
-
-    public void setDateCapture(String dateCapture) {
-        this.dateCapture = dateCapture;
-    }
-    
 
     public String getModel() {
-        return model;
-    }
-
-    public void setModel(String model) {
-        this.model = model;
+        return systemInfo.getHardware().getProcessor().toString();
     }
 
     public String getProcessorName() {
-        return processorName;
-    }
-
-    public void setProcessorName(String processorName) {
-        this.processorName = processorName;
+        return systemInfo.getHardware().getProcessor().toString();
     }
 
     public int getCore() {
-        return core;
-    }
-
-    public void setCore(int core) {
-        this.core = core;
+        return systemInfo.getHardware().getProcessor().getPhysicalProcessorCount();
     }
 
     public String getCurrentUse() {
-        return currentUse;
-    }
-
-    public void setCurrentUse(String currentUse) {
-        this.currentUse = currentUse;
+        return systemInfo.getHardware().getClass().toString();
     }
 
     public long getFrequency() {
-        return frequency;
-    }
-
-    public void setFrequency(long frequency) {
-        this.frequency = frequency;
+        return systemInfo.getHardware().getProcessor().getVendorFreq();
     }
 
     public double getTemperature() {
-        return temperature;
+        return systemInfo.getHardware().getSensors().getCpuTemperature();
     }
 
-    public void setTemperature(double temperature) {
-        this.temperature = temperature;
-    }
-
-    public String getDeviceId() {
-        return deviceId;
-    }
-
-    public void setDeviceId(String deviceId) {
-        this.deviceId = deviceId;
+    public int getDeviceId() {
+        return selectDeviceId();
     }
 
     public String getGhz() {
-        return ghz;
+        return systemInfo.getHardware().getProcessor().getName();
     }
-
-    public void setGhz(String ghz) {
-        this.ghz = ghz;
-    }
-
-    
-    
-    
-
-    
-
 }

@@ -5,21 +5,14 @@ import br.com.mydasmanager.mydas.data.repositories.DeviceRepository;
 
 public class Device {
 
-    public boolean CaptureInformation() {
-
-        try {
-
-            DeviceModel device = new DeviceModel();
-            DeviceRepository deviceRepository = new DeviceRepository();
-
-            deviceRepository.insertDeviceInformation(device);
-            
-            return true;
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        return false;
+    public static void insert() {
+        DeviceModel m = new DeviceModel();
+        DeviceRepository.insert(m);
     }
+
+    public static void start() throws InterruptedException {
+        insert();
+        Thread.sleep(1000);
+    }
+
 }

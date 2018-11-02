@@ -1,43 +1,27 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.com.mydasmanager.mydas.controller;
 
+import br.com.mydasmanager.mydas.data.repositories.CPURepository;
 import br.com.mydasmanager.mydas.model.CPUModel;
-import br.com.mydasmanager.mydas.repositories.CPURepository;
-import oshi.SystemInfo;
-import oshi.software.os.OperatingSystem;
 
+/**
+ *
+ * @author Gabriela Garcia
+ */
 public class CPU {
 
-    SystemInfo si = null;
-    OperatingSystem os = null;
-    CPUModel cpu = null;
+    public static void insert() {
+        CPUModel m = new CPUModel();
+        CPURepository.insertCPUInformation(m);
+    }
 
-    public boolean CaptureInformation() {
-
-        si = new SystemInfo();
-        os = si.getOperatingSystem();
-        cpu = new CPUModel();
-
-        try {
-
-            cpu.setProcessorName(si.getHardware().getProcessor().toString());
-            cpu.setModel(si.getHardware().getProcessor().toString());
-            cpu.setCurrentUse(si.getHardware().getClass().toString());
-            cpu.setFrequency(si.getHardware().getProcessor().getVendorFreq());
-            cpu.setCore(si.getHardware().getProcessor().getPhysicalProcessorCount());
-            cpu.setTemperature(si.getHardware().getSensors().getCpuTemperature());
-            cpu.setDeviceId(si.getHardware().getProcessor().getProcessorID());
-            cpu.setGhz(si.getHardware().getProcessor().getName());
-
-            CPURepository cpuRepository = new CPURepository();
-            cpuRepository.insertCPUInformation(cpu);
-
-            return true;
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        return false;
+    public static void start() throws InterruptedException {
+        insert();
+        Thread.sleep(1000);
     }
 
 }

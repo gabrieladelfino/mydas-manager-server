@@ -9,12 +9,11 @@ import java.sql.SQLException;
 
 public class GPURepository {
     
-    public boolean insertGPU(GPUModel gpu) {
+    public static boolean insert(GPUModel gpu) {
 
         try {
-
-            Connection conn = new ConnectionStatements().getConnection();
-            PreparedStatement pstm = conn.prepareStatement(GPUStatements.INSERT_GPU);
+            
+            PreparedStatement pstm = ConnectionStatements.getConnection().prepareStatement(GPUStatements.INSERT_GPU);
 
             pstm.setDouble(1, gpu.getTemperature());
             pstm.setString(2, gpu.getGpuName());
