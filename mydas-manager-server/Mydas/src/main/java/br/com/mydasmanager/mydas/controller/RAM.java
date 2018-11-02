@@ -11,7 +11,7 @@ public class RAM {
     }
 
     public static void start() throws InterruptedException {
-        insert();
+        RAM.insert();
         Thread.sleep(1000);
     }
 }

@@ -11,7 +11,7 @@ public class SO {
     }
 
     public static void start() throws InterruptedException {
-        insert();
+        SO.insert();
         Thread.sleep(1000);
     }
 }

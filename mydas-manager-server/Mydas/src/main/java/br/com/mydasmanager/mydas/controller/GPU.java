@@ -11,7 +11,7 @@ public class GPU {
     }
 
     public static void start() throws InterruptedException {
-        insert();
+        GPU.insert();
         Thread.sleep(1000);
     }
 }

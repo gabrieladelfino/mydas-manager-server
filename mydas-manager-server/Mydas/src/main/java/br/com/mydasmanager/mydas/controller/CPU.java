@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.mydasmanager.mydas.controller;
 
 import br.com.mydasmanager.mydas.data.repositories.CPURepository;
@@ -20,7 +15,7 @@ public class CPU {
     }
 
     public static void start() throws InterruptedException {
-        insert();
+        CPU.insert();
         Thread.sleep(1000);
     }
 

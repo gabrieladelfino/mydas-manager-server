@@ -11,7 +11,7 @@ public class Device {
     }
 
     public static void start() throws InterruptedException {
-        insert();
+        Device.insert();
         Thread.sleep(1000);
     }
 
