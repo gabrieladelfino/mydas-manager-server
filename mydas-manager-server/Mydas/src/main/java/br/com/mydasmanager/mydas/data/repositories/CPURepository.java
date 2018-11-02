@@ -9,11 +9,10 @@ import java.sql.SQLException;
 
 public class CPURepository {
 
-    public static boolean insertCPUInformation(CPUModel cpu) {
+    public static boolean insert(CPUModel cpu) {
         try {
 
-            Connection conn = new ConnectionStatements().getConnection();
-            PreparedStatement pstm = conn.prepareStatement(CPUStatements.INSERT_CPU);
+            PreparedStatement pstm = ConnectionStatements.getConnection().prepareStatement(CPUStatements.INSERT_CPU);
 
             pstm.setString(1, cpu.getModel());
             pstm.setString(2, cpu.getGhz());
