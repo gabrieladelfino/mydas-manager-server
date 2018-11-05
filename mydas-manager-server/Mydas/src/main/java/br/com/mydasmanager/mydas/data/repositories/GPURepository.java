@@ -1,6 +1,8 @@
-package br.com.mydasmanager.mydas.data.statements;
+package br.com.mydasmanager.mydas.data.repositories;
 
 import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
+import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
+import br.com.mydasmanager.mydas.data.statements.GPUStatements;
 import br.com.mydasmanager.mydas.data.statements.GPUStatements;
 import br.com.mydasmanager.mydas.model.GPUModel;
 import java.sql.Connection;

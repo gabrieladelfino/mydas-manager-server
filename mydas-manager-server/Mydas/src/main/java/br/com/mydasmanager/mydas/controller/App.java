@@ -7,6 +7,6 @@ public class App {
     }
 
     public static void start(){
-        new StartComponent();
+        new StartGraphicComponent();
     }
 }

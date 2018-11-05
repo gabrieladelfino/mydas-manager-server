@@ -15,7 +15,7 @@ import javax.swing.Timer;
  *
  * @author Gabriela Garcia
  */
-public class StartComponent extends JFrame {
+public class StartGraphicComponent extends JFrame {
 
     JLabel labelRunningTime;
     JLabel runningTime;
@@ -40,7 +40,7 @@ public class StartComponent extends JFrame {
 
     String totalTimeRunning = "";
 
-    public StartComponent() {
+    public StartGraphicComponent() {
 
         setSize(800, 500);
         setLayout(null);
@@ -135,9 +135,12 @@ public class StartComponent extends JFrame {
     }
 
     public void loadInformation() {
-        new Timer(100, (ActionEvent e) -> {
+        new Timer(1000, (ActionEvent e) -> {
             if (isRunning) {
-                
+                Device.insert();
+                CPU.insert();
+                RAM.insert();
+                SO.insert();
             }
         }).start();
     }

@@ -1,6 +1,6 @@
 package br.com.mydasmanager.mydas.model;
 
-import br.com.mydasmanager.mydas.data.statements.CustomerRepository;
+import br.com.mydasmanager.mydas.data.repositories.CustomerRepository;
 import com.profesorfalken.jsensors.JSensors;
 import com.profesorfalken.jsensors.model.components.Components;
 import com.profesorfalken.jsensors.model.components.Cpu;

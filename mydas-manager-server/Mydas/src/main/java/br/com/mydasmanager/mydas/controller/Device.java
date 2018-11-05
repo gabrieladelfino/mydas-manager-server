@@ -1,12 +1,11 @@
 package br.com.mydasmanager.mydas.controller;
 
 import br.com.mydasmanager.mydas.model.DeviceModel;
-import br.com.mydasmanager.mydas.data.statements.DeviceRepository;
+import br.com.mydasmanager.mydas.data.repositories.DeviceRepository;
 
-public class Device implements ComponentsMethods {
+public class Device {
 
-    @Override
-    public void insert() {
+    public static void insert() {
         DeviceModel m = new DeviceModel();
         DeviceRepository.insert(m);
     }

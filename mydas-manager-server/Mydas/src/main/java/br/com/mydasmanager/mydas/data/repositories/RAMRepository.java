@@ -1,7 +1,9 @@
-package br.com.mydasmanager.mydas.data.statements;
+package br.com.mydasmanager.mydas.data.repositories;
 
 import br.com.mydasmanager.mydas.model.RAMModel;
 import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
+import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
+import br.com.mydasmanager.mydas.data.statements.RAMStatements;
 import br.com.mydasmanager.mydas.data.statements.RAMStatements;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
