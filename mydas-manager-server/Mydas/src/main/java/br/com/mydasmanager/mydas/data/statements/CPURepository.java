@@ -1,4 +1,4 @@
-package br.com.mydasmanager.mydas.data.repositories;
+package br.com.mydasmanager.mydas.data.statements;
 
 import br.com.mydasmanager.mydas.data.statements.CPUStatements;
 import br.com.mydasmanager.mydas.model.CPUModel;

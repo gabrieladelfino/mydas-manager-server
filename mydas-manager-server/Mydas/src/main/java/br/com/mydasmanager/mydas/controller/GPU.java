@@ -1,17 +1,13 @@
 package br.com.mydasmanager.mydas.controller;
 
-import br.com.mydasmanager.mydas.data.repositories.GPURepository;
+import br.com.mydasmanager.mydas.data.statements.GPURepository;
 import br.com.mydasmanager.mydas.model.GPUModel;
 
-public class GPU {
+public class GPU implements ComponentsMethods {
 
-    public static void insert() {
+    @Override
+    public void insert() {
         GPUModel m = new GPUModel();
         GPURepository.insert(m);
-    }
-
-    public static void start() throws InterruptedException {
-        GPU.insert();
-        Thread.sleep(1000);
     }
 }

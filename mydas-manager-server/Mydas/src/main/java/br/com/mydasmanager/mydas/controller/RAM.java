@@ -1,17 +1,13 @@
 package br.com.mydasmanager.mydas.controller;
 
 import br.com.mydasmanager.mydas.model.RAMModel;
-import br.com.mydasmanager.mydas.data.repositories.RAMRepository;
+import br.com.mydasmanager.mydas.data.statements.RAMRepository;
 
-public class RAM {
+public class RAM implements ComponentsMethods{
 
-    public static void insert() {
+    @Override
+    public void insert() {
         RAMModel m = new RAMModel();
         RAMRepository.insert(m);
-    }
-
-    public static void start() throws InterruptedException {
-        RAM.insert();
-        Thread.sleep(1000);
     }
 }

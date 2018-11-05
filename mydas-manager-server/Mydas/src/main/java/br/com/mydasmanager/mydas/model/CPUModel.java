@@ -1,6 +1,5 @@
 package br.com.mydasmanager.mydas.model;
 
-import br.com.mydasmanager.mydas.controller.MainInformation;
 import java.sql.Date;
 
 public class CPUModel extends MainInformation {

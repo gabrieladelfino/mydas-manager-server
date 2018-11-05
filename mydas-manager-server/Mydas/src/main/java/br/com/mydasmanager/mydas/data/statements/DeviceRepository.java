@@ -1,4 +1,4 @@
-package br.com.mydasmanager.mydas.data.repositories;
+package br.com.mydasmanager.mydas.data.statements;
 
 import br.com.mydasmanager.mydas.model.DeviceModel;
 import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;

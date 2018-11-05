@@ -1,18 +1,13 @@
 package br.com.mydasmanager.mydas.controller;
 
 import br.com.mydasmanager.mydas.model.DeviceModel;
-import br.com.mydasmanager.mydas.data.repositories.DeviceRepository;
+import br.com.mydasmanager.mydas.data.statements.DeviceRepository;
 
-public class Device {
+public class Device implements ComponentsMethods {
 
-    public static void insert() {
+    @Override
+    public void insert() {
         DeviceModel m = new DeviceModel();
         DeviceRepository.insert(m);
     }
-
-    public static void start() throws InterruptedException {
-        Device.insert();
-        Thread.sleep(1000);
-    }
-
 }

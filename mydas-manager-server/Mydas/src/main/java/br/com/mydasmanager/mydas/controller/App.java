@@ -2,16 +2,11 @@ package br.com.mydasmanager.mydas.controller;
 
 public class App {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        start();
+    }
 
-        try {
-            CPU.start();
-            RAM.start();
-            GPU.start();
-            SO.start();
-            Device.start();
-        } catch (InterruptedException ex) {
-            ex.getMessage();
-        }
+    public static void start(){
+        new StartComponent();
     }
 }

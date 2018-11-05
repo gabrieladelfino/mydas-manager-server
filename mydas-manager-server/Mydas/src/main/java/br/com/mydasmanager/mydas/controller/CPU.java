@@ -1,18 +1,13 @@
 package br.com.mydasmanager.mydas.controller;
 
-import br.com.mydasmanager.mydas.data.repositories.CPURepository;
+import br.com.mydasmanager.mydas.data.statements.CPURepository;
 import br.com.mydasmanager.mydas.model.CPUModel;
 
-public class CPU {
+public class CPU implements ComponentsMethods{
 
-    public static void insert() {
+    @Override
+    public void insert() {
         CPUModel m = new CPUModel();
         CPURepository.insert(m);
     }
-
-    public static void start() throws InterruptedException {
-        CPU.insert();
-        Thread.sleep(1000);
-    }
-
 }
