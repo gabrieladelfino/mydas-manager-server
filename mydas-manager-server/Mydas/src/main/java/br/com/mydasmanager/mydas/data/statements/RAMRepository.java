@@ -1,20 +1,18 @@
-package br.com.mydasmanager.mydas.data.repositories;
+package br.com.mydasmanager.mydas.data.statements;
 
 import br.com.mydasmanager.mydas.model.RAMModel;
 import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
 import br.com.mydasmanager.mydas.data.statements.RAMStatements;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class RAMRepository {
 
-    public boolean insertRAM(RAMModel ram) {
+    public static boolean insert(RAMModel ram) {
 
         try {
 
-            Connection conn = new ConnectionStatements().getConnection();
-            PreparedStatement pstm = conn.prepareStatement(RAMStatements.INSERT_RAM);
+           PreparedStatement pstm = ConnectionStatements.getConnection().prepareStatement(RAMStatements.INSERT_RAM);
 
             pstm.setDouble(1, ram.getTotalmemory());
             pstm.setDouble(2, ram.getFreememory());

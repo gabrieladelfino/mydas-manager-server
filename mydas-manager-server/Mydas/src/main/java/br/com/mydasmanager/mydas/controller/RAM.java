@@ -1,26 +1,13 @@
 package br.com.mydasmanager.mydas.controller;
 
 import br.com.mydasmanager.mydas.model.RAMModel;
-import br.com.mydasmanager.mydas.data.repositories.RAMRepository;
+import br.com.mydasmanager.mydas.data.statements.RAMRepository;
 
-public class RAM {
+public class RAM implements ComponentsMethods{
 
-    RAMModel ram = new RAMModel();
-    RAMRepository ramRepository = new RAMRepository();
-
-    public boolean CaptureInformation() {
-
-        try {
-
-            ramRepository.insertRAM(ram);
-
-            return true;
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        return false;
+    @Override
+    public void insert() {
+        RAMModel m = new RAMModel();
+        RAMRepository.insert(m);
     }
-
 }

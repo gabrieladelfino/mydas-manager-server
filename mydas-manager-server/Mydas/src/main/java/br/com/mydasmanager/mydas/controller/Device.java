@@ -1,25 +1,13 @@
 package br.com.mydasmanager.mydas.controller;
 
 import br.com.mydasmanager.mydas.model.DeviceModel;
-import br.com.mydasmanager.mydas.data.repositories.DeviceRepository;
+import br.com.mydasmanager.mydas.data.statements.DeviceRepository;
 
-public class Device {
+public class Device implements ComponentsMethods {
 
-    public boolean CaptureInformation() {
-
-        try {
-
-            DeviceModel device = new DeviceModel();
-            DeviceRepository deviceRepository = new DeviceRepository();
-
-            deviceRepository.insertDeviceInformation(device);
-            
-            return true;
-
-        } catch (Exception ex) {
-            System.out.println(ex.getMessage());
-        }
-
-        return false;
+    @Override
+    public void insert() {
+        DeviceModel m = new DeviceModel();
+        DeviceRepository.insert(m);
     }
 }
