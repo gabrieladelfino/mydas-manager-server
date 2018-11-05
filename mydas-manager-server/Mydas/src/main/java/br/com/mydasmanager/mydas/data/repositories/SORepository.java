@@ -34,25 +34,4 @@ public class SORepository {
 
         return false;
     }
-
-    public int selectDeviceId(int customerid) {
-        try {
-
-            Statement stmt = ConnectionStatements.getConnection().createStatement();
-            ResultSet rs;
-
-            rs = stmt.executeQuery(SOStatements.SELECT_CUSTOMER_DEVICE_ID);
-
-            while (rs.next()) {
-                deviceid = rs.getInt("id");
-            }
-
-            return deviceid;
-        } catch (SQLException ex) {
-            ex.getStackTrace();
-        }
-
-        return 0;
-    }
-
 }

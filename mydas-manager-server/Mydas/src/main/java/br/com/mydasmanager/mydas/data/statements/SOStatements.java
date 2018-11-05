@@ -7,9 +7,6 @@ public class SOStatements {
             + ", systemversion "
             + ", nameuser"
             + ", datecapture"
-            + ", deviceid)"
+            + ", customerdevice)"
             + "VALUES (?, ?, ?, ?, ?)";
-
-    public static final String SELECT_CUSTOMER_DEVICE_ID = "SELECT id FROM customer_device WHERE customer_id = ";
-
 }

@@ -16,9 +16,9 @@ public class GPURepository {
 
             pstm.setDouble(1, gpu.getTemperature());
             pstm.setString(2, gpu.getGpuName());
-            pstm.setDate(4, gpu.getDateCapture());
+            pstm.setDouble(4, gpu.getFan());
             pstm.setInt(5, gpu.getDeviceId());
-            pstm.setDouble(6, gpu.getFan());
+            pstm.setDate(6, gpu.getDateCapture());
                     
             pstm.execute();
 

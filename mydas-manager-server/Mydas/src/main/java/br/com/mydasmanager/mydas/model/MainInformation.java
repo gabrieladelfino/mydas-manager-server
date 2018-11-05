@@ -29,6 +29,6 @@ public abstract class MainInformation {
     }
     
     protected int selectDeviceId(){
-        return 0;
+        return 1004;
     }
 }

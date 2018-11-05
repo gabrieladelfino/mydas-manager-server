@@ -135,12 +135,14 @@ public class StartGraphicComponent extends JFrame {
     }
 
     public void loadInformation() {
+        Device.insert();
+        
         new Timer(1000, (ActionEvent e) -> {
             if (isRunning) {
-                Device.insert();
-                CPU.insert();
                 RAM.insert();
                 SO.insert();
+                GPU.insert();
+                CPU.insert();
             }
         }).start();
     }
