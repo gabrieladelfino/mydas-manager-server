@@ -4,10 +4,10 @@ import java.sql.Date;
 
 public class GPUModel extends MainInformation {
 
+    
     public String getGpuName() {
-        return gpus != null
-                ? gpus.get(1).name
-                : null;
+        System.out.println("Name: "+gpu.name );
+        return gpu.name;
     }
 
     public Date getDateCapture() {
@@ -15,15 +15,11 @@ public class GPUModel extends MainInformation {
     }
 
     public double getTemperature() {
-        return gpus != null
-                ? Double.parseDouble(String.format("%d", gpus.get(1).sensors.temperatures.get(1)))
-                : null;
+        return Double.parseDouble(String.format("%d", gpu.sensors.temperatures.get(0)));
     }
 
     public Double getFan() {
-        return gpus != null
-                ? Double.parseDouble(String.format("%d", gpus.get(1).sensors.fans.get(1)))
-                : null;
+        return Double.parseDouble(String.format("%d", gpu.sensors.fans.get(0)));
     }
 
     public int getDeviceId() {

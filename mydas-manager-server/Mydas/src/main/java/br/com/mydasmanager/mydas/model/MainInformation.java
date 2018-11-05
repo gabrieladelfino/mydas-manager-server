@@ -10,21 +10,24 @@ import oshi.SystemInfo;
 import oshi.software.os.OperatingSystem;
 
 public abstract class MainInformation {
-    
+
     protected SystemInfo systemInfo = new SystemInfo();
     protected OperatingSystem operatingSystem = systemInfo.getOperatingSystem();
     protected Date date = new Date(System.currentTimeMillis());
-    
-    protected Components components = JSensors.get.components();
-    protected List<Gpu> gpus = components.gpus;
 
-    CustomerRepository customer = new CustomerRepository();
-           
-    protected int selectCustomerId(){
-        return 100;
+    List<Gpu> gpus = JSensors.get.components().gpus;
+    
+    if(gpus.size()>0){
+     Gpu gpu = gpus.get(0);   
     }
     
-    protected int selectDeviceId(){
+    CustomerRepository customer = new CustomerRepository();
+
+    protected int selectCustomerId() {
+        return 100;
+    }
+
+    protected int selectDeviceId() {
         return 1004;
     }
 }
