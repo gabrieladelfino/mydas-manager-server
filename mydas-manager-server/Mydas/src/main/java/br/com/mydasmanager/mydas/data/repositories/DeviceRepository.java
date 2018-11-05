@@ -20,6 +20,7 @@ public class DeviceRepository {
 
             pstm.execute();
 
+            System.out.println("Device: executou");
             return true;
 
         } catch (SQLException e) {

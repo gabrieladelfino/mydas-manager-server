@@ -21,6 +21,7 @@ public class RAMRepository {
 
             pstm.execute();
 
+            System.out.println("RAM: Executou.");
             return true;
 
         } catch (SQLException e) {

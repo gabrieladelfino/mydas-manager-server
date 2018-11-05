@@ -4,9 +4,7 @@ import br.com.mydasmanager.mydas.model.SOModel;
 import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
 import br.com.mydasmanager.mydas.data.statements.SOStatements;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class SORepository {
 
@@ -26,6 +24,7 @@ public class SORepository {
 
             pstm.execute();
 
+            System.out.println("SO: Executou.");
             return true;
 
         } catch (SQLException e) {

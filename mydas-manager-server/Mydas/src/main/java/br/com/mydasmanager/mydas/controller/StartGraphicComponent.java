@@ -40,7 +40,7 @@ public class StartGraphicComponent extends JFrame {
 
     String totalTimeRunning = "";
 
-    public StartGraphicComponent() {
+    public StartGraphicComponent() throws InterruptedException {
 
         setSize(800, 500);
         setLayout(null);
@@ -122,7 +122,6 @@ public class StartGraphicComponent extends JFrame {
     public void loadTextRunningTime() {
         new Timer(100, (ActionEvent e) -> {
             if (isRunning) {
-
                 calendar = Calendar.getInstance(TimeZone.getTimeZone("Brazil/East"));
                 hour = calendar.get(Calendar.HOUR_OF_DAY);
                 minute = calendar.get(Calendar.MINUTE);
@@ -134,16 +133,14 @@ public class StartGraphicComponent extends JFrame {
         }).start();
     }
 
-    public void loadInformation() {
+    public void loadInformation() throws InterruptedException {
         Device.insert();
-        
-        new Timer(1000, (ActionEvent e) -> {
-            if (isRunning) {
+        if (isRunning) {
+            new Timer(1000, (ActionEvent e) -> {
                 RAM.insert();
                 SO.insert();
-                GPU.insert();
                 CPU.insert();
-            }
-        }).start();
+            }).start();
+        }
     }
 }

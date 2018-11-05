@@ -22,6 +22,7 @@ public class GPURepository {
                     
             pstm.execute();
 
+            System.out.println("GPU: Executou.");
             return true;
 
         } catch (SQLException e) {
