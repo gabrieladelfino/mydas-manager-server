@@ -134,12 +134,9 @@ public class StartGraphicComponent extends JFrame {
     }
 
     public void loadInformation() throws InterruptedException {
-        Device.insert();
         if (isRunning) {
             new Timer(1000, (ActionEvent e) -> {
-                RAM.insert();
-                SO.insert();
-                CPU.insert();
+                GPU.insert();
             }).start();
         }
     }

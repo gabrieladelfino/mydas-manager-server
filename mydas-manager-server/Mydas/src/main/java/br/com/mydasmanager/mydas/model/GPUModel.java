@@ -4,48 +4,26 @@ import java.sql.Date;
 
 public class GPUModel extends MainInformation {
 
-    private String cpuName;
-    private Double temperature;
-    private Double fan;
-
     public String getGpuName() {
-        return this.cpuName;
+        return gpus != null
+                ? gpus.get(1).name
+                : null;
     }
 
     public Date getDateCapture() {
         return date;
     }
 
-    public void setGpuName() {
-        if (cpus != null) {
-            cpus.forEach((cpu) -> {
-                this.cpuName = cpu.name;
-            });
-        }
-    }
-
     public double getTemperature() {
-        return this.temperature;
-    }
-
-    public void setTemperature() {
-        if (cpus != null) {
-            temperatures.forEach((temperature) -> {
-                this.temperature = temperature.value;
-            });
-        }
-    }
-
-    public void setFan() {
-        if (cpus != null) {
-            temperatures.forEach((fan) -> {
-                this.fan = fan.value;
-            });
-        }
+        return gpus != null
+                ? Double.parseDouble(String.format("%d", gpus.get(1).sensors.temperatures.get(1)))
+                : null;
     }
 
     public Double getFan() {
-        return this.fan;
+        return gpus != null
+                ? Double.parseDouble(String.format("%d", gpus.get(1).sensors.fans.get(1)))
+                : null;
     }
 
     public int getDeviceId() {
