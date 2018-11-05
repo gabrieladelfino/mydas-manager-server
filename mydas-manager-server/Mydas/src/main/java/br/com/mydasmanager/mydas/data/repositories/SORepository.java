@@ -2,8 +2,6 @@ package br.com.mydasmanager.mydas.data.repositories;
 
 import br.com.mydasmanager.mydas.model.SOModel;
 import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
-import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
-import br.com.mydasmanager.mydas.data.statements.SOStatements;
 import br.com.mydasmanager.mydas.data.statements.SOStatements;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -31,7 +29,7 @@ public class SORepository {
             return true;
 
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            System.err.println("SO: "+e.getMessage());
         }
 
         return false;

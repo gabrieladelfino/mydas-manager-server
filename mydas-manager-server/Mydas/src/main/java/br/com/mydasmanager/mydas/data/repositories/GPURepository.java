@@ -1,11 +1,8 @@
 package br.com.mydasmanager.mydas.data.repositories;
 
 import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
-import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
-import br.com.mydasmanager.mydas.data.statements.GPUStatements;
 import br.com.mydasmanager.mydas.data.statements.GPUStatements;
 import br.com.mydasmanager.mydas.model.GPUModel;
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -28,7 +25,7 @@ public class GPURepository {
             return true;
 
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            System.err.println("GPU: "+e.getMessage());
         }
 
         return false;

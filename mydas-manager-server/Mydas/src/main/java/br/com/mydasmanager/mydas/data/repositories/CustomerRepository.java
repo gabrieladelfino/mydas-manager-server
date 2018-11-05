@@ -1,8 +1,6 @@
 package br.com.mydasmanager.mydas.data.repositories;
 
 import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
-import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
-import br.com.mydasmanager.mydas.data.statements.CustomerStatements;
 import br.com.mydasmanager.mydas.data.statements.CustomerStatements;
 import br.com.mydasmanager.mydas.model.CustomerModel;
 import java.sql.Connection;
