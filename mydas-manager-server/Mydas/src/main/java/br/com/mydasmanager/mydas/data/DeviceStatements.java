@@ -6,4 +6,6 @@ public class DeviceStatements {
             + "  currentnameuser"
             + ", customerid)"
             + "VALUES (?, ?)";
+
+    public static final String SELECT_MAX_DEVICE_ID = "SELECT MAX(id) FROM customer_device";
 }

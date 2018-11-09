@@ -1,14 +1,13 @@
 package br.com.mydasmanager.mydas.model;
 
 import br.com.mydasmanager.mydas.data.CustomerRepository;
+import br.com.mydasmanager.mydas.data.DeviceRepository;
 import java.sql.Date;
 import oshi.SystemInfo;
 import oshi.software.os.OperatingSystem;
 import com.profesorfalken.jsensors.JSensors;
 import com.profesorfalken.jsensors.model.components.Components;
 import com.profesorfalken.jsensors.model.components.Gpu;
-import com.profesorfalken.jsensors.model.sensors.Fan;
-import com.profesorfalken.jsensors.model.sensors.Temperature;
 import java.util.List;
 
 public abstract class MainInformation {
@@ -23,10 +22,10 @@ public abstract class MainInformation {
     CustomerRepository customer = new CustomerRepository();
 
     protected int selectCustomerId() {
-        return 100;
+        return CustomerRepository.selectMaxDeviceId();
     }
 
     protected int selectDeviceId() {
-        return 1004;
+        return DeviceRepository.selectMaxDeviceId();
     }
 }
