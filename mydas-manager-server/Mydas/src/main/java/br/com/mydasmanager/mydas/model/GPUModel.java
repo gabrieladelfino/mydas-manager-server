@@ -5,7 +5,11 @@ import java.sql.Date;
 public class GPUModel extends MainInformation {
 
     public String getGpuName() {
-        return name;
+        if (gpus.size() > 0) {
+            return gpus.get(0).name;
+        } else {
+            return null;
+        }
     }
 
     public Date getDateCapture() {
@@ -13,11 +17,19 @@ public class GPUModel extends MainInformation {
     }
 
     public double getTemperature() {
-        return temperature;
+        if (gpus.size() > 0) {
+            return Double.parseDouble(String.format("%d", gpus.get(0).sensors.temperatures.get(0)));
+        } else {
+            return 0;
+        }
     }
 
-    public Double getFan() {
-        return fan;
+    public double getFan() {
+        if (gpus.size() > 0) {
+            return Double.parseDouble(String.format("%d", gpus.get(0).sensors.fans.get(0)));
+        } else {
+            return 0;
+        }
     }
 
     public int getDeviceId() {
