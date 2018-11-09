@@ -31,7 +31,7 @@ public class DeviceRepository {
 
         try {
             Statement statement = ConnectionStatements.getConnection().createStatement();
-            ResultSet rs = statement.executeQuery(DeviceStatements.SELECT_MAX_DEVICE_ID);
+            ResultSet rs = statement.executeQuery(DeviceStatements.SELECT_MAX_CUSTOMER_DEVICE_ID);
 
             while (rs.next()) {
                 return rs.getInt(1);
