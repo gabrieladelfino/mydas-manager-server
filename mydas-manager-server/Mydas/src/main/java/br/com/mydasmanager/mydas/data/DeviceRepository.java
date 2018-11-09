@@ -34,7 +34,7 @@ public class DeviceRepository {
             ResultSet rs = statement.executeQuery(DeviceStatements.SELECT_MAX_DEVICE_ID);
 
             while (rs.next()) {
-                return rs.getInt("id");
+                return rs.getInt(1);
             }
 
             System.out.println("Device: executou");

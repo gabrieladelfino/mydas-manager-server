@@ -13,7 +13,7 @@ public class CustomerRepository {
             ResultSet rs = statement.executeQuery(CustomerStatements.SELECT_MAX_CUSTOMER_ID);
 
             while (rs.next()) {
-                return rs.getInt("id");
+                return rs.getInt(1);
             }
 
             System.out.println("Customer: executou");
