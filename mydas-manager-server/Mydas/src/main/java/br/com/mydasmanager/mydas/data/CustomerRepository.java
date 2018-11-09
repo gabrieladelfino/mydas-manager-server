@@ -1,30 +1,25 @@
 package br.com.mydasmanager.mydas.data;
 
-import br.com.mydasmanager.mydas.model.CustomerModel;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class CustomerRepository {
 
-    int customerId = 0;
-
-    public int selectCustomerId(CustomerModel customer) {
+    public static int selectMaxDeviceId() {
 
         try {
-
-            PreparedStatement pstm = ConnectionStatements.getConnection().prepareStatement(CustomerStatements.SELECT_CUSTOMER);
-            pstm.setString(1, customer.getUserName());
-
-            ResultSet rs = pstm.executeQuery();
+            Statement statement = ConnectionStatements.getConnection().createStatement();
+            ResultSet rs = statement.executeQuery(CustomerStatements.SELECT_MAX_CUSTOMER_ID);
 
             while (rs.next()) {
-                customerId = rs.getInt("id");
+                return rs.getInt("id");
             }
 
-            return customerId;
-        } catch (SQLException ex) {
-            System.out.println("Customer: " + ex.getStackTrace());
+            System.out.println("Customer: executou");
+
+        } catch (SQLException e) {
+            System.err.println("Customer: " + e.getMessage());
         }
 
         return 0;

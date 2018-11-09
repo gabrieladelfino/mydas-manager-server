@@ -136,8 +136,14 @@ public class StartGraphicComponent extends JFrame {
 
     public void loadInformation() throws InterruptedException {
         System.out.println("br.com.mydasmanager.mydas.controller.StartGraphicComponent.loadInformation()");
+        
+        Device.insert();
+        
         if (isRunning) {
             GPU.insert();
+            CPU.insert();
+            RAM.insert();
+            SO.insert();
         }
     }
 }
