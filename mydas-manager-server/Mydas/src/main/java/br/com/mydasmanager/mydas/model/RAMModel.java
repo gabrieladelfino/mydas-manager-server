@@ -16,6 +16,10 @@ public class RAMModel extends MainInformation {
         return systemInfo.getHardware().getMemory().getAvailable();
     }
 
+    public long getCurrentUseMemory() {
+        return this.getTotalmemory()-this.getFreememory();
+    }
+    
     public Date getDateCapture() {
         return date;
     }

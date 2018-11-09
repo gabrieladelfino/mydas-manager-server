@@ -6,6 +6,7 @@ public class RAMStatements {
             + "  totalmemory"
             + ", freememory"
             + ", datecapture"
-            + ", customerdevice)"
-            + "VALUES (?, ?, ?, ?)";
+            + ", customerdevice"
+            + ", currentusememory)"
+            + "VALUES (?, ?, ?, ?, ?)";
 }
