@@ -1,15 +1,19 @@
 package br.com.mydasmanager.mydas.model;
 
+import com.profesorfalken.jsensors.model.components.Gpu;
 import java.sql.Date;
 
 public class GPUModel extends MainInformation {
 
     public String getGpuName() {
+
         if (gpus.size() > 0) {
-            return gpus.get(0).name;
-        } else {
-            return null;
+            for (final Gpu gpu : gpus) {
+                return gpu.name;
+            }
         }
+
+        return null;
     }
 
     public Date getDateCapture() {
