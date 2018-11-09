@@ -17,7 +17,7 @@ public class RAMModel extends MainInformation {
         return this.toDouble(systemInfo.getHardware().getMemory().getAvailable());
     }
 
-    public double getCurrentUseMemory() {
+    public double getCurrentMemoryUse() {
         return this.getTotalmemory()-this.getFreememory();
     }
     

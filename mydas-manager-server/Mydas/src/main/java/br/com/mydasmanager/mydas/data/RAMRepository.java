@@ -16,7 +16,7 @@ public class RAMRepository {
             pstm.setDouble(2, ram.getFreememory());
             pstm.setDate(3, ram.getDateCapture());
             pstm.setInt(4, ram.getDeviceId());
-            pstm.setDouble(5, ram.getCurrentUseMemory());
+            pstm.setDouble(5, ram.getCurrentMemoryUse());
 
             pstm.execute();
 
