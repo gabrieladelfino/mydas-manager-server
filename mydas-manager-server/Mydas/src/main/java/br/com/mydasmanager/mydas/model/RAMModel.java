@@ -18,7 +18,7 @@ public class RAMModel extends MainInformation {
     }
 
     public double getCurrentUseMemory() {
-        return this.toDouble((this.getTotalmemory()-this.getFreememory()));
+        return this.getTotalmemory()-this.getFreememory();
     }
     
     public Date getDateCapture() {
