@@ -1,7 +1,7 @@
 package br.com.mydasmanager.mydas.controller;
 
 import br.com.mydasmanager.mydas.model.SOModel;
-import br.com.mydasmanager.mydas.data.repositories.SORepository;
+import br.com.mydasmanager.mydas.data.SORepository;
 
 public class SO {
 

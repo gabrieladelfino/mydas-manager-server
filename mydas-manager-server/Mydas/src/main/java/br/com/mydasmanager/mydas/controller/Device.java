@@ -1,7 +1,7 @@
 package br.com.mydasmanager.mydas.controller;
 
 import br.com.mydasmanager.mydas.model.DeviceModel;
-import br.com.mydasmanager.mydas.data.repositories.DeviceRepository;
+import br.com.mydasmanager.mydas.data.DeviceRepository;
 
 public class Device {
 

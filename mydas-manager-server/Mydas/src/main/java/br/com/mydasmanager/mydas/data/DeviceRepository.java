@@ -1,8 +1,6 @@
-package br.com.mydasmanager.mydas.data.repositories;
+package br.com.mydasmanager.mydas.data;
 
 import br.com.mydasmanager.mydas.model.DeviceModel;
-import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
-import br.com.mydasmanager.mydas.data.statements.DeviceStatements;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 

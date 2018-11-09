@@ -39,6 +39,7 @@ public class StartGraphicComponent extends JFrame {
     boolean isRunning = true;
 
     String totalTimeRunning = "";
+    String initialTimeRun = "";
 
     public StartGraphicComponent() throws InterruptedException {
 
@@ -135,9 +136,7 @@ public class StartGraphicComponent extends JFrame {
 
     public void loadInformation() throws InterruptedException {
         if (isRunning) {
-            new Timer(1000, (ActionEvent e) -> {
-                GPU.insert();
-            }).start();
+            RAM.insert();
         }
     }
 }

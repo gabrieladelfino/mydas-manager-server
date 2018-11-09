@@ -1,4 +1,4 @@
-package br.com.mydasmanager.mydas.data.statements;
+package br.com.mydasmanager.mydas.data;
 
 public class RAMStatements {
 

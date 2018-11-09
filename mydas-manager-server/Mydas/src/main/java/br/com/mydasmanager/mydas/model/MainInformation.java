@@ -1,8 +1,7 @@
 package br.com.mydasmanager.mydas.model;
 
-import br.com.mydasmanager.mydas.data.repositories.CustomerRepository;
+import br.com.mydasmanager.mydas.data.CustomerRepository;
 import com.profesorfalken.jsensors.JSensors;
-import com.profesorfalken.jsensors.model.components.Components;
 import com.profesorfalken.jsensors.model.components.Gpu;
 import java.sql.Date;
 import java.util.List;
@@ -16,10 +15,6 @@ public abstract class MainInformation {
     protected Date date = new Date(System.currentTimeMillis());
 
     List<Gpu> gpus = JSensors.get.components().gpus;
-    
-    if(gpus.size()>0){
-     Gpu gpu = gpus.get(0);   
-    }
     
     CustomerRepository customer = new CustomerRepository();
 
