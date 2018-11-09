@@ -1,8 +1,8 @@
-package br.com.mydasmanager.mydas.data.statements;
+package br.com.mydasmanager.mydas.data;
 
-import br.com.mydasmanager.mydas.data.statements.CPUStatements;
+import br.com.mydasmanager.mydas.data.CPUStatements;
 import br.com.mydasmanager.mydas.model.CPUModel;
-import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
+import br.com.mydasmanager.mydas.data.ConnectionStatements;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

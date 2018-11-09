@@ -1,51 +1,39 @@
 package br.com.mydasmanager.mydas.model;
 
+import com.profesorfalken.jsensors.model.components.Gpu;
 import java.sql.Date;
 
 public class GPUModel extends MainInformation {
 
-    private String cpuName;
-    private Double temperature;
-    private Double fan;
-
     public String getGpuName() {
-        return this.cpuName;
+
+        if (gpus.size() > 0) {
+            for (final Gpu gpu : gpus) {
+                return gpu.name;
+            }
+        }
+
+        return null;
     }
 
     public Date getDateCapture() {
         return date;
     }
 
-    public void setGpuName() {
-        if (cpus != null) {
-            cpus.forEach((cpu) -> {
-                this.cpuName = cpu.name;
-            });
-        }
-    }
-
     public double getTemperature() {
-        return this.temperature;
-    }
-
-    public void setTemperature() {
-        if (cpus != null) {
-            temperatures.forEach((temperature) -> {
-                this.temperature = temperature.value;
-            });
+        if (gpus.size() > 0) {
+            return Double.parseDouble(String.format("%d", gpus.get(0).sensors.temperatures.get(0)));
+        } else {
+            return 0;
         }
     }
 
-    public void setFan() {
-        if (cpus != null) {
-            temperatures.forEach((fan) -> {
-                this.fan = fan.value;
-            });
+    public double getFan() {
+        if (gpus.size() > 0) {
+            return Double.parseDouble(String.format("%d", gpus.get(0).sensors.fans.get(0)));
+        } else {
+            return 0;
         }
-    }
-
-    public Double getFan() {
-        return this.fan;
     }
 
     public int getDeviceId() {

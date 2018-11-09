@@ -1,4 +1,4 @@
-package br.com.mydasmanager.mydas.data.statements;
+package br.com.mydasmanager.mydas.data;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

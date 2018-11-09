@@ -15,7 +15,7 @@ import javax.swing.Timer;
  *
  * @author Gabriela Garcia
  */
-public class StartComponent extends JFrame {
+public class StartGraphicComponent extends JFrame {
 
     JLabel labelRunningTime;
     JLabel runningTime;
@@ -39,8 +39,9 @@ public class StartComponent extends JFrame {
     boolean isRunning = true;
 
     String totalTimeRunning = "";
+    String initialTimeRun = "";
 
-    public StartComponent() {
+    public StartGraphicComponent() throws InterruptedException {
 
         setSize(800, 500);
         setLayout(null);
@@ -122,7 +123,6 @@ public class StartComponent extends JFrame {
     public void loadTextRunningTime() {
         new Timer(100, (ActionEvent e) -> {
             if (isRunning) {
-
                 calendar = Calendar.getInstance(TimeZone.getTimeZone("Brazil/East"));
                 hour = calendar.get(Calendar.HOUR_OF_DAY);
                 minute = calendar.get(Calendar.MINUTE);
@@ -134,11 +134,10 @@ public class StartComponent extends JFrame {
         }).start();
     }
 
-    public void loadInformation() {
-        new Timer(100, (ActionEvent e) -> {
-            if (isRunning) {
-                
-            }
-        }).start();
+    public void loadInformation() throws InterruptedException {
+        System.out.println("br.com.mydasmanager.mydas.controller.StartGraphicComponent.loadInformation()");
+        if (isRunning) {
+            GPU.insert();
+        }
     }
 }

@@ -1,4 +1,4 @@
-package br.com.mydasmanager.mydas.data.statements;
+package br.com.mydasmanager.mydas.data;
 
 public class RAMStatements {
 
@@ -6,6 +6,6 @@ public class RAMStatements {
             + "  totalmemory"
             + ", freememory"
             + ", datecapture"
-            + ", deviceid)"
+            + ", customerdevice)"
             + "VALUES (?, ?, ?, ?)";
 }

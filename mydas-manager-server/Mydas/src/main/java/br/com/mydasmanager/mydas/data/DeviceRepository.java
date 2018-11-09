@@ -1,8 +1,6 @@
-package br.com.mydasmanager.mydas.data.statements;
+package br.com.mydasmanager.mydas.data;
 
 import br.com.mydasmanager.mydas.model.DeviceModel;
-import br.com.mydasmanager.mydas.data.statements.ConnectionStatements;
-import br.com.mydasmanager.mydas.data.statements.DeviceStatements;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -20,10 +18,11 @@ public class DeviceRepository {
 
             pstm.execute();
 
+            System.out.println("Device: executou");
             return true;
 
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            System.err.println("Device: "+e.getMessage());
         }
 
         return false;
