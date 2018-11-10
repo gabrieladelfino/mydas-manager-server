@@ -1,19 +1,16 @@
 package br.com.mydasmanager.mydas.model;
 
 import java.text.DecimalFormat;
+import oshi.SystemInfo;
 
 public class CPUModel extends Initialize {
 
     DecimalFormat df = new DecimalFormat("#,##");
     StringBuilder model = new StringBuilder(systemInfo.getHardware().getProcessor().getName());
     StringBuilder ghz = new StringBuilder(systemInfo.getHardware().getProcessor().getName());
-
+    
     public String getModel() {
         return model.replace(model.indexOf("CPU"), model.length(), "").toString();
-    }
-
-    public String getProcessorName() {
-        return systemInfo.getHardware().getProcessor().toString();
     }
 
     public int getCore() {
