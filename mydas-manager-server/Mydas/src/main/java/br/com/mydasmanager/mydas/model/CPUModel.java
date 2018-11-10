@@ -1,7 +1,9 @@
 package br.com.mydasmanager.mydas.model;
 
-public class CPUModel extends Initialize {
+import oshi.SystemInfo;
 
+public class CPUModel extends Initialize {
+    
     public String getModel() {
         return systemInfo.getHardware().getProcessor().toString();
     }
@@ -14,8 +16,8 @@ public class CPUModel extends Initialize {
         return systemInfo.getHardware().getProcessor().getPhysicalProcessorCount();
     }
 
-    public String getCurrentUse() {
-        return systemInfo.getHardware().getClass().toString();
+    public double getCurrentUse() {
+        return systemInfo.getHardware().getProcessor().getSystemCpuLoadBetweenTicks();
     }
 
     public long getFrequency() {

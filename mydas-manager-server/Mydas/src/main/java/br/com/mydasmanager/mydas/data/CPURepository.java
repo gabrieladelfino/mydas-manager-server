@@ -16,7 +16,7 @@ public class CPURepository {
             pstm.setString(2, cpu.getGhz());
             pstm.setString(3, cpu.getProcessorName());
             pstm.setInt(4, cpu.getCore());
-            pstm.setString(5, cpu.getCurrentUse());
+            pstm.setDouble(5, cpu.getCurrentUse());
             pstm.setLong(6, cpu.getFrequency());
             pstm.setDouble(7, cpu.getTemperature());
             pstm.setInt(8, cpu.getDeviceId());
