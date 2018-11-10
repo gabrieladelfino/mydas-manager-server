@@ -1,8 +1,6 @@
 package br.com.mydasmanager.mydas.model;
 
-import java.sql.Date;
-
-public class SOModel extends MainInformation {
+public class SOModel extends Initialize {
 
     public String getNameSystem() {
         return operatingSystem.getFamily();

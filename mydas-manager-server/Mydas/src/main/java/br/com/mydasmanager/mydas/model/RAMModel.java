@@ -2,7 +2,7 @@ package br.com.mydasmanager.mydas.model;
 
 import oshi.util.FormatUtil;
 
-public class RAMModel extends MainInformation {
+public class RAMModel extends Initialize {
 
     public int getDeviceId() {
         return selectDeviceId();

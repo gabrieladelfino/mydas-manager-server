@@ -2,7 +2,7 @@ package br.com.mydasmanager.mydas.model;
 
 import com.profesorfalken.jsensors.model.components.Gpu;
 
-public class GPUModel extends MainInformation {
+public class GPUModel extends Initialize {
 
     public String getGpuName() {
         if (gpus.size() > 0) {

@@ -1,6 +1,6 @@
 package br.com.mydasmanager.mydas.model;
 
-public class CPUModel extends MainInformation {
+public class CPUModel extends Initialize {
 
     public String getModel() {
         return systemInfo.getHardware().getProcessor().toString();

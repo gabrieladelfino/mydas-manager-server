@@ -20,10 +20,6 @@ public class CaptureDate {
     static final int YEAR = CALENDAR.get(Calendar.YEAR);
 
     public static String selectDate() {
-        return DAY + "/" + MONTH + "/" + YEAR;
-    }
-
-    public static String selectHourOfDay() {
-        return HOUR + ":" + MINUTE + ":" + SECONDS;
+        return DAY + "/" + MONTH + "/" + YEAR + "-" + HOUR + ":" + MINUTE + ":" + SECONDS;
     }
 }

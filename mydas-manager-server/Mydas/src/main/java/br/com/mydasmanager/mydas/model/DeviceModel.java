@@ -1,6 +1,6 @@
 package br.com.mydasmanager.mydas.model;
 
-public class DeviceModel extends MainInformation{
+public class DeviceModel extends Initialize{
  
     public int getDeviceId() {
         return selectDeviceId();

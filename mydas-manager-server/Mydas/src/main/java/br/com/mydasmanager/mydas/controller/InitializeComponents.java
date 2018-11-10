@@ -1,24 +1,18 @@
 package br.com.mydasmanager.mydas.controller;
 
-import br.com.mydasmanager.mydas.model.CaptureDate;
-import br.com.mydasmanager.mydas.model.MainInformation;
-
+import br.com.mydasmanager.mydas.model.Initialize;
 
 /**
  *
  * @author Gabriela Garcia
  */
 public class InitializeComponents {
-
-   
+    
     boolean isRunning = true;
-
-    String totalTimeRunning = "";
-    String initialTimeRun = "";
 
     public InitializeComponents() throws InterruptedException {
         Device.insert();
-        loadInformation(MainInformation.selectInterval());
+        loadInformation(Initialize.selectInterval());
     }
 
     public void loadInformation(int interval) {
@@ -34,13 +28,5 @@ public class InitializeComponents {
         } catch (InterruptedException ex) {
             ex.getMessage();
         }
-    }
-    
-    public String getDateCapture() {
-        return CaptureDate.selectDate();
-    }
-    
-    public String getHourCapture() {
-        return CaptureDate.selectHourOfDay();
     }
 }
