@@ -11,9 +11,8 @@ public class CPUStatements {
                     + ", ghz"
                     + ", core"
                     + ", currentuse"
-                    + ", frequency"
                     + ", temperature"
                     + ", customerdevice"
                     + ", datecapture)"
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 }

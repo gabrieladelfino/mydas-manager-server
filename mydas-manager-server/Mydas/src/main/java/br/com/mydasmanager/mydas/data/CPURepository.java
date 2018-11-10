@@ -16,10 +16,9 @@ public class CPURepository {
             pstm.setString(2, cpu.getGhz());
             pstm.setInt(3, cpu.getCore());
             pstm.setString(4, cpu.getCurrentUse());
-            pstm.setString(5, cpu.getFrequency());
-            pstm.setString(6, cpu.getTemperature());
-            pstm.setInt(7, cpu.getDeviceId());
-            pstm.setString(8, CaptureDate.selectDate());
+            pstm.setString(5, cpu.getTemperature());
+            pstm.setInt(6, cpu.getDeviceId());
+            pstm.setString(7, CaptureDate.selectDate());
 
             pstm.execute();
             System.out.println("CPU: Executou.");
