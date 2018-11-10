@@ -26,11 +26,11 @@ public class CPUModel extends Initialize {
         return systemInfo.getHardware().getSensors().getCpuTemperature();
     }
 
-    public int getDeviceId() {
-        return selectDeviceId();
-    }
-
     public String getGhz() {
         return systemInfo.getHardware().getProcessor().getName();
+    }
+
+    public int getDeviceId() {
+        return selectDeviceId();
     }
 }

@@ -1,21 +1,21 @@
 package br.com.mydasmanager.mydas.data;
 
-import br.com.mydasmanager.mydas.model.DeviceModel;
+import br.com.mydasmanager.mydas.model.CustomerDeviceModel;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class DeviceRepository {
+public class CustomerDeviceRepository {
 
-    public static void insert(DeviceModel device) {
+    public static void insert(CustomerDeviceModel device) {
 
         try {
 
             PreparedStatement pstm = ConnectionStatements.getConnection()
-                    .prepareStatement(DeviceStatements.INSERT_CUSTOMER_DEVICE);
+                    .prepareStatement(CustomerDeviceStatements.INSERT_CUSTOMER_DEVICE);
 
-            pstm.setString(1, device.getNameUser());
+            pstm.setInt(1, device.getDeviceId());
             pstm.setInt(2, device.getCustomerId());
 
             pstm.execute();
@@ -31,7 +31,7 @@ public class DeviceRepository {
 
         try {
             Statement statement = ConnectionStatements.getConnection().createStatement();
-            ResultSet rs = statement.executeQuery(DeviceStatements.SELECT_MAX_CUSTOMER_DEVICE_ID);
+            ResultSet rs = statement.executeQuery(CustomerDeviceStatements.SELECT_MAX_CUSTOMER_DEVICE_ID);
 
             while (rs.next()) {
                 return rs.getInt(1);

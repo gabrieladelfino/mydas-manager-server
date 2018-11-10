@@ -6,7 +6,7 @@ import java.sql.Statement;
 
 public class CustomerRepository {
 
-    public static int selectMaxDeviceId() {
+    public static int selectMaxCustomerId() {
 
         try {
             Statement statement = ConnectionStatements.getConnection().createStatement();

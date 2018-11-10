@@ -1,9 +1,9 @@
 package br.com.mydasmanager.mydas.data;
 
-public class DeviceStatements {
+public class CustomerDeviceStatements {
 
     public static final String INSERT_CUSTOMER_DEVICE = "INSERT INTO customer_device("
-            + "  currentnameuser"
+            + "  deviceid"
             + ", customerid)"
             + "VALUES (?, ?)";
 

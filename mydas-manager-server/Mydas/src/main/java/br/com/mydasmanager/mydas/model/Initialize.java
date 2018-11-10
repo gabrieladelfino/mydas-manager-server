@@ -1,7 +1,7 @@
 package br.com.mydasmanager.mydas.model;
 
 import br.com.mydasmanager.mydas.data.CustomerRepository;
-import br.com.mydasmanager.mydas.data.DeviceRepository;
+import br.com.mydasmanager.mydas.data.CustomerDeviceRepository;
 import oshi.SystemInfo;
 import oshi.software.os.OperatingSystem;
 import com.profesorfalken.jsensors.JSensors;
@@ -18,11 +18,11 @@ public abstract class Initialize {
     List<Gpu> gpus = components.gpus;
 
     protected int selectCustomerId() {
-        return CustomerRepository.selectMaxDeviceId();
+        return CustomerRepository.selectMaxCustomerId();
     }
 
     protected int selectDeviceId() {
-        return DeviceRepository.selectMaxDeviceId();
+        return CustomerDeviceRepository.selectMaxDeviceId();
     }
 
     public static int selectInterval() {
