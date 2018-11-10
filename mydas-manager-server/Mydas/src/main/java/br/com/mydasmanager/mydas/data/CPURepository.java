@@ -14,20 +14,18 @@ public class CPURepository {
 
             pstm.setString(1, cpu.getModel());
             pstm.setString(2, cpu.getGhz());
-            pstm.setString(3, cpu.getProcessorName());
-            pstm.setInt(4, cpu.getCore());
-            pstm.setString(5, cpu.getCurrentUse());
-            pstm.setLong(6, cpu.getFrequency());
-            pstm.setDouble(7, cpu.getTemperature());
-            pstm.setInt(8, cpu.getDeviceId());
-            pstm.setString(9, CaptureDate.selectDate());
+            pstm.setInt(3, cpu.getCore());
+            pstm.setString(4, cpu.getCurrentUse());
+            pstm.setString(5, cpu.getTemperature());
+            pstm.setInt(6, cpu.getDeviceId());
+            pstm.setString(7, CaptureDate.selectDate());
 
             pstm.execute();
-
+            System.out.println("CPU: Executou.");
             return true;
 
         } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            System.err.println("CPU: "+e.getMessage());
         }
 
         return false;

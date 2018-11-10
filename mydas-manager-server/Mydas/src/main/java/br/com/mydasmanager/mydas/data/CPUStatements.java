@@ -7,14 +7,12 @@ package br.com.mydasmanager.mydas.data;
 public class CPUStatements {
     
     public static final String INSERT_CPU = "INSERT INTO cpu("
-                    + "model, "
-                    + "ghz,"
-                    + "processorname, "
-                    + "core, "
-                    + "currentuse, "
-                    + "frequency, "
-                    + "temperature, "
-                    + "customerdevice, "
-                    + "datecapture)"
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+                    + "  model"
+                    + ", ghz"
+                    + ", core"
+                    + ", currentuse"
+                    + ", temperature"
+                    + ", customerdevice"
+                    + ", datecapture)"
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 }

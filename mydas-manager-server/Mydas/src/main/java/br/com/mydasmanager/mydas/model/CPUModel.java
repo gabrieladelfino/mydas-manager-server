@@ -1,13 +1,15 @@
 package br.com.mydasmanager.mydas.model;
 
+import java.text.DecimalFormat;
+
 public class CPUModel extends Initialize {
 
-    public String getModel() {
-        return systemInfo.getHardware().getProcessor().toString();
-    }
+    DecimalFormat df = new DecimalFormat("#,##");
+    StringBuilder model = new StringBuilder(systemInfo.getHardware().getProcessor().getName());
+    StringBuilder ghz = new StringBuilder(systemInfo.getHardware().getProcessor().getName());
 
-    public String getProcessorName() {
-        return systemInfo.getHardware().getProcessor().toString();
+    public String getModel() {
+        return model.replace(model.indexOf("CPU"), model.length(), "").toString();
     }
 
     public int getCore() {
@@ -15,19 +17,15 @@ public class CPUModel extends Initialize {
     }
 
     public String getCurrentUse() {
-        return systemInfo.getHardware().getClass().toString();
+        return df.format(systemInfo.getHardware().getProcessor().getSystemCpuLoadBetweenTicks());
     }
 
-    public long getFrequency() {
-        return systemInfo.getHardware().getProcessor().getVendorFreq();
-    }
-
-    public double getTemperature() {
-        return systemInfo.getHardware().getSensors().getCpuTemperature();
+    public String getTemperature() {
+        return df.format(systemInfo.getHardware().getSensors().getCpuTemperature());
     }
 
     public String getGhz() {
-        return systemInfo.getHardware().getProcessor().getName();
+        return ghz.replace(0, ghz.indexOf("@") + 2, "").toString();
     }
 
     public int getDeviceId() {
