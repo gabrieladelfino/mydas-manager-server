@@ -1,33 +1,12 @@
 package br.com.mydasmanager.mydas.data;
 
-import br.com.mydasmanager.mydas.model.CustomerDeviceModel;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 public class CustomerDeviceRepository {
 
-    public static void insert(CustomerDeviceModel device) {
-
-        try {
-
-            PreparedStatement pstm = ConnectionStatements.getConnection()
-                    .prepareStatement(CustomerDeviceStatements.INSERT_CUSTOMER_DEVICE);
-
-            pstm.setInt(1, device.getDeviceId());
-            pstm.setInt(2, device.getCustomerId());
-
-            pstm.execute();
-
-            System.out.println("Device: executou");
-
-        } catch (SQLException e) {
-            System.err.println("Device: " + e.getMessage());
-        }
-    }
-
-    public static int selectMaxDeviceId() {
+    public static int selectMaxCustomerDeviceId() {
 
         try {
             Statement statement = ConnectionStatements.getConnection().createStatement();

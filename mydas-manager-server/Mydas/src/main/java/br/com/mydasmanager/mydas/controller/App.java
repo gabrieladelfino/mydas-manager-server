@@ -11,7 +11,6 @@ public class App {
     }
 
     public static void InitializeComponents() {
-        CustomerDevice.insert();
         loadInformation(Initialize.selectInterval());
     }
 
