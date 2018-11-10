@@ -28,4 +28,8 @@ public abstract class MainInformation {
     protected int selectDeviceId() {
         return DeviceRepository.selectMaxDeviceId();
     }
+    
+    public static int selectInterval(){
+        return 1000;
+    }
 }
