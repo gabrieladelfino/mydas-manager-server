@@ -1,12 +1,20 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package br.com.mydasmanager.mydas.data;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class CustomerDeviceRepository {
-
-    public static int selectMaxCustomerDeviceId() {
+/**
+ *
+ * @author Gabriela Garcia
+ */
+public class DeviceRepository {
+     public static int selectMaxCustomerDeviceId() {
 
         try {
             Statement statement = ConnectionStatements.getConnection().createStatement();
@@ -16,10 +24,10 @@ public class CustomerDeviceRepository {
                 return rs.getInt(1);
             }
 
-            System.out.println("CustomerDevice: executou");
+            System.out.println("Device: executou");
       
         } catch (SQLException e) {
-            System.err.println("CustomerDevice: " + e.getMessage());
+            System.err.println("Device: " + e.getMessage());
         }
 
         return 0;
