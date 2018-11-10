@@ -14,12 +14,9 @@ public abstract class MainInformation {
 
     protected SystemInfo systemInfo = new SystemInfo();
     protected OperatingSystem operatingSystem = systemInfo.getOperatingSystem();
-    protected Date date = new Date(System.currentTimeMillis());
-
+  
     Components components = JSensors.get.components();
     List<Gpu> gpus = components.gpus;
-    
-    CustomerRepository customer = new CustomerRepository();
 
     protected int selectCustomerId() {
         return CustomerRepository.selectMaxDeviceId();
@@ -28,8 +25,8 @@ public abstract class MainInformation {
     protected int selectDeviceId() {
         return DeviceRepository.selectMaxDeviceId();
     }
-    
-    public static int selectInterval(){
+
+    public static int selectInterval() {
         return 1000;
     }
 }

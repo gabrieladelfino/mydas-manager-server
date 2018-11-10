@@ -1,6 +1,5 @@
 package br.com.mydasmanager.mydas.model;
 
-import java.sql.Date;
 import oshi.util.FormatUtil;
 
 public class RAMModel extends MainInformation {
@@ -18,14 +17,10 @@ public class RAMModel extends MainInformation {
     }
 
     public double getCurrentMemoryUse() {
-        return this.getTotalmemory()-this.getFreememory();
+        return this.getTotalmemory() - this.getFreememory();
     }
-    
-    public Date getDateCapture() {
-        return date;
+
+    private double toDouble(long param) {
+        return Double.parseDouble(FormatUtil.formatBytes(param).split(" ")[0].replace(",", "."));
     }
-    
-   private double toDouble(long param){
-       return Double.parseDouble(FormatUtil.formatBytes(param).split(" ")[0].replace(",","."));
-   }
 }

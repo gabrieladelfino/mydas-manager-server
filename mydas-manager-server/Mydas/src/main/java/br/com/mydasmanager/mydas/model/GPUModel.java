@@ -1,7 +1,6 @@
 package br.com.mydasmanager.mydas.model;
 
 import com.profesorfalken.jsensors.model.components.Gpu;
-import java.sql.Date;
 
 public class GPUModel extends MainInformation {
 
@@ -13,10 +12,6 @@ public class GPUModel extends MainInformation {
         }
 
         return "Gpu não encontrada";
-    }
-
-    public Date getDateCapture() {
-        return date;
     }
 
     public double getTemperature() {

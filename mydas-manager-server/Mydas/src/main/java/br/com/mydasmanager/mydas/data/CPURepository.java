@@ -1,9 +1,7 @@
 package br.com.mydasmanager.mydas.data;
 
-import br.com.mydasmanager.mydas.data.CPUStatements;
 import br.com.mydasmanager.mydas.model.CPUModel;
-import br.com.mydasmanager.mydas.data.ConnectionStatements;
-import java.sql.Connection;
+import br.com.mydasmanager.mydas.model.CaptureDate;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
@@ -22,7 +20,7 @@ public class CPURepository {
             pstm.setLong(6, cpu.getFrequency());
             pstm.setDouble(7, cpu.getTemperature());
             pstm.setInt(8, cpu.getDeviceId());
-            pstm.setDate(9, cpu.getDateCapture());
+            pstm.setString(9, CaptureDate.selectDate());
 
             pstm.execute();
 
