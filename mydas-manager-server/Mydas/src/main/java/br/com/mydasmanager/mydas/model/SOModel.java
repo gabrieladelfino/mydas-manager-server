@@ -1,9 +1,7 @@
 package br.com.mydasmanager.mydas.model;
 
-import java.sql.Date;
+public class SOModel extends Initialize {
 
-public class SOModel extends MainInformation{
-    
     public String getNameSystem() {
         return operatingSystem.getFamily();
     }
@@ -14,10 +12,6 @@ public class SOModel extends MainInformation{
 
     public String getNameUser() {
         return operatingSystem.getNetworkParams().getDomainName();
-    }
-
-    public Date getDateCapture() {
-        return date;
     }
 
     public int getDeviceId() {

@@ -1,12 +1,6 @@
 package br.com.mydasmanager.mydas.model;
 
-import java.sql.Date;
-
-public class CPUModel extends MainInformation {
-
-    public Date getDateCapture() {
-        return date;
-    }
+public class CPUModel extends Initialize {
 
     public String getModel() {
         return systemInfo.getHardware().getProcessor().toString();
@@ -32,11 +26,11 @@ public class CPUModel extends MainInformation {
         return systemInfo.getHardware().getSensors().getCpuTemperature();
     }
 
-    public int getDeviceId() {
-        return selectDeviceId();
-    }
-
     public String getGhz() {
         return systemInfo.getHardware().getProcessor().getName();
+    }
+
+    public int getDeviceId() {
+        return selectDeviceId();
     }
 }

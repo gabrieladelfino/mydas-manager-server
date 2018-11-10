@@ -1,22 +1,26 @@
 package br.com.mydasmanager.mydas.model;
 
-import java.sql.Date;
+import oshi.util.FormatUtil;
 
-public class RAMModel extends MainInformation {
+public class RAMModel extends Initialize {
 
     public int getDeviceId() {
-        return 1004;
+        return selectDeviceId();
     }
 
-    public long getTotalmemory() {
-        return systemInfo.getHardware().getMemory().getTotal();
+    public double getTotalmemory() {
+        return this.toDouble(systemInfo.getHardware().getMemory().getTotal());
     }
 
-    public long getFreememory() {
-        return systemInfo.getHardware().getMemory().getAvailable();
+    public double getFreememory() {
+        return this.toDouble(systemInfo.getHardware().getMemory().getAvailable());
     }
 
-    public Date getDateCapture() {
-        return date;
+    public double getCurrentMemoryUse() {
+        return this.getTotalmemory() - this.getFreememory();
+    }
+
+    private double toDouble(long param) {
+        return Double.parseDouble(FormatUtil.formatBytes(param).split(" ")[0].replace(",", "."));
     }
 }
