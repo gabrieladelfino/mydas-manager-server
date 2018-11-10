@@ -4,31 +4,30 @@ import br.com.mydasmanager.mydas.model.CaptureDate;
 import br.com.mydasmanager.mydas.model.GPUModel;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class GPURepository {
-    
-    public static boolean insert(GPUModel gpu) {
-        
+
+    static final Logger LOGGER = LoggerFactory.getLogger(GPURepository.class);
+
+    public static void insert(GPUModel gpu) {
+
         try {
-            
+
             PreparedStatement pstm = ConnectionStatements.getConnection().prepareStatement(GPUStatements.INSERT_GPU);
             pstm.setDouble(1, gpu.getTemperature());
             pstm.setString(2, gpu.getGpuName());
             pstm.setDouble(3, gpu.getFan());
             pstm.setInt(4, gpu.getDeviceId());
             pstm.setString(5, CaptureDate.selectDate());
-                    
+
             pstm.execute();
 
-            System.out.println("GPU: Executou.");
-            return true;
-
+            LOGGER.info("Insert de CPU executado");
         } catch (SQLException e) {
-            System.err.println("GPU: "+e.getMessage());
+            LOGGER.error("Erro - " + e.getMessage());
         }
-
-        return false;
     }
 
-    
 }
