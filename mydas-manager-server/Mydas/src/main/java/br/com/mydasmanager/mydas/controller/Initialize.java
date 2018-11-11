@@ -1,4 +1,4 @@
-package br.com.mydasmanager.mydas.model;
+package br.com.mydasmanager.mydas.controller;
 
 import br.com.mydasmanager.mydas.data.repository.CustomerDeviceRepository;
 import br.com.mydasmanager.mydas.data.repository.DeviceRepository;
@@ -15,8 +15,8 @@ public abstract class Initialize {
     protected SystemInfo systemInfo = new SystemInfo();
     protected OperatingSystem operatingSystem = systemInfo.getOperatingSystem();
 
-    Components components = JSensors.get.components();
-    List<Gpu> gpus = components.gpus;
+    protected Components components = JSensors.get.components();
+    protected List<Gpu> gpus = components.gpus;
 
     protected int selectDeviceId() {
         return CustomerDeviceRepository.selectMaxCustomerDeviceId();

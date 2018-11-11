@@ -2,7 +2,7 @@ package br.com.mydasmanager.mydas.data.repository;
 
 import br.com.mydasmanager.mydas.data.GPUStatements;
 import br.com.mydasmanager.mydas.data.MainConnection;
-import br.com.mydasmanager.mydas.model.CaptureDate;
+import br.com.mydasmanager.mydas.controller.CaptureDate;
 import br.com.mydasmanager.mydas.model.GPUModel;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

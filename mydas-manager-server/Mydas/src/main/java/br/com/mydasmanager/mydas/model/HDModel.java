@@ -1,6 +1,7 @@
 package br.com.mydasmanager.mydas.model;
 
-import static br.com.mydasmanager.mydas.model.Initialize.toDouble;
+import br.com.mydasmanager.mydas.controller.Initialize;
+import static br.com.mydasmanager.mydas.controller.Initialize.toDouble;
 
 /**
  *

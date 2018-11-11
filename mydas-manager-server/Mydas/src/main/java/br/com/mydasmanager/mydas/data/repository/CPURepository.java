@@ -3,7 +3,7 @@ package br.com.mydasmanager.mydas.data.repository;
 import br.com.mydasmanager.mydas.data.CPUStatements;
 import br.com.mydasmanager.mydas.data.MainConnection;
 import br.com.mydasmanager.mydas.model.CPUModel;
-import br.com.mydasmanager.mydas.model.CaptureDate;
+import br.com.mydasmanager.mydas.controller.CaptureDate;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;

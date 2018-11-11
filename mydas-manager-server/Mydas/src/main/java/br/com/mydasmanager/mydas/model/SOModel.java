@@ -1,5 +1,7 @@
 package br.com.mydasmanager.mydas.model;
 
+import br.com.mydasmanager.mydas.controller.Initialize;
+
 public class SOModel extends Initialize {
 
     public String getNameSystem() {

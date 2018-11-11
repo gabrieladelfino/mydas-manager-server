@@ -1,5 +1,7 @@
 package br.com.mydasmanager.mydas.model;
 
+import br.com.mydasmanager.mydas.controller.Initialize;
+
 public class RAMModel extends Initialize {
 
     public int getDeviceId() {

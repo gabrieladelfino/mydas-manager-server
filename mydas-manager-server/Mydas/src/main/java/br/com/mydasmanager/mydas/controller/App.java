@@ -10,7 +10,6 @@ import br.com.mydasmanager.mydas.model.GPUModel;
 import br.com.mydasmanager.mydas.model.HDModel;
 import br.com.mydasmanager.mydas.model.RAMModel;
 import br.com.mydasmanager.mydas.model.SOModel;
-import br.com.mydasmanager.mydas.model.Initialize;
 
 public class App {
 
