@@ -1,5 +1,7 @@
-package br.com.mydasmanager.mydas.data;
+package br.com.mydasmanager.mydas.data.repository;
 
+import br.com.mydasmanager.mydas.data.MainConnection;
+import br.com.mydasmanager.mydas.data.RAMStatements;
 import br.com.mydasmanager.mydas.model.CaptureDate;
 import br.com.mydasmanager.mydas.model.RAMModel;
 import java.sql.PreparedStatement;

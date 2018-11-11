@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 public class MainConnection {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(GPURepository.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(MainConnection.class);
 
     public static Connection getConnection() {
 
@@ -44,10 +44,10 @@ public class MainConnection {
             Statement statement = getConnection().createStatement();
             ResultSet rs = statement.executeQuery(query);
 
-            LOGGER.info("Executou o insert");
+            LOGGER.info("Executou a operação.");
 
             return rs;
-            
+
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
         }
@@ -58,10 +58,10 @@ public class MainConnection {
     public static PreparedStatement excutePrepared(String query) {
         try {
             PreparedStatement pstm = getConnection().prepareStatement(query);
-            LOGGER.info("Executou - " + pstm.getClass());
+            LOGGER.info("Executou a operação.");
 
             return pstm;
-            
+
         } catch (SQLException e) {
             LOGGER.error(e.getMessage());
         }

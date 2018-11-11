@@ -1,5 +1,7 @@
-package br.com.mydasmanager.mydas.data;
+package br.com.mydasmanager.mydas.data.repository;
 
+import br.com.mydasmanager.mydas.data.HDStatements;
+import br.com.mydasmanager.mydas.data.MainConnection;
 import br.com.mydasmanager.mydas.model.HDModel;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -19,6 +21,7 @@ public class HDRepository {
         try {
             pstm.setDouble(1, hd.getBytesRead());
             pstm.setDouble(2, hd.getBytesWritten());
+            pstm.setInt(3, hd.getDeviceId());
         } catch (SQLException ex) {
             Logger.getLogger(HDRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
