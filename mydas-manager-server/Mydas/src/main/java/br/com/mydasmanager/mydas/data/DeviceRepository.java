@@ -9,19 +9,14 @@ import java.sql.SQLException;
  */
 public class DeviceRepository {
 
-    public static int setInterval() {
+    public static int setInterval() throws SQLException {
 
         ResultSet rs = MainConnection.executeResult(DeviceStatements.SELECT_INTERVAL_CAPTURE);
-        
-        try {
+
+        if (rs != null) {
             while (rs.next()) {
                 return rs.getInt(1);
             }
-
-            System.out.println("Device: executou");
-
-        } catch (SQLException e) {
-            System.err.println("Device: " + e.getMessage());
         }
 
         return 0;

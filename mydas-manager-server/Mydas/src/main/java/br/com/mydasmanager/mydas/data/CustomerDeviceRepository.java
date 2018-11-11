@@ -5,22 +5,17 @@ import java.sql.SQLException;
 
 public class CustomerDeviceRepository {
 
-    public static int selectMaxCustomerDeviceId() {
+    public static int selectMaxCustomerDeviceId() throws SQLException {
 
         ResultSet rs = MainConnection.executeResult(CustomerDeviceStatements.SELECT_MAX_CUSTOMER_DEVICE_ID);
 
-        try {
-            
+        if (rs != null) {
+
             while (rs.next()) {
                 return rs.getInt(1);
             }
-
-            System.out.println("CustomerDevice: executou");
-
-        } catch (SQLException e) {
-            System.err.println("CustomerDevice: " + e.getMessage());
         }
-
         return 0;
+
     }
 }

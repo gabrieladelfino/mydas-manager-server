@@ -7,28 +7,16 @@ import java.sql.SQLException;
 
 public class RAMRepository {
 
-    public static boolean insert(RAMModel ram) {
+    public static void insert(RAMModel ram) throws SQLException {
 
-        try {
+        PreparedStatement pstm = MainConnection.excutePrepared(RAMStatements.INSERT_RAM);
 
-           PreparedStatement pstm = MainConnection.excutePrepared(RAMStatements.INSERT_RAM);
+        pstm.setDouble(1, ram.getTotalmemory());
+        pstm.setDouble(2, ram.getFreememory());
+        pstm.setString(3, CaptureDate.selectDate());
+        pstm.setInt(4, ram.getDeviceId());
+        pstm.setDouble(5, ram.getCurrentMemoryUse());
 
-            pstm.setDouble(1, ram.getTotalmemory());
-            pstm.setDouble(2, ram.getFreememory());
-            pstm.setString(3, CaptureDate.selectDate());
-            pstm.setInt(4, ram.getDeviceId());
-            pstm.setDouble(5, ram.getCurrentMemoryUse());
-
-            pstm.execute();
-
-            System.out.println("RAM: Executou.");
-            return true;
-
-        } catch (SQLException e) {
-            System.err.println("RAM: "+e.getMessage());
-        }
-
-        return false;
+        pstm.execute();
     }
-
 }
