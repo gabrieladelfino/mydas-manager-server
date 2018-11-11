@@ -1,4 +1,4 @@
-package br.com.mydasmanager.mydas.controller;
+package br.com.mydasmanager.controller;
 
 import java.util.Calendar;
 import java.util.TimeZone;

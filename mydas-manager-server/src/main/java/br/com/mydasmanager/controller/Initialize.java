@@ -1,7 +1,7 @@
-package br.com.mydasmanager.mydas.controller;
+package br.com.mydasmanager.controller;
 
-import br.com.mydasmanager.mydas.data.repository.CustomerDeviceRepository;
-import br.com.mydasmanager.mydas.data.repository.DeviceRepository;
+import br.com.mydasmanager.data.repository.CustomerDeviceRepository;
+import br.com.mydasmanager.data.repository.DeviceRepository;
 import oshi.SystemInfo;
 import oshi.software.os.OperatingSystem;
 import com.profesorfalken.jsensors.JSensors;

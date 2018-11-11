@@ -1,9 +1,9 @@
-package br.com.mydasmanager.mydas.data.repository;
+package br.com.mydasmanager.data.repository;
 
-import br.com.mydasmanager.mydas.data.CPUStatements;
-import br.com.mydasmanager.mydas.data.MainConnection;
-import br.com.mydasmanager.mydas.model.CPUModel;
-import br.com.mydasmanager.mydas.controller.CaptureDate;
+import br.com.mydasmanager.data.CPUStatements;
+import br.com.mydasmanager.data.MainConnection;
+import br.com.mydasmanager.model.CPUModel;
+import br.com.mydasmanager.controller.CaptureDate;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;

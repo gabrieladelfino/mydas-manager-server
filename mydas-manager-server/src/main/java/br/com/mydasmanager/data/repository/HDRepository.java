@@ -1,8 +1,8 @@
-package br.com.mydasmanager.mydas.data.repository;
+package br.com.mydasmanager.data.repository;
 
-import br.com.mydasmanager.mydas.data.HDStatements;
-import br.com.mydasmanager.mydas.data.MainConnection;
-import br.com.mydasmanager.mydas.model.HDModel;
+import br.com.mydasmanager.data.HDStatements;
+import br.com.mydasmanager.data.MainConnection;
+import br.com.mydasmanager.model.HDModel;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;

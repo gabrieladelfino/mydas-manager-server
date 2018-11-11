@@ -1,7 +1,7 @@
-package br.com.mydasmanager.mydas.model;
+package br.com.mydasmanager.model;
 
-import br.com.mydasmanager.mydas.controller.Initialize;
-import static br.com.mydasmanager.mydas.controller.Initialize.toDouble;
+import br.com.mydasmanager.controller.Initialize;
+import static br.com.mydasmanager.controller.Initialize.toDouble;
 
 /**
  *

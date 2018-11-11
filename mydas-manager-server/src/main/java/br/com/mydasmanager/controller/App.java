@@ -1,15 +1,15 @@
-package br.com.mydasmanager.mydas.controller;
+package br.com.mydasmanager.controller;
 
-import br.com.mydasmanager.mydas.data.repository.CPURepository;
-import br.com.mydasmanager.mydas.data.repository.GPURepository;
-import br.com.mydasmanager.mydas.data.repository.HDRepository;
-import br.com.mydasmanager.mydas.data.repository.RAMRepository;
-import br.com.mydasmanager.mydas.data.repository.SORepository;
-import br.com.mydasmanager.mydas.model.CPUModel;
-import br.com.mydasmanager.mydas.model.GPUModel;
-import br.com.mydasmanager.mydas.model.HDModel;
-import br.com.mydasmanager.mydas.model.RAMModel;
-import br.com.mydasmanager.mydas.model.SOModel;
+import br.com.mydasmanager.data.repository.CPURepository;
+import br.com.mydasmanager.data.repository.GPURepository;
+import br.com.mydasmanager.data.repository.HDRepository;
+import br.com.mydasmanager.data.repository.RAMRepository;
+import br.com.mydasmanager.data.repository.SORepository;
+import br.com.mydasmanager.model.CPUModel;
+import br.com.mydasmanager.model.GPUModel;
+import br.com.mydasmanager.model.HDModel;
+import br.com.mydasmanager.model.RAMModel;
+import br.com.mydasmanager.model.SOModel;
 
 public class App {
 

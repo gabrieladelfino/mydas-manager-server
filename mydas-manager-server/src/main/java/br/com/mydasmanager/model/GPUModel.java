@@ -1,6 +1,6 @@
-package br.com.mydasmanager.mydas.model;
+package br.com.mydasmanager.model;
 
-import br.com.mydasmanager.mydas.controller.Initialize;
+import br.com.mydasmanager.controller.Initialize;
 import com.profesorfalken.jsensors.model.components.Gpu;
 
 public class GPUModel extends Initialize {

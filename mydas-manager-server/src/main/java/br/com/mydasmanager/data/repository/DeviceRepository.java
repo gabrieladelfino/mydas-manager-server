@@ -1,17 +1,21 @@
-package br.com.mydasmanager.mydas.data.repository;
+package br.com.mydasmanager.data.repository;
 
-import br.com.mydasmanager.mydas.data.CustomerDeviceStatements;
-import br.com.mydasmanager.mydas.data.MainConnection;
+import br.com.mydasmanager.data.DeviceStatements;
+import br.com.mydasmanager.data.MainConnection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class CustomerDeviceRepository {
+/**
+ *
+ * @author Gabriela Garcia
+ */
+public class DeviceRepository {
 
-    public static int selectMaxCustomerDeviceId() {
+    public static int selectInterval()  {
 
-        ResultSet rs = MainConnection.executeResult(CustomerDeviceStatements.SELECT_MAX_CUSTOMER_DEVICE_ID);
+        ResultSet rs = MainConnection.executeResult(DeviceStatements.SELECT_INTERVAL_CAPTURE);
 
         try {
             while (rs.next()) {
