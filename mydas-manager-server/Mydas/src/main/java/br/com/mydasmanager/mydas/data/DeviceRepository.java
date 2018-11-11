@@ -1,33 +1,26 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.mydasmanager.mydas.data;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
  * @author Gabriela Garcia
  */
 public class DeviceRepository {
-     public static int selectMaxCustomerDeviceId() {
+
+    public static int selectInterval()  {
+
+        ResultSet rs = MainConnection.executeResult(DeviceStatements.SELECT_INTERVAL_CAPTURE);
 
         try {
-            Statement statement = ConnectionStatements.getConnection().createStatement();
-            ResultSet rs = statement.executeQuery(CustomerDeviceStatements.SELECT_MAX_CUSTOMER_DEVICE_ID);
-
             while (rs.next()) {
                 return rs.getInt(1);
             }
-
-            System.out.println("Device: executou");
-      
-        } catch (SQLException e) {
-            System.err.println("Device: " + e.getMessage());
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerDeviceRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return 0;

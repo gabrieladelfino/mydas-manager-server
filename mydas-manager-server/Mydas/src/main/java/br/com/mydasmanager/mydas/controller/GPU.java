@@ -5,7 +5,7 @@ import br.com.mydasmanager.mydas.model.GPUModel;
 
 public class GPU {
     
-    public static void insert() {
+    public static void insert(){
         GPUModel m = new GPUModel();
         GPURepository.insert(m);
     }

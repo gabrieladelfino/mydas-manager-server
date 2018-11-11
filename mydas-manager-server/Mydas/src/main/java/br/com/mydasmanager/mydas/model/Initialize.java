@@ -1,6 +1,7 @@
 package br.com.mydasmanager.mydas.model;
 
 import br.com.mydasmanager.mydas.data.CustomerDeviceRepository;
+import br.com.mydasmanager.mydas.data.DeviceRepository;
 import oshi.SystemInfo;
 import oshi.software.os.OperatingSystem;
 import com.profesorfalken.jsensors.JSensors;
@@ -12,7 +13,7 @@ public abstract class Initialize {
 
     protected SystemInfo systemInfo = new SystemInfo();
     protected OperatingSystem operatingSystem = systemInfo.getOperatingSystem();
-  
+
     Components components = JSensors.get.components();
     List<Gpu> gpus = components.gpus;
 
@@ -21,6 +22,6 @@ public abstract class Initialize {
     }
 
     public static int selectInterval() {
-        return 1000;
+        return DeviceRepository.selectInterval();
     }
 }

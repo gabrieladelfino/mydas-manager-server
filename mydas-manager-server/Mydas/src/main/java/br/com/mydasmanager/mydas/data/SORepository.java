@@ -4,17 +4,16 @@ import br.com.mydasmanager.mydas.model.CaptureDate;
 import br.com.mydasmanager.mydas.model.SOModel;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SORepository {
 
-    int deviceid = 0;
+    public static void insert(SOModel so) {
 
-    public static boolean insert(SOModel so) {
+        PreparedStatement pstm = MainConnection.excutePrepared(SOStatements.INSERT_SO);
 
         try {
-
-            PreparedStatement pstm = ConnectionStatements.getConnection().prepareStatement(SOStatements.INSERT_SO);
-
             pstm.setString(1, so.getNameSystem());
             pstm.setString(2, so.getNameUser());
             pstm.setString(3, so.getSystemVersion());
@@ -22,14 +21,9 @@ public class SORepository {
             pstm.setInt(5, so.getDeviceId());
 
             pstm.execute();
-
-            System.out.println("SO: Executou.");
-            return true;
-
-        } catch (SQLException e) {
-            System.err.println("SO: "+e.getMessage());
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerDeviceRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        return false;
     }
 }

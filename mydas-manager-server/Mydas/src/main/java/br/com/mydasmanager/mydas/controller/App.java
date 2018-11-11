@@ -7,10 +7,6 @@ public class App {
     static boolean isRunning = true;
 
     public static void main(String[] args) {
-        InitializeComponents();
-    }
-
-    public static void InitializeComponents() {
         loadInformation(Initialize.selectInterval());
     }
 

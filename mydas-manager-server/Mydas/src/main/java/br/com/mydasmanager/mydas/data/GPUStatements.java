@@ -4,7 +4,7 @@ public class GPUStatements {
 
     public static final String INSERT_GPU = "INSERT INTO gpu("
             + "  temperature "
-            + ", component "
+            + ", name "
             + ", fan"
             + ", customerdevice"
             + ", datecapture)"

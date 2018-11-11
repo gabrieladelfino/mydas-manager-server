@@ -4,14 +4,16 @@ import br.com.mydasmanager.mydas.model.CPUModel;
 import br.com.mydasmanager.mydas.model.CaptureDate;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CPURepository {
 
-    public static boolean insert(CPUModel cpu) {
+    public static void insert(CPUModel cpu) {
+
         try {
-
-            PreparedStatement pstm = ConnectionStatements.getConnection().prepareStatement(CPUStatements.INSERT_CPU);
-
+            PreparedStatement pstm = MainConnection.excutePrepared(CPUStatements.INSERT_CPU);
+            
             pstm.setString(1, cpu.getModel());
             pstm.setString(2, cpu.getGhz());
             pstm.setInt(3, cpu.getCore());
@@ -19,15 +21,10 @@ public class CPURepository {
             pstm.setString(5, cpu.getTemperature());
             pstm.setInt(6, cpu.getDeviceId());
             pstm.setString(7, CaptureDate.selectDate());
-
+            
             pstm.execute();
-            System.out.println("CPU: Executou.");
-            return true;
-
-        } catch (SQLException e) {
-            System.err.println("CPU: "+e.getMessage());
+        } catch (SQLException ex) {
+            Logger.getLogger(CPURepository.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        return false;
     }
 }

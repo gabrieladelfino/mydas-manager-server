@@ -5,7 +5,7 @@ import br.com.mydasmanager.mydas.model.CPUModel;
 
 public class CPU {
 
-    public static void insert() {
+    public static void insert()  {
         CPUModel m = new CPUModel();
         CPURepository.insert(m);
     }
