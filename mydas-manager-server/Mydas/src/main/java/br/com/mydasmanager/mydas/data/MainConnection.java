@@ -44,7 +44,7 @@ public class MainConnection {
             Statement statement = getConnection().createStatement();
             ResultSet rs = statement.executeQuery(query);
 
-            LOGGER.info("Executou - " + rs.getClass());
+            LOGGER.info("Executou o insert");
 
             return rs;
             
