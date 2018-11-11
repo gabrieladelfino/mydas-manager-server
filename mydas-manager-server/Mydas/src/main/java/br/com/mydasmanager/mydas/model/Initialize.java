@@ -8,6 +8,7 @@ import com.profesorfalken.jsensors.JSensors;
 import com.profesorfalken.jsensors.model.components.Components;
 import com.profesorfalken.jsensors.model.components.Gpu;
 import java.util.List;
+import oshi.util.FormatUtil;
 
 public abstract class Initialize {
 
@@ -23,5 +24,9 @@ public abstract class Initialize {
 
     public static int selectInterval() {
         return DeviceRepository.selectInterval();
+    }
+    
+    public static double toDouble(long param) {
+        return Double.parseDouble(FormatUtil.formatBytes(param).split(" ")[0].replace(",", "."));
     }
 }
