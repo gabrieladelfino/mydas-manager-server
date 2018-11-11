@@ -6,6 +6,7 @@ import oshi.software.os.OperatingSystem;
 import com.profesorfalken.jsensors.JSensors;
 import com.profesorfalken.jsensors.model.components.Components;
 import com.profesorfalken.jsensors.model.components.Gpu;
+import java.sql.SQLException;
 import java.util.List;
 
 public abstract class Initialize {
@@ -16,11 +17,11 @@ public abstract class Initialize {
     Components components = JSensors.get.components();
     List<Gpu> gpus = components.gpus;
 
-    protected int selectDeviceId() {
+    protected int selectDeviceId() throws SQLException {
         return CustomerDeviceRepository.selectMaxCustomerDeviceId();
     }
 
-    public static int selectInterval() {
-        return 1000;
+    public static int selectInterval() throws SQLException {
+        return CustomerDeviceRepository.selectInterval();
     }
 }

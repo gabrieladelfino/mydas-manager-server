@@ -16,6 +16,19 @@ public class CustomerDeviceRepository {
             }
         }
         return 0;
+    }
+    
+    public static int selectInterval() throws SQLException {
+
+        ResultSet rs = MainConnection.executeResult(CustomerDeviceStatements.SELECT_INTERVAL);
+        
+        if (rs != null) {
+
+            while (rs.next()) {
+                return rs.getInt(1);
+            }
+        }
+        return 0;
 
     }
 }
