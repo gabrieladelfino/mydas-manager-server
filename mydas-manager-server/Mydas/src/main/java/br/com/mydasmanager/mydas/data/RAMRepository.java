@@ -11,7 +11,7 @@ public class RAMRepository {
 
         try {
 
-           PreparedStatement pstm = ConnectionStatements.getConnection().prepareStatement(RAMStatements.INSERT_RAM);
+           PreparedStatement pstm = MainConnection.excutePrepared(RAMStatements.INSERT_RAM);
 
             pstm.setDouble(1, ram.getTotalmemory());
             pstm.setDouble(2, ram.getFreememory());

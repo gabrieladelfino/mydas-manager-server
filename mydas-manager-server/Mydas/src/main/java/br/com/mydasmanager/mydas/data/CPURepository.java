@@ -10,7 +10,7 @@ public class CPURepository {
     public static boolean insert(CPUModel cpu) {
         try {
 
-            PreparedStatement pstm = ConnectionStatements.getConnection().prepareStatement(CPUStatements.INSERT_CPU);
+            PreparedStatement pstm = MainConnection.excutePrepared(CPUStatements.INSERT_CPU);
 
             pstm.setString(1, cpu.getModel());
             pstm.setString(2, cpu.getGhz());

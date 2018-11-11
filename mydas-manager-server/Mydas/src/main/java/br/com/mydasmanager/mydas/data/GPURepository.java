@@ -15,7 +15,8 @@ public class GPURepository {
 
         try {
 
-            PreparedStatement pstm = ConnectionStatements.getConnection().prepareStatement(GPUStatements.INSERT_GPU);
+            PreparedStatement pstm = MainConnection.excutePrepared(GPUStatements.INSERT_GPU);
+            
             pstm.setDouble(1, gpu.getTemperature());
             pstm.setString(2, gpu.getGpuName());
             pstm.setDouble(3, gpu.getFan());

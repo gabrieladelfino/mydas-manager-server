@@ -13,7 +13,7 @@ public class SORepository {
 
         try {
 
-            PreparedStatement pstm = ConnectionStatements.getConnection().prepareStatement(SOStatements.INSERT_SO);
+            PreparedStatement pstm = MainConnection.excutePrepared(SOStatements.INSERT_SO);
 
             pstm.setString(1, so.getNameSystem());
             pstm.setString(2, so.getNameUser());

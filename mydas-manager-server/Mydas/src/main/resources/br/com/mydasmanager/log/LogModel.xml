@@ -5,8 +5,9 @@
    
     <!-- Gravar no arquivo -->
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        
         <!-- Caminho do arquivo -->
-        <file>C:/Log/</file>
+        <file>mydasmanager.log</file>
 
         <rollingPolicy class="ch.qos.logback.core.rolling.FixedWindowRollingPolicy">
             <fileNamePattern>mydas.%i.log</fileNamePattern>
