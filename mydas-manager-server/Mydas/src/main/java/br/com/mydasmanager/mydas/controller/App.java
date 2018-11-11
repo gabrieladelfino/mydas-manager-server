@@ -1,6 +1,15 @@
 package br.com.mydasmanager.mydas.controller;
 
-import br.com.mydasmanager.mydas.model.Initialize;
+import br.com.mydasmanager.mydas.data.repository.CPURepository;
+import br.com.mydasmanager.mydas.data.repository.GPURepository;
+import br.com.mydasmanager.mydas.data.repository.HDRepository;
+import br.com.mydasmanager.mydas.data.repository.RAMRepository;
+import br.com.mydasmanager.mydas.data.repository.SORepository;
+import br.com.mydasmanager.mydas.model.CPUModel;
+import br.com.mydasmanager.mydas.model.GPUModel;
+import br.com.mydasmanager.mydas.model.HDModel;
+import br.com.mydasmanager.mydas.model.RAMModel;
+import br.com.mydasmanager.mydas.model.SOModel;
 
 public class App {
 
@@ -14,11 +23,13 @@ public class App {
 
         try {
             if (isRunning) {
-                GPU.insert();
-                CPU.insert();
-                RAM.insert();
-                SO.insert();
+                GPURepository.insert(new GPUModel());
+                CPURepository.insert(new CPUModel());
+                RAMRepository.insert(new RAMModel());
+                SORepository.insert(new SOModel());
+                HDRepository.insert(new HDModel());
             }
+
             Thread.sleep(interval);
         } catch (InterruptedException ex) {
             ex.getMessage();

@@ -1,6 +1,8 @@
-package br.com.mydasmanager.mydas.data;
+package br.com.mydasmanager.mydas.data.repository;
 
-import br.com.mydasmanager.mydas.model.CaptureDate;
+import br.com.mydasmanager.mydas.data.MainConnection;
+import br.com.mydasmanager.mydas.data.SOStatements;
+import br.com.mydasmanager.mydas.controller.CaptureDate;
 import br.com.mydasmanager.mydas.model.SOModel;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;

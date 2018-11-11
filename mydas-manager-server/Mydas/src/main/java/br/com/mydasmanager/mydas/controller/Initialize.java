@@ -1,21 +1,22 @@
-package br.com.mydasmanager.mydas.model;
+package br.com.mydasmanager.mydas.controller;
 
-import br.com.mydasmanager.mydas.data.CustomerDeviceRepository;
-import br.com.mydasmanager.mydas.data.DeviceRepository;
+import br.com.mydasmanager.mydas.data.repository.CustomerDeviceRepository;
+import br.com.mydasmanager.mydas.data.repository.DeviceRepository;
 import oshi.SystemInfo;
 import oshi.software.os.OperatingSystem;
 import com.profesorfalken.jsensors.JSensors;
 import com.profesorfalken.jsensors.model.components.Components;
 import com.profesorfalken.jsensors.model.components.Gpu;
 import java.util.List;
+import oshi.util.FormatUtil;
 
 public abstract class Initialize {
 
     protected SystemInfo systemInfo = new SystemInfo();
     protected OperatingSystem operatingSystem = systemInfo.getOperatingSystem();
 
-    Components components = JSensors.get.components();
-    List<Gpu> gpus = components.gpus;
+    protected Components components = JSensors.get.components();
+    protected List<Gpu> gpus = components.gpus;
 
     protected int selectDeviceId() {
         return CustomerDeviceRepository.selectMaxCustomerDeviceId();
@@ -23,5 +24,9 @@ public abstract class Initialize {
 
     public static int selectInterval() {
         return DeviceRepository.selectInterval();
+    }
+    
+    public static double toDouble(long param) {
+        return Double.parseDouble(FormatUtil.formatBytes(param).split(" ")[0].replace(",", "."));
     }
 }

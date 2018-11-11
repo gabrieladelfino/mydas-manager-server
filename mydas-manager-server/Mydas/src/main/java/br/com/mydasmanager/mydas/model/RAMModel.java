@@ -1,6 +1,6 @@
 package br.com.mydasmanager.mydas.model;
 
-import oshi.util.FormatUtil;
+import br.com.mydasmanager.mydas.controller.Initialize;
 
 public class RAMModel extends Initialize {
 
@@ -9,18 +9,14 @@ public class RAMModel extends Initialize {
     }
 
     public double getTotalmemory() {
-        return this.toDouble(systemInfo.getHardware().getMemory().getTotal());
+        return toDouble(systemInfo.getHardware().getMemory().getTotal());
     }
 
     public double getFreememory() {
-        return this.toDouble(systemInfo.getHardware().getMemory().getAvailable());
+        return toDouble(systemInfo.getHardware().getMemory().getAvailable());
     }
 
     public double getCurrentMemoryUse() {
         return this.getTotalmemory() - this.getFreememory();
-    }
-
-    private double toDouble(long param) {
-        return Double.parseDouble(FormatUtil.formatBytes(param).split(" ")[0].replace(",", "."));
     }
 }

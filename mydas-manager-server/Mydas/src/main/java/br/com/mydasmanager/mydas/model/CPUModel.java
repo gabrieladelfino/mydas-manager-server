@@ -1,5 +1,6 @@
 package br.com.mydasmanager.mydas.model;
 
+import br.com.mydasmanager.mydas.controller.Initialize;
 import java.text.DecimalFormat;
 
 public class CPUModel extends Initialize {
