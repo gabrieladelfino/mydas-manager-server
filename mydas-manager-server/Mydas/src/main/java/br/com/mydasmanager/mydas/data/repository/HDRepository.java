@@ -22,6 +22,7 @@ public class HDRepository {
             pstm.setDouble(1, hd.getBytesRead());
             pstm.setDouble(2, hd.getBytesWritten());
             pstm.setInt(3, hd.getDeviceId());
+            pstm.execute();
         } catch (SQLException ex) {
             Logger.getLogger(HDRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
