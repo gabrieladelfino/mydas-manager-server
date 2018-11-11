@@ -4,19 +4,26 @@ import br.com.mydasmanager.mydas.model.CaptureDate;
 import br.com.mydasmanager.mydas.model.SOModel;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class SORepository {
 
-    public static void insert(SOModel so) throws SQLException {
+    public static void insert(SOModel so) {
 
         PreparedStatement pstm = MainConnection.excutePrepared(SOStatements.INSERT_SO);
 
-        pstm.setString(1, so.getNameSystem());
-        pstm.setString(2, so.getNameUser());
-        pstm.setString(3, so.getSystemVersion());
-        pstm.setString(4, CaptureDate.selectDate());
-        pstm.setInt(5, so.getDeviceId());
+        try {
+            pstm.setString(1, so.getNameSystem());
+            pstm.setString(2, so.getNameUser());
+            pstm.setString(3, so.getSystemVersion());
+            pstm.setString(4, CaptureDate.selectDate());
+            pstm.setInt(5, so.getDeviceId());
 
-        pstm.execute();
+            pstm.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerDeviceRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 }

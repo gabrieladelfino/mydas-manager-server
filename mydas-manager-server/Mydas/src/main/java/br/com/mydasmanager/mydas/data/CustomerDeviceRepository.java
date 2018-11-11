@@ -2,33 +2,23 @@ package br.com.mydasmanager.mydas.data;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CustomerDeviceRepository {
 
-    public static int selectMaxCustomerDeviceId() throws SQLException {
+    public static int selectMaxCustomerDeviceId() {
 
         ResultSet rs = MainConnection.executeResult(CustomerDeviceStatements.SELECT_MAX_CUSTOMER_DEVICE_ID);
 
-        if (rs != null) {
-
+        try {
             while (rs.next()) {
                 return rs.getInt(1);
             }
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerDeviceRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
+
         return 0;
-    }
-    
-    public static int selectInterval() throws SQLException {
-
-        ResultSet rs = MainConnection.executeResult(CustomerDeviceStatements.SELECT_INTERVAL);
-        
-        if (rs != null) {
-
-            while (rs.next()) {
-                return rs.getInt(1);
-            }
-        }
-        return 0;
-
     }
 }

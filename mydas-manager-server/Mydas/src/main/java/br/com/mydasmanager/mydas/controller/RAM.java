@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class RAM {
 
-    public static void insert() throws SQLException {
+    public static void insert() {
         RAMModel m = new RAMModel();
         RAMRepository.insert(m);
     }

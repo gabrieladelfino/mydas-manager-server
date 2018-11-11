@@ -6,7 +6,6 @@ package br.com.mydasmanager.mydas.data;
  */
 public class DeviceStatements {
     
-    public static final String SELECT_INTERVAL_CAPTURE = "select interval from device where id = "
-            + "(select max(deviceid) from customer_device)";
+    public static final String SELECT_INTERVAL_CAPTURE = "select interval from device where id = 100";
     
 }
