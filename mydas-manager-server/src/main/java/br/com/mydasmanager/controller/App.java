@@ -10,28 +10,30 @@ import br.com.mydasmanager.model.GPUModel;
 import br.com.mydasmanager.model.HDModel;
 import br.com.mydasmanager.model.RAMModel;
 import br.com.mydasmanager.model.SOModel;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class App {
 
-    static boolean isRunning = true;
-
     public static void main(String[] args) {
-        loadInformation(Initialize.selectInterval());
+        try {
+            loadInformation();
+            Thread.sleep(Initialize.selectInterval());
+        } catch (InterruptedException ex) {
+            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
-    public static void loadInformation(int interval) {
-
+    public static void loadInformation() {
         try {
-            if (isRunning) {
+            while (Initialize.isRunning()) {
                 GPURepository.insert(new GPUModel());
                 CPURepository.insert(new CPUModel());
                 RAMRepository.insert(new RAMModel());
                 SORepository.insert(new SOModel());
                 HDRepository.insert(new HDModel());
             }
-
-            Thread.sleep(interval);
-        } catch (InterruptedException ex) {
+        } catch (Exception ex) {
             ex.getMessage();
         }
     }

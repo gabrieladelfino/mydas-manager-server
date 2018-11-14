@@ -29,4 +29,8 @@ public abstract class Initialize {
     public static double toDouble(long param) {
         return Double.parseDouble(FormatUtil.formatBytes(param).split(" ")[0].replace(",", "."));
     }
+    
+    public static boolean isRunning(){
+        return true;
+    }
 }
