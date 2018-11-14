@@ -26,7 +26,7 @@ public class App {
 
     public static void loadInformation() {
         try {
-            while (Initialize.isRunning()) {
+            while (Initialize.isRunning() == 1) {
                 GPURepository.insert(new GPUModel());
                 CPURepository.insert(new CPUModel());
                 RAMRepository.insert(new RAMModel());
