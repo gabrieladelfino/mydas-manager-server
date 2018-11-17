@@ -26,11 +26,11 @@ public abstract class Initialize {
         return DeviceRepository.selectInterval(selectDeviceId());
     }
     
-    public static double toDouble(long param) {
-        return Double.parseDouble(FormatUtil.formatBytes(param).split(" ")[0].replace(",", "."));
-    }
-    
     public static int isRunning(){
         return DeviceRepository.selectIsRunning(selectDeviceId());
+    }
+    
+    public static double toDouble(long param) {
+        return Double.parseDouble(FormatUtil.formatBytes(param).split(" ")[0].replace(",", "."));
     }
 }

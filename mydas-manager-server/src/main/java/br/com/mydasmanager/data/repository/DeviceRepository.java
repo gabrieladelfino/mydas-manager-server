@@ -13,12 +13,22 @@ import java.util.logging.Logger;
  * @author Gabriela Garcia
  */
 public class DeviceRepository {
+//
+//    PreparedStatement stmt = con.prepareStatement(sql);   
+//stmt.setString(1, nome);
+//ResultSet rs = stmt.executeQuery(sql);
 
     public static int selectInterval(int id) {
         try {
-            PreparedStatement rs = MainConnection.excutePrepared(DeviceStatements.SELECT_INTERVAL_CAPTURE);
-            rs.setInt(1, id);
-            return rs.getResultSet().getInt("interval");
+            PreparedStatement pstm = MainConnection.excutePrepared(DeviceStatements.SELECT_INTERVAL_CAPTURE);
+            pstm.setInt(1, id);
+            
+            ResultSet rs = pstm.executeQuery();
+
+            if (rs.next()) {
+                return rs.getInt("interval");
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(CustomerDeviceRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -28,9 +38,14 @@ public class DeviceRepository {
 
     public static int selectIsRunning(int id) {
         try {
-            PreparedStatement rs = MainConnection.excutePrepared(DeviceStatements.SELECT_IS_RUNNING);
-            rs.setInt(1, id);
-            return rs.getResultSet().getInt("isrunning");
+            PreparedStatement pstm = MainConnection.excutePrepared(DeviceStatements.SELECT_IS_RUNNING);
+            pstm.setInt(1, id);
+            
+            ResultSet rs = pstm.executeQuery();
+            
+            if (rs.next()) {
+                return rs.getInt("status");
+            }
         } catch (SQLException ex) {
             Logger.getLogger(CustomerDeviceRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
