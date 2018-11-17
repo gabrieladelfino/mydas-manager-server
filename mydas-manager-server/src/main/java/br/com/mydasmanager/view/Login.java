@@ -21,31 +21,34 @@ public class Login extends JFrame {
     /**
      * Estrutural components
      */
+    JPanel contentLogin;
+    JPanel contentHasCode;
+    JLabel labelLogin;
+    JLabel passwordLabel;
+    JLabel hasACode;
+    JLabel labelCode;
+
+    /**
+     * Action components
+     */
     JLabel close;
     JLabel minimize;
-    JPanel content;
-
-    /**
-     * Login components
-     */
-    JLabel labelLogin;
     JTextField login;
-    JLabel passwordLabel;
     JPasswordField password;
     JButton sendLogin;
-    JLabel haveACode;
+    JTextField code;
 
     /**
-     * Current size and location components
+     * Size and location components
      */
     private static final int AXIS_X = 130;
     private static final int AXIS_Y = 180;
-    private static final int WIDTH = 220;
+    private static final int WIDTH_COMPONENT = 220;
     private static final int HEIGHT_LABEL = 25;
     private static final int HEIGTH_INPUT = 30;
     private static final int DIFERENCE_BETWEEN_LABEL_AND_INPUT = HEIGTH_INPUT;
     private static final int DIFERENCE_BETWEEN_COMPONENTS = HEIGTH_INPUT + 20;
-    private static final int DIFERENCE_BETWEEN_COMPONENTS_AND_BUTTON = HEIGTH_INPUT + 30;
+    private static final int DIFERENCE_COMPONENTS_AND_BUTTON = HEIGTH_INPUT + 30;
 
     public Login() {
 
@@ -55,11 +58,6 @@ public class Login extends JFrame {
         setLocationRelativeTo(null);
         setLayout(null);
         this.getContentPane().setBackground(new Color(255, 165, 0));
-
-        content = new GradientPanel(Colors.PALE_VIOLET_RED, Colors.MEDIUM_VIOLET_RED);
-        content.setSize(500, 550);
-        content.setLocation(0, 0);
-        content.setLayout(null);
 
         close = new JLabel();
         close.setBounds(450, 20, 32, 32);
@@ -91,7 +89,6 @@ public class Login extends JFrame {
 
             }
         });
-        content.add(close);
 
         minimize = new JLabel();
         minimize.setSize(32, 32);
@@ -124,41 +121,140 @@ public class Login extends JFrame {
 
             }
         });
-        content.add(minimize);
-
-        labelLogin = new JLabel("Email ou login");
-        labelLogin.setSize(WIDTH, HEIGHT_LABEL);
-        labelLogin.setLocation(AXIS_X, AXIS_Y);
-        content.add(labelLogin);
-
-        login = new RoundJTextField();
-        login.setSize(WIDTH, HEIGTH_INPUT);
-        login.setLocation(AXIS_X, labelLogin.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
-        login.setBorder(null);
-        content.add(login);
-
-        passwordLabel = new JLabel("Senha");
-        passwordLabel.setSize(WIDTH, HEIGHT_LABEL);
-        passwordLabel.setLocation(AXIS_X, login.getY() + DIFERENCE_BETWEEN_COMPONENTS);
-        content.add(passwordLabel);
-
-        password = new RoundJPasswordField();
-        password.setSize(WIDTH, HEIGTH_INPUT);
-        password.setLocation(AXIS_X, passwordLabel.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
-        content.add(password);
 
         sendLogin = new RoundJButton();
-        sendLogin.setText("Login");
-        sendLogin.setSize(WIDTH, HEIGTH_INPUT);
-        sendLogin.setLocation(AXIS_X, password.getY() + DIFERENCE_BETWEEN_COMPONENTS_AND_BUTTON);
+        sendLogin.setText("Entrar");
+        sendLogin.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
         sendLogin.setOpaque(false);
         sendLogin.setFocusPainted(false);
         sendLogin.setBorderPainted(false);
         sendLogin.setContentAreaFilled(false);
+
+        initializeLogin();
+        setVisible(true);
+    }
+
+    private void initilizeHasCode() {
+        hideContentLogin();
+
+        contentHasCode = new GradientPanel(Colors.PALE_VIOLET_RED, Colors.MEDIUM_VIOLET_RED);
+        contentHasCode.setSize(500, 550);
+        contentHasCode.setLocation(0, 0);
+        contentHasCode.setLayout(null);
+
+        contentHasCode.add(close);
+        contentHasCode.add(minimize);
+
+        labelCode = new JLabel("Código de acesso");
+        labelCode.setSize(WIDTH_COMPONENT, HEIGHT_LABEL);
+        labelCode.setLocation(AXIS_X, AXIS_Y);
+        contentHasCode.add(labelCode);
+
+        code = new RoundJTextField();
+        code.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
+        code.setLocation(AXIS_X, labelCode.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
+        code.setBorder(null);
+        contentHasCode.add(code);
+
+        sendLogin.setLocation(AXIS_X, code.getY() + DIFERENCE_COMPONENTS_AND_BUTTON);
         sendLogin.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
+                verifyHasCode();
+            }
 
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        contentHasCode.add(sendLogin);
+
+        add(contentHasCode);
+    }
+
+    private void initializeLogin() {
+
+        contentLogin = new GradientPanel(Colors.PALE_VIOLET_RED, Colors.MEDIUM_VIOLET_RED);
+        contentLogin.setSize(500, 550);
+        contentLogin.setLocation(0, 0);
+        contentLogin.setLayout(null);
+
+        contentLogin.add(close);
+        contentLogin.add(minimize);
+
+        labelLogin = new JLabel("Email ou login");
+        labelLogin.setSize(WIDTH_COMPONENT, HEIGHT_LABEL);
+        labelLogin.setLocation(AXIS_X, AXIS_Y);
+        contentLogin.add(labelLogin);
+
+        login = new RoundJTextField();
+        login.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
+        login.setLocation(AXIS_X, labelLogin.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
+        login.setBorder(null);
+        contentLogin.add(login);
+
+        passwordLabel = new JLabel("Senha");
+        passwordLabel.setSize(WIDTH_COMPONENT, HEIGHT_LABEL);
+        passwordLabel.setLocation(AXIS_X, login.getY() + DIFERENCE_BETWEEN_COMPONENTS);
+        contentLogin.add(passwordLabel);
+
+        password = new RoundJPasswordField();
+        password.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
+        password.setLocation(AXIS_X, passwordLabel.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
+        contentLogin.add(password);
+
+        sendLogin.setLocation(AXIS_X, password.getY() + DIFERENCE_COMPONENTS_AND_BUTTON);
+        sendLogin.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                verifyLogin();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        contentLogin.add(sendLogin);
+
+        hasACode = new JLabel("Eu tenho um código");
+        hasACode.setSize(WIDTH_COMPONENT, HEIGHT_LABEL);
+        hasACode.setLocation(AXIS_X, sendLogin.getY() + hasACode.getHeight() + 10);
+        hasACode.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                initilizeHasCode();
             }
 
             @Override
@@ -182,31 +278,24 @@ public class Login extends JFrame {
             }
 
         });
-        content.add(sendLogin);
+        contentLogin.add(hasACode);
 
-        haveACode = new JLabel("Eu tenho um código");
-        haveACode.setSize(WIDTH, HEIGHT_LABEL);
-        haveACode.setLocation(AXIS_X, sendLogin.getY() + haveACode.getHeight() + 10);
-        content.add(haveACode);
-
-        add(content);
-        setVisible(true);
+        add(contentLogin);
     }
 
-//    public static void loadInformation() {
-//        System.out.println(Initialize.isRunning());
-//        System.out.println(Initialize.isRunning() == 1);
-//        try {
-//            while (Initialize.isRunning() == 1) {
-//                GPURepository.insert(new GPUModel());
-//                CPURepository.insert(new CPUModel());
-//                RAMRepository.insert(new RAMModel());
-//                SORepository.insert(new SOModel());
-//                HDRepository.insert(new HDModel());
-//            }
-//            Thread.sleep(Initialize.selectInterval());
-//        } catch (InterruptedException ex) {
-//            Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
+    private void hideContentLogin() {
+        contentLogin.setVisible(false);
+    }
+
+    private void hideContentHasCode() {
+        contentHasCode.setVisible(false);
+    }
+
+    private void verifyLogin() {
+        hideContentLogin();
+    }
+
+    private void verifyHasCode() {
+        hideContentHasCode();
+    }
 }
