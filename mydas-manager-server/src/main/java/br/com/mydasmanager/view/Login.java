@@ -33,6 +33,7 @@ public class Login extends JFrame {
     JLabel passwordLabel;
     JPasswordField password;
     JButton sendLogin;
+    JLabel haveACode;
 
     /**
      * Current size and location components
@@ -182,6 +183,11 @@ public class Login extends JFrame {
 
         });
         content.add(sendLogin);
+
+        haveACode = new JLabel("Eu tenho um código");
+        haveACode.setSize(WIDTH, HEIGHT_LABEL);
+        haveACode.setLocation(AXIS_X, sendLogin.getY() + haveACode.getHeight() + 10);
+        content.add(haveACode);
 
         add(content);
         setVisible(true);
