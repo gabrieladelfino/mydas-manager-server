@@ -61,12 +61,12 @@ public class Login extends JFrame {
 
         logo = new DrawLogo();
         logo.setSize(200, 100);
-        logo.setLocation(120, 50);
+        logo.setLocation(120, 80);
         
         close = new JLabel();
         close.setBounds(450, 20, 32, 32);
         close.setOpaque(false);
-        close.setIcon(new ImageIcon("img/menu-bar/close-32.png"));
+        close.setIcon(new ImageIcon("img/menu-bar/close-white.png"));
         close.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -98,7 +98,7 @@ public class Login extends JFrame {
         minimize.setSize(32, 32);
         minimize.setLocation(400, 20);
         minimize.setOpaque(false);
-        minimize.setIcon(new ImageIcon("img/menu-bar/minimize-line-32.png"));
+        minimize.setIcon(new ImageIcon("img/menu-bar/minimize-line-white.png"));
         minimize.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {

@@ -27,10 +27,10 @@ public class DrawLogo extends JLabel {
         pp.addPoint(40, 200);
         pp.addPoint(230, 200);
 
-        g.setColor(Colors.MEDIUM_VIOLET_RED);
+        g.setColor(Colors.LIGTH_GRAY);
         g.fillPolygon(p);
         
-        g.setColor(Colors.MEDIUM_SPRING_GREEN);
+        g.setColor(Colors.CRISOM);
         g.fillPolygon(pp);
     }
 }
