@@ -25,6 +25,7 @@ public class Login extends JFrame {
     JLabel labelPassword;
     JLabel labelHasACode;
     JLabel labelCode;
+    JLabel logo;
 
     /**
      * Action components
@@ -57,6 +58,10 @@ public class Login extends JFrame {
         setLayout(null);
         this.getContentPane().setBackground(Colors.WHITE);
 
+        logo = new DrawLogo();
+        logo.setSize(200, 100);
+        logo.setLocation(AXIS_X, 50);
+        
         close = new JLabel();
         close.setBounds(450, 20, 32, 32);
         close.setOpaque(false);
@@ -137,6 +142,7 @@ public class Login extends JFrame {
      * Graphics interfaces to application
      */
     private void initilizeHasCode() {
+        
         hideContentLogin();
 
         contentHasCode = new GradientPanel(Colors.BLACK, Colors.MEDIUM_BLACK);
@@ -188,6 +194,7 @@ public class Login extends JFrame {
         });
         contentHasCode.add(sendLogin);
 
+        contentHasCode.add(logo);
         add(contentHasCode);
     }
 
@@ -286,6 +293,7 @@ public class Login extends JFrame {
         });
         contentLogin.add(labelHasACode);
 
+        contentLogin.add(logo);
         add(contentLogin);
     }
 
