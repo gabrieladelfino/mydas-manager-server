@@ -41,7 +41,7 @@ public class Login extends JFrame {
      * Size and location components
      */
     private static final int AXIS_X = 130;
-    private static final int AXIS_Y = 180;
+    private static final int AXIS_Y = 220;
     private static final int WIDTH_COMPONENT = 220;
     private static final int HEIGHT_LABEL = 25;
     private static final int HEIGTH_INPUT = 30;
