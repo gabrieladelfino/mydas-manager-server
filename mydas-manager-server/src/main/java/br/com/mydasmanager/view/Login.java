@@ -1,9 +1,7 @@
 package br.com.mydasmanager.view;
 
-import java.awt.Color;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -57,7 +55,7 @@ public class Login extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
-        this.getContentPane().setBackground(new Color(255, 165, 0));
+        this.getContentPane().setBackground(Colors.WHITE);
 
         close = new JLabel();
         close.setBounds(450, 20, 32, 32);
@@ -134,10 +132,13 @@ public class Login extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Graphics interfaces to application
+     */
     private void initilizeHasCode() {
         hideContentLogin();
 
-        contentHasCode = new GradientPanel(Colors.PALE_VIOLET_RED, Colors.MEDIUM_VIOLET_RED);
+        contentHasCode = new GradientPanel(Colors.BLACK, Colors.MEDIUM_BLACK);
         contentHasCode.setSize(500, 550);
         contentHasCode.setLocation(0, 0);
         contentHasCode.setLayout(null);
@@ -190,7 +191,7 @@ public class Login extends JFrame {
 
     private void initializeLogin() {
 
-        contentLogin = new GradientPanel(Colors.PALE_VIOLET_RED, Colors.MEDIUM_VIOLET_RED);
+        contentLogin = new GradientPanel(Colors.BLACK, Colors.MEDIUM_BLACK);
         contentLogin.setSize(500, 550);
         contentLogin.setLocation(0, 0);
         contentLogin.setLayout(null);
@@ -283,6 +284,9 @@ public class Login extends JFrame {
         add(contentLogin);
     }
 
+    /**
+     * Controller hide and shoe components
+     */
     private void hideContentLogin() {
         contentLogin.setVisible(false);
     }
@@ -291,6 +295,9 @@ public class Login extends JFrame {
         contentHasCode.setVisible(false);
     }
 
+    /**
+     * Controller acess to application
+     */
     private void verifyLogin() {
         hideContentLogin();
     }

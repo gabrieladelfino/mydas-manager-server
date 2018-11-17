@@ -14,5 +14,7 @@ public class Colors {
     public static final Color LIGTH_GRAY = new Color(220, 220, 220);
     public static final Color WHITE = new Color(255, 255, 255);
     public static final Color DARK_GRAY = new Color(110, 110, 110);
+    public static final Color BLACK = new Color(0,0,0);
+    public static final Color MEDIUM_BLACK = new Color(50,50,50);
 
 }
