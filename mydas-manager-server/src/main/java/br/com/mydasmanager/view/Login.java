@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
 /**
  *
@@ -60,7 +61,7 @@ public class Login extends JFrame {
 
         logo = new DrawLogo();
         logo.setSize(200, 100);
-        logo.setLocation(AXIS_X, 50);
+        logo.setLocation(120, 50);
         
         close = new JLabel();
         close.setBounds(450, 20, 32, 32);
@@ -163,6 +164,7 @@ public class Login extends JFrame {
         code.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
         code.setLocation(AXIS_X, labelCode.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
         code.setBorder(null);
+        code.setHorizontalAlignment(SwingConstants.CENTER);
         contentHasCode.add(code);
 
         sendLogin.setLocation(AXIS_X, code.getY() + DIFERENCE_COMPONENTS_AND_BUTTON);
@@ -218,6 +220,7 @@ public class Login extends JFrame {
         login.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
         login.setLocation(AXIS_X, labelLogin.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
         login.setBorder(null);
+        login.setHorizontalAlignment(SwingConstants.CENTER);
         contentLogin.add(login);
 
         labelPassword = new JLabel("Senha");
@@ -229,6 +232,7 @@ public class Login extends JFrame {
         password = new RoundJPasswordField();
         password.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
         password.setLocation(AXIS_X, labelPassword.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
+        password.setHorizontalAlignment(SwingConstants.CENTER);
         contentLogin.add(password);
 
         sendLogin.setLocation(AXIS_X, password.getY() + DIFERENCE_COMPONENTS_AND_BUTTON);
