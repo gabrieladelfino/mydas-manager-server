@@ -22,8 +22,8 @@ public class Login extends JFrame {
     JPanel contentLogin;
     JPanel contentHasCode;
     JLabel labelLogin;
-    JLabel passwordLabel;
-    JLabel hasACode;
+    JLabel labelPassword;
+    JLabel labelHasACode;
     JLabel labelCode;
 
     /**
@@ -129,6 +129,7 @@ public class Login extends JFrame {
         sendLogin.setContentAreaFilled(false);
 
         initializeLogin();
+
         setVisible(true);
     }
 
@@ -147,6 +148,7 @@ public class Login extends JFrame {
         contentHasCode.add(minimize);
 
         labelCode = new JLabel("Código de acesso");
+        labelCode.setForeground(Colors.WHITE);
         labelCode.setSize(WIDTH_COMPONENT, HEIGHT_LABEL);
         labelCode.setLocation(AXIS_X, AXIS_Y);
         contentHasCode.add(labelCode);
@@ -200,6 +202,7 @@ public class Login extends JFrame {
         contentLogin.add(minimize);
 
         labelLogin = new JLabel("Email ou login");
+        labelLogin.setForeground(Colors.WHITE);
         labelLogin.setSize(WIDTH_COMPONENT, HEIGHT_LABEL);
         labelLogin.setLocation(AXIS_X, AXIS_Y);
         contentLogin.add(labelLogin);
@@ -210,14 +213,15 @@ public class Login extends JFrame {
         login.setBorder(null);
         contentLogin.add(login);
 
-        passwordLabel = new JLabel("Senha");
-        passwordLabel.setSize(WIDTH_COMPONENT, HEIGHT_LABEL);
-        passwordLabel.setLocation(AXIS_X, login.getY() + DIFERENCE_BETWEEN_COMPONENTS);
-        contentLogin.add(passwordLabel);
+        labelPassword = new JLabel("Senha");
+        labelPassword.setForeground(Colors.WHITE);
+        labelPassword.setSize(WIDTH_COMPONENT, HEIGHT_LABEL);
+        labelPassword.setLocation(AXIS_X, login.getY() + DIFERENCE_BETWEEN_COMPONENTS);
+        contentLogin.add(labelPassword);
 
         password = new RoundJPasswordField();
         password.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
-        password.setLocation(AXIS_X, passwordLabel.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
+        password.setLocation(AXIS_X, labelPassword.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
         contentLogin.add(password);
 
         sendLogin.setLocation(AXIS_X, password.getY() + DIFERENCE_COMPONENTS_AND_BUTTON);
@@ -249,10 +253,11 @@ public class Login extends JFrame {
         });
         contentLogin.add(sendLogin);
 
-        hasACode = new JLabel("Eu tenho um código");
-        hasACode.setSize(WIDTH_COMPONENT, HEIGHT_LABEL);
-        hasACode.setLocation(AXIS_X, sendLogin.getY() + hasACode.getHeight() + 10);
-        hasACode.addMouseListener(new MouseListener() {
+        labelHasACode = new JLabel("Eu tenho um código");
+        labelHasACode.setForeground(Colors.WHITE);
+        labelHasACode.setSize(WIDTH_COMPONENT, HEIGHT_LABEL);
+        labelHasACode.setLocation(AXIS_X, sendLogin.getY() + labelHasACode.getHeight() + 10);
+        labelHasACode.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 initilizeHasCode();
@@ -279,13 +284,13 @@ public class Login extends JFrame {
             }
 
         });
-        contentLogin.add(hasACode);
+        contentLogin.add(labelHasACode);
 
         add(contentLogin);
     }
 
     /**
-     * Controller hide and shoe components
+     * Controller hide and show components
      */
     private void hideContentLogin() {
         contentLogin.setVisible(false);
