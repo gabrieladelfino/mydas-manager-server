@@ -1,5 +1,9 @@
 package br.com.mydasmanager.view;
 
+import br.com.mydasmanager.data.repository.CustomerRepository;
+import br.com.mydasmanager.model.Customer;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
@@ -45,11 +49,17 @@ public class Login extends JFrame {
     private static final int AXIS_Y = 220;
     private static final int WIDTH_COMPONENT = 220;
     private static final int HEIGHT_LABEL = 25;
-    private static final int HEIGTH_INPUT = 30;
-    private static final int DIFERENCE_BETWEEN_LABEL_AND_INPUT = HEIGTH_INPUT;
-    private static final int DIFERENCE_BETWEEN_COMPONENTS = HEIGTH_INPUT + 20;
-    private static final int DIFERENCE_COMPONENTS_AND_BUTTON = HEIGTH_INPUT + 30;
+    private static final int HEIGHT_INPUT = 30;
+    private static final int DIFERENCE_BETWEEN_LABEL_AND_INPUT = HEIGHT_INPUT;
+    private static final int DIFERENCE_BETWEEN_COMPONENTS = HEIGHT_INPUT + 20;
+    private static final int DIFERENCE_COMPONENTS_AND_BUTTON = HEIGHT_INPUT + 30;
 
+    /**
+     * Notices 
+     */
+    private static final String MESSAGE = "os campos não foram preenchidos corretamente";
+    private static final String TITLE = "Não conseguimos efetuar o login";
+    
     public Login() {
 
         setUndecorated(true);
@@ -62,7 +72,7 @@ public class Login extends JFrame {
         logo = new DrawLogo();
         logo.setSize(200, 100);
         logo.setLocation(120, 80);
-        
+
         close = new JLabel();
         close.setBounds(450, 20, 32, 32);
         close.setOpaque(false);
@@ -128,7 +138,7 @@ public class Login extends JFrame {
 
         sendLogin = new RoundJButton();
         sendLogin.setText("Entrar");
-        sendLogin.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
+        sendLogin.setSize(WIDTH_COMPONENT, HEIGHT_INPUT);
         sendLogin.setOpaque(false);
         sendLogin.setFocusPainted(false);
         sendLogin.setBorderPainted(false);
@@ -137,67 +147,6 @@ public class Login extends JFrame {
         initializeLogin();
 
         setVisible(true);
-    }
-
-    /**
-     * Graphics interfaces to application
-     */
-    private void initilizeHasCode() {
-        
-        hideContentLogin();
-
-        contentHasCode = new GradientPanel(Colors.BLACK, Colors.MEDIUM_BLACK);
-        contentHasCode.setSize(500, 550);
-        contentHasCode.setLocation(0, 0);
-        contentHasCode.setLayout(null);
-
-        contentHasCode.add(close);
-        contentHasCode.add(minimize);
-
-        labelCode = new JLabel("Código de acesso");
-        labelCode.setForeground(Colors.WHITE);
-        labelCode.setSize(WIDTH_COMPONENT, HEIGHT_LABEL);
-        labelCode.setLocation(AXIS_X, AXIS_Y);
-        contentHasCode.add(labelCode);
-
-        code = new RoundJTextField();
-        code.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
-        code.setLocation(AXIS_X, labelCode.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
-        code.setBorder(null);
-        code.setHorizontalAlignment(SwingConstants.CENTER);
-        contentHasCode.add(code);
-
-        sendLogin.setLocation(AXIS_X, code.getY() + DIFERENCE_COMPONENTS_AND_BUTTON);
-        sendLogin.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                verifyHasCode();
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
-        contentHasCode.add(sendLogin);
-
-        contentHasCode.add(logo);
-        add(contentHasCode);
     }
 
     private void initializeLogin() {
@@ -217,10 +166,26 @@ public class Login extends JFrame {
         contentLogin.add(labelLogin);
 
         login = new RoundJTextField();
-        login.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
+        login.setSize(WIDTH_COMPONENT, HEIGHT_INPUT);
         login.setLocation(AXIS_X, labelLogin.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
         login.setBorder(null);
         login.setHorizontalAlignment(SwingConstants.CENTER);
+        login.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                patternFields(login);
+            }
+        });
         contentLogin.add(login);
 
         labelPassword = new JLabel("Senha");
@@ -230,7 +195,7 @@ public class Login extends JFrame {
         contentLogin.add(labelPassword);
 
         password = new RoundJPasswordField();
-        password.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
+        password.setSize(WIDTH_COMPONENT, HEIGHT_INPUT);
         password.setLocation(AXIS_X, labelPassword.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
         password.setHorizontalAlignment(SwingConstants.CENTER);
         contentLogin.add(password);
@@ -302,6 +267,67 @@ public class Login extends JFrame {
     }
 
     /**
+     * Graphics interfaces to application
+     */
+    private void initilizeHasCode() {
+
+        hideContentLogin();
+
+        contentHasCode = new GradientPanel(Colors.BLACK, Colors.MEDIUM_BLACK);
+        contentHasCode.setSize(500, 550);
+        contentHasCode.setLocation(0, 0);
+        contentHasCode.setLayout(null);
+
+        contentHasCode.add(close);
+        contentHasCode.add(minimize);
+
+        labelCode = new JLabel("Código de acesso");
+        labelCode.setForeground(Colors.WHITE);
+        labelCode.setSize(WIDTH_COMPONENT, HEIGHT_LABEL);
+        labelCode.setLocation(AXIS_X, AXIS_Y);
+        contentHasCode.add(labelCode);
+
+        code = new RoundJTextField();
+        code.setSize(WIDTH_COMPONENT, HEIGHT_INPUT);
+        code.setLocation(AXIS_X, labelCode.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
+        code.setBorder(null);
+        code.setHorizontalAlignment(SwingConstants.CENTER);
+        contentHasCode.add(code);
+
+        sendLogin.setLocation(AXIS_X, code.getY() + DIFERENCE_COMPONENTS_AND_BUTTON);
+        sendLogin.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                verifyHasCode();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        contentHasCode.add(sendLogin);
+
+        contentHasCode.add(logo);
+        add(contentHasCode);
+    }
+
+    /**
      * Controller hide and show components
      */
     private void hideContentLogin() {
@@ -316,10 +342,46 @@ public class Login extends JFrame {
      * Controller acess to application
      */
     private void verifyLogin() {
-        hideContentLogin();
+        if (verifyFields(login.getText()) && verifyFields(password.getText())) {
+
+            Customer customer = new Customer();
+            customer.setUserName(login.getText());
+            customer.setPassword(password.getText());
+
+            if (CustomerRepository.verifyLogin(customer) != 0) {
+                System.out.println(CustomerRepository.verifyLogin(customer));
+                hideContentLogin();
+            }
+        }else{
+            new Modal(TITLE, MESSAGE);
+        }
     }
 
     private void verifyHasCode() {
-        hideContentHasCode();
+        if (verifyFields(code.getText())) {
+
+            Customer customer = new Customer();
+            customer.setCodeAcess(code.getText());
+
+            if (CustomerRepository.verifyLogin(customer) != 0) {
+                System.out.println(CustomerRepository.verifyLogin(customer));
+                hideContentHasCode();
+            }
+        }
+    }
+
+    private boolean verifyFields(String text) {
+        if (text == null) {
+            return false;
+        } else if (text.isEmpty()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private void patternFields(JTextField field) {
+        String pattern = "[^a-zA-Z0-9@.-_]";
+        field.setText(field.getText().replaceAll(pattern, ""));
     }
 }
