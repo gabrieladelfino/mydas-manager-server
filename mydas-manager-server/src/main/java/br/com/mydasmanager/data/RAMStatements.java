@@ -9,4 +9,6 @@ public class RAMStatements {
             + ", customerdevice"
             + ", memoryuse)"
             + "VALUES (?, ?, ?, ?, ?)";
+
+    public static final String SELECT_FREE_MEMORY = "SELECT * FROM ram WHERE customerdevice =  1037";
 }
