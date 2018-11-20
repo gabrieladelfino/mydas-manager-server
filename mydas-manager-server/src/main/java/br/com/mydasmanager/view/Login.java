@@ -2,6 +2,8 @@ package br.com.mydasmanager.view;
 
 import br.com.mydasmanager.data.repository.CustomerRepository;
 import br.com.mydasmanager.model.Customer;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
@@ -162,6 +164,23 @@ public class Login extends JFrame {
         login.setLocation(AXIS_X, labelLogin.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
         login.setBorder(null);
         login.setHorizontalAlignment(SwingConstants.CENTER);
+        login.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                patternFields(login.getText());
+            }
+
+        });
         contentLogin.add(login);
 
         labelPassword = new JLabel("Senha");
@@ -303,10 +322,6 @@ public class Login extends JFrame {
         add(contentHasCode);
     }
 
-    private void hideContentHasCode() {
-        contentHasCode.setVisible(false);
-    }
-
     /**
      * Controller hide and show components
      */
@@ -314,11 +329,16 @@ public class Login extends JFrame {
         contentLogin.setVisible(false);
     }
 
+    private void hideContentHasCode() {
+        contentHasCode.setVisible(false);
+    }
+
     /**
      * Controller acess to application
      */
     private void verifyLogin() {
-        if (login.getText() != null && password != null) {
+        if (verifyFields(login.getText()) && verifyFields(password.getText())) {
+
             Customer customer = new Customer();
             customer.setUserName(login.getText());
             customer.setPassword(password.getText());
@@ -331,14 +351,29 @@ public class Login extends JFrame {
     }
 
     private void verifyHasCode() {
-        if (login.getText() != null && password != null) {
+        if (verifyFields(code.getText())) {
+
             Customer customer = new Customer();
             customer.setCodeAcess(code.getText());
-            
+
             if (CustomerRepository.verifyLogin(customer) != 0) {
                 System.out.println(CustomerRepository.verifyLogin(customer));
-                hideContentLogin();
+                hideContentHasCode();
             }
         }
+    }
+
+    private boolean verifyFields(String text) {
+        if (text == null) {
+            return false;
+        } else if (text.isEmpty()) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private void patternFields(String text) {
+
     }
 }
