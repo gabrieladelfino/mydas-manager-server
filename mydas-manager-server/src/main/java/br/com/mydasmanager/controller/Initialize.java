@@ -18,16 +18,12 @@ public abstract class Initialize {
     protected Components components = JSensors.get.components();
     protected List<Gpu> gpus = components.gpus;
 
-    protected static int selectDeviceId() {
-        return CustomerDeviceRepository.selectMaxCustomerDeviceId();
+    public static int selectCustomerDeviceId(int customerid, int deviceid) {
+        return CustomerDeviceRepository.selectCustomerDeviceId(customerid, deviceid);
     }
 
-    public static int selectInterval() {
-        return DeviceRepository.selectInterval(selectDeviceId());
-    }
-    
-    public static int isRunning(){
-        return DeviceRepository.selectIsRunning(selectDeviceId());
+    public static int selectInterval(int id) {
+        return DeviceRepository.selectInterval(id);
     }
     
     public static double toDouble(long param) {

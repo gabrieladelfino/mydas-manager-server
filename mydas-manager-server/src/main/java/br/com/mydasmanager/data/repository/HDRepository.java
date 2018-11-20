@@ -14,14 +14,14 @@ import java.util.logging.Logger;
  */
 public class HDRepository {
 
-    public static void insert(HDModel hd) {
-        
+    public static void insert(HDModel hd, int id) {
+
         PreparedStatement pstm = MainConnection.excutePrepared(HDStatements.INSERT_HD);
-        
+
         try {
             pstm.setDouble(1, hd.getBytesRead());
             pstm.setDouble(2, hd.getBytesWritten());
-            pstm.setInt(3, hd.getDeviceId());
+            pstm.setInt(3, id);
             pstm.execute();
         } catch (SQLException ex) {
             Logger.getLogger(HDRepository.class.getName()).log(Level.SEVERE, null, ex);

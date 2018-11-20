@@ -6,9 +6,9 @@ public class RAMStatements {
             + "  totalmemory"
             + ", freememory"
             + ", datecapture"
-            + ", customerdevice"
+            + ", deviceid"
             + ", memoryuse)"
             + "VALUES (?, ?, ?, ?, ?)";
 
-    public static final String SELECT_FREE_MEMORY = "SELECT * FROM ram WHERE customerdevice =  1037";
+    public static final String SELECT_FREE_MEMORY = "SELECT * FROM ram WHERE deviceid =  ?";
 }

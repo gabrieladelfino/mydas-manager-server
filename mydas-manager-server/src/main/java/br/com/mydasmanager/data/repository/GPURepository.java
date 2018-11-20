@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 public class GPURepository {
 
-    public static void insert(GPUModel gpu) {
+    public static void insert(GPUModel gpu, int id) {
 
         PreparedStatement pstm = MainConnection.excutePrepared(GPUStatements.INSERT_GPU);
         
@@ -19,7 +19,7 @@ public class GPURepository {
             pstm.setDouble(1, gpu.getTemperature());
             pstm.setString(2, gpu.getGpuName());
             pstm.setDouble(3, gpu.getFan());
-            pstm.setInt(4, gpu.getDeviceId());
+            pstm.setInt(4, id);
             pstm.setString(5, CaptureDate.selectDate());
 
             pstm.execute();

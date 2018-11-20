@@ -2,6 +2,7 @@ package br.com.mydasmanager.view;
 
 import br.com.mydasmanager.controller.Initialize;
 import br.com.mydasmanager.data.repository.CPURepository;
+import br.com.mydasmanager.data.repository.CustomerRepository;
 import br.com.mydasmanager.data.repository.GPURepository;
 import br.com.mydasmanager.data.repository.HDRepository;
 import br.com.mydasmanager.data.repository.RAMRepository;
@@ -29,8 +30,9 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class Components extends JFrame {
 
     JPanel components;
+    static int id;
 
-    public Components() {
+    public Components(int customerid) {
 
         setUndecorated(true);
         setSize(600, 550);
@@ -44,9 +46,10 @@ public class Components extends JFrame {
         components.setSize(500, 550);
         components.setLocation(0, 0);
         components.setLayout(null);
+        //add(getData());
 
-        add(getData());
         setVisible(true);
+        getDevicesByCustomer(id);
     }
 
     public JPanel getData() {
@@ -70,20 +73,32 @@ public class Components extends JFrame {
         return p;
     }
 
-    public static void loadInformation() {
-        System.out.println(Initialize.isRunning());
-        System.out.println(Initialize.isRunning() == 1);
+    public static void loadInformation(int customerid, int deviceid) {
+
+        id = Initialize.selectCustomerDeviceId(customerid, deviceid);
+
         try {
-            while (Initialize.isRunning() == 1) {
-                GPURepository.insert(new GPUModel());
-                CPURepository.insert(new CPUModel());
-                RAMRepository.insert(new RAMModel());
-                SORepository.insert(new SOModel());
-                HDRepository.insert(new HDModel());
+
+            Thread.sleep(Initialize.selectInterval(id));
+
+            for (;;) {
+                GPURepository.insert(new GPUModel(), id);
+                CPURepository.insert(new CPUModel(), id);
+                RAMRepository.insert(new RAMModel(), id);
+                SORepository.insert(new SOModel(), id);
+                HDRepository.insert(new HDModel(), id);
             }
-            Thread.sleep(Initialize.selectInterval());
         } catch (InterruptedException ex) {
             Logger.getLogger(Components.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private void getDevicesByCustomer(int id) {
+        List<String> devices = CustomerRepository.selectDevice(id);
+        System.out.println("Entrou: "+CustomerRepository.selectDevice(id).size());
+
+        for (int i = 0; i < devices.size(); i++) {
+            System.out.println("Device " + i + ": " + devices.get(i));
         }
     }
 }

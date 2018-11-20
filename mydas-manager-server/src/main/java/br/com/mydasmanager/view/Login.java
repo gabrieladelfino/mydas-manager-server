@@ -355,9 +355,9 @@ public class Login extends JFrame {
             customer.setPassword(password.getText());
 
             if (CustomerRepository.verifyLogin(customer) != 0) {
-                System.out.println(CustomerRepository.verifyLogin(customer));
+                System.out.println("ID: "+CustomerRepository.verifyLogin(customer));
                 dispose();
-                new Components();
+                new Components(CustomerRepository.verifyLogin(customer));
             }
         } else {
             new Modal(TITLE, MESSAGE);
@@ -371,9 +371,8 @@ public class Login extends JFrame {
             customer.setCodeAcess(code.getText());
 
             if (CustomerRepository.verifyLogin(customer) != 0) {
-                System.out.println(CustomerRepository.verifyLogin(customer));
                 dispose();
-                new Components();
+                new Components(CustomerRepository.verifyLogin(customer));
             }
         }
     }

@@ -6,7 +6,7 @@ public class GPUStatements {
             + "  temperature "
             + ", name "
             + ", fan"
-            + ", customerdevice"
+            + ", deviceid"
             + ", datecapture)"
             + "VALUES (?, ?, ?, ?, ?)";
 }

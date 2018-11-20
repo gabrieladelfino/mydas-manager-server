@@ -12,7 +12,7 @@ public class CPUStatements {
                     + ", core"
                     + ", currentuse"
                     + ", temperature"
-                    + ", customerdevice"
+                    + ", deviceid"
                     + ", datecapture)"
                     + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 }
