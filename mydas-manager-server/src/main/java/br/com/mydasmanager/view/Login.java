@@ -373,7 +373,7 @@ public class Login extends JFrame {
     }
 
     private void patternFields(JTextField field) {
-        String pattern = "[^a-zA-Zà-úÀ-Ú@.-_]";
+        String pattern = "[^a-zA-Z0-9@.-_]";
         field.setText(field.getText().replaceAll(pattern, ""));
     }
 }
