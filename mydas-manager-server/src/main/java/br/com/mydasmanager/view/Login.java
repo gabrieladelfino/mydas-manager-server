@@ -1,5 +1,7 @@
 package br.com.mydasmanager.view;
 
+import br.com.mydasmanager.data.repository.CustomerRepository;
+import br.com.mydasmanager.model.Customer;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
@@ -62,7 +64,7 @@ public class Login extends JFrame {
         logo = new DrawLogo();
         logo.setSize(200, 100);
         logo.setLocation(120, 80);
-        
+
         close = new JLabel();
         close.setBounds(450, 20, 32, 32);
         close.setOpaque(false);
@@ -70,7 +72,7 @@ public class Login extends JFrame {
         close.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                dispose();
+
             }
 
             @Override
@@ -137,67 +139,6 @@ public class Login extends JFrame {
         initializeLogin();
 
         setVisible(true);
-    }
-
-    /**
-     * Graphics interfaces to application
-     */
-    private void initilizeHasCode() {
-        
-        hideContentLogin();
-
-        contentHasCode = new GradientPanel(Colors.BLACK, Colors.MEDIUM_BLACK);
-        contentHasCode.setSize(500, 550);
-        contentHasCode.setLocation(0, 0);
-        contentHasCode.setLayout(null);
-
-        contentHasCode.add(close);
-        contentHasCode.add(minimize);
-
-        labelCode = new JLabel("Código de acesso");
-        labelCode.setForeground(Colors.WHITE);
-        labelCode.setSize(WIDTH_COMPONENT, HEIGHT_LABEL);
-        labelCode.setLocation(AXIS_X, AXIS_Y);
-        contentHasCode.add(labelCode);
-
-        code = new RoundJTextField();
-        code.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
-        code.setLocation(AXIS_X, labelCode.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
-        code.setBorder(null);
-        code.setHorizontalAlignment(SwingConstants.CENTER);
-        contentHasCode.add(code);
-
-        sendLogin.setLocation(AXIS_X, code.getY() + DIFERENCE_COMPONENTS_AND_BUTTON);
-        sendLogin.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                verifyHasCode();
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
-        contentHasCode.add(sendLogin);
-
-        contentHasCode.add(logo);
-        add(contentHasCode);
     }
 
     private void initializeLogin() {
@@ -302,10 +243,64 @@ public class Login extends JFrame {
     }
 
     /**
-     * Controller hide and show components
+     * Graphics interfaces to application
      */
-    private void hideContentLogin() {
-        contentLogin.setVisible(false);
+    private void initilizeHasCode() {
+
+        hideContentLogin();
+
+        contentHasCode = new GradientPanel(Colors.BLACK, Colors.MEDIUM_BLACK);
+        contentHasCode.setSize(500, 550);
+        contentHasCode.setLocation(0, 0);
+        contentHasCode.setLayout(null);
+
+        contentHasCode.add(close);
+        contentHasCode.add(minimize);
+
+        labelCode = new JLabel("Código de acesso");
+        labelCode.setForeground(Colors.WHITE);
+        labelCode.setSize(WIDTH_COMPONENT, HEIGHT_LABEL);
+        labelCode.setLocation(AXIS_X, AXIS_Y);
+        contentHasCode.add(labelCode);
+
+        code = new RoundJTextField();
+        code.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
+        code.setLocation(AXIS_X, labelCode.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
+        code.setBorder(null);
+        code.setHorizontalAlignment(SwingConstants.CENTER);
+        contentHasCode.add(code);
+
+        sendLogin.setLocation(AXIS_X, code.getY() + DIFERENCE_COMPONENTS_AND_BUTTON);
+        sendLogin.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                verifyHasCode();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        contentHasCode.add(sendLogin);
+
+        contentHasCode.add(logo);
+        add(contentHasCode);
     }
 
     private void hideContentHasCode() {
@@ -313,13 +308,37 @@ public class Login extends JFrame {
     }
 
     /**
+     * Controller hide and show components
+     */
+    private void hideContentLogin() {
+        contentLogin.setVisible(false);
+    }
+
+    /**
      * Controller acess to application
      */
     private void verifyLogin() {
-        hideContentLogin();
+        if (login.getText() != null && password != null) {
+            Customer customer = new Customer();
+            customer.setUserName(login.getText());
+            customer.setPassword(password.getText());
+
+            if (CustomerRepository.verifyLogin(customer) != 0) {
+                System.out.println(CustomerRepository.verifyLogin(customer));
+                hideContentLogin();
+            }
+        }
     }
 
     private void verifyHasCode() {
-        hideContentHasCode();
+        if (login.getText() != null && password != null) {
+            Customer customer = new Customer();
+            customer.setCodeAcess(code.getText());
+            
+            if (CustomerRepository.verifyLogin(customer) != 0) {
+                System.out.println(CustomerRepository.verifyLogin(customer));
+                hideContentLogin();
+            }
+        }
     }
 }
