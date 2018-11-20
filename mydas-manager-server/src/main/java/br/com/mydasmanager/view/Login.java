@@ -54,6 +54,12 @@ public class Login extends JFrame {
     private static final int DIFERENCE_BETWEEN_COMPONENTS = HEIGHT_INPUT + 20;
     private static final int DIFERENCE_COMPONENTS_AND_BUTTON = HEIGHT_INPUT + 30;
 
+    /**
+     * Notices 
+     */
+    private static final String message = "os campos não foram preenchidos corretamente";
+    private static final String title = "Não conseguimos efetuar o login";
+    
     public Login() {
 
         setUndecorated(true);
@@ -347,7 +353,7 @@ public class Login extends JFrame {
                 hideContentLogin();
             }
         }else{
-            new Modal("existem campos inválidos", "Não conseguimos efetuar o login...");
+            new Modal(title, message);
         }
     }
 

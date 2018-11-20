@@ -10,19 +10,25 @@ import javax.swing.SwingConstants;
 
 public class Modal extends JDialog {
 
+    /**
+     * Estrutural components
+     */
     JLabel message;
     JLabel agree;
     JLabel disagree;
     JLabel title;
     JLabel line;
 
+    /**
+     * Size and location components
+     */
     private static final int AXIS_X = 50;
     private static final int AXIS_Y = 20;
     private static final int WIDTH_COMPONENT = 300;
     private static final int HEIGHT_COMPONENT = 50;
     private static final int DIFERENCE = 50;
 
-    public Modal(String message, String title) {
+    public Modal(String title, String message) {
 
         setModal(true);
         setSize(400, 250);
