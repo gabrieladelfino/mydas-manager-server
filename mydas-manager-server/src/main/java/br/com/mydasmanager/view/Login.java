@@ -57,8 +57,8 @@ public class Login extends JFrame {
     /**
      * Notices 
      */
-    private static final String message = "os campos não foram preenchidos corretamente";
-    private static final String title = "Não conseguimos efetuar o login";
+    private static final String MESSAGE = "os campos não foram preenchidos corretamente";
+    private static final String TITLE = "Não conseguimos efetuar o login";
     
     public Login() {
 
@@ -353,7 +353,7 @@ public class Login extends JFrame {
                 hideContentLogin();
             }
         }else{
-            new Modal(title, message);
+            new Modal(TITLE, MESSAGE);
         }
     }
 
