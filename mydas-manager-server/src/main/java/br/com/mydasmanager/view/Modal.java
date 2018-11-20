@@ -5,7 +5,9 @@ import java.awt.event.MouseListener;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
 public class Modal extends JDialog {
@@ -14,11 +16,14 @@ public class Modal extends JDialog {
      * Estrutural components
      */
     JLabel message;
-    JLabel agree;
-    JLabel disagree;
     JLabel title;
     JLabel line;
-
+    
+    /**
+     * Action components
+     */
+    JLabel agree;
+    
     /**
      * Size and location components
      */
@@ -30,14 +35,16 @@ public class Modal extends JDialog {
 
     public Modal(String title, String message) {
 
+        Login.hide.setVisible(true);
+        
         setModal(true);
         setSize(400, 250);
         setLayout(null);
-        setDefaultCloseOperation(HIDE_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setUndecorated(true);
         this.getContentPane().setBackground(Colors.WHITE);
-
+        
         this.title = new JLabel(title);
         this.title.setSize(WIDTH_COMPONENT, HEIGHT_COMPONENT);
         this.title.setLocation(AXIS_X, AXIS_Y);
@@ -69,6 +76,7 @@ public class Modal extends JDialog {
 
             @Override
             public void mouseClicked(MouseEvent arg0) {
+                Login.hide.setVisible(false);
                 dispose();
             }
 
