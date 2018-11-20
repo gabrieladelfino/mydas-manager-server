@@ -74,7 +74,7 @@ public class Login extends JFrame {
         close.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-
+                dispose();
             }
 
             @Override
@@ -177,9 +177,8 @@ public class Login extends JFrame {
 
             @Override
             public void keyReleased(KeyEvent e) {
-                patternFields(login.getText());
+                patternFields(login);
             }
-
         });
         contentLogin.add(login);
 
@@ -373,7 +372,8 @@ public class Login extends JFrame {
         return true;
     }
 
-    private void patternFields(String text) {
-
+    private void patternFields(JTextField field) {
+        String pattern = "[^a-zA-Zà-úÀ-Ú@.-_]";
+        field.setText(field.getText().replaceAll(pattern, ""));
     }
 }
