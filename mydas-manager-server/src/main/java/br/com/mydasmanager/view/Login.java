@@ -144,13 +144,13 @@ public class Login extends JFrame {
         sendLogin.setFocusPainted(false);
         sendLogin.setBorderPainted(false);
         sendLogin.setContentAreaFilled(false);
-        
+
         hide = new JPanel();
         hide.setBounds(0, 0, getWidth(), getHeight());
         hide.setBackground(Colors.LIGTH_OPACITY);
         hide.setVisible(false);
         add(hide);
-        
+
         initializeLogin();
         setVisible(true);
     }
@@ -356,7 +356,8 @@ public class Login extends JFrame {
 
             if (CustomerRepository.verifyLogin(customer) != 0) {
                 System.out.println(CustomerRepository.verifyLogin(customer));
-                hideContentLogin();
+                dispose();
+                new Components();
             }
         } else {
             new Modal(TITLE, MESSAGE);
@@ -371,7 +372,8 @@ public class Login extends JFrame {
 
             if (CustomerRepository.verifyLogin(customer) != 0) {
                 System.out.println(CustomerRepository.verifyLogin(customer));
-                hideContentHasCode();
+                dispose();
+                new Components();
             }
         }
     }
