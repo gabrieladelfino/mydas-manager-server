@@ -49,10 +49,10 @@ public class Login extends JFrame {
     private static final int AXIS_Y = 220;
     private static final int WIDTH_COMPONENT = 220;
     private static final int HEIGHT_LABEL = 25;
-    private static final int HEIGTH_INPUT = 30;
-    private static final int DIFERENCE_BETWEEN_LABEL_AND_INPUT = HEIGTH_INPUT;
-    private static final int DIFERENCE_BETWEEN_COMPONENTS = HEIGTH_INPUT + 20;
-    private static final int DIFERENCE_COMPONENTS_AND_BUTTON = HEIGTH_INPUT + 30;
+    private static final int HEIGHT_INPUT = 30;
+    private static final int DIFERENCE_BETWEEN_LABEL_AND_INPUT = HEIGHT_INPUT;
+    private static final int DIFERENCE_BETWEEN_COMPONENTS = HEIGHT_INPUT + 20;
+    private static final int DIFERENCE_COMPONENTS_AND_BUTTON = HEIGHT_INPUT + 30;
 
     public Login() {
 
@@ -132,7 +132,7 @@ public class Login extends JFrame {
 
         sendLogin = new RoundJButton();
         sendLogin.setText("Entrar");
-        sendLogin.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
+        sendLogin.setSize(WIDTH_COMPONENT, HEIGHT_INPUT);
         sendLogin.setOpaque(false);
         sendLogin.setFocusPainted(false);
         sendLogin.setBorderPainted(false);
@@ -160,7 +160,7 @@ public class Login extends JFrame {
         contentLogin.add(labelLogin);
 
         login = new RoundJTextField();
-        login.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
+        login.setSize(WIDTH_COMPONENT, HEIGHT_INPUT);
         login.setLocation(AXIS_X, labelLogin.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
         login.setBorder(null);
         login.setHorizontalAlignment(SwingConstants.CENTER);
@@ -189,7 +189,7 @@ public class Login extends JFrame {
         contentLogin.add(labelPassword);
 
         password = new RoundJPasswordField();
-        password.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
+        password.setSize(WIDTH_COMPONENT, HEIGHT_INPUT);
         password.setLocation(AXIS_X, labelPassword.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
         password.setHorizontalAlignment(SwingConstants.CENTER);
         contentLogin.add(password);
@@ -282,7 +282,7 @@ public class Login extends JFrame {
         contentHasCode.add(labelCode);
 
         code = new RoundJTextField();
-        code.setSize(WIDTH_COMPONENT, HEIGTH_INPUT);
+        code.setSize(WIDTH_COMPONENT, HEIGHT_INPUT);
         code.setLocation(AXIS_X, labelCode.getY() + DIFERENCE_BETWEEN_LABEL_AND_INPUT);
         code.setBorder(null);
         code.setHorizontalAlignment(SwingConstants.CENTER);
@@ -346,6 +346,8 @@ public class Login extends JFrame {
                 System.out.println(CustomerRepository.verifyLogin(customer));
                 hideContentLogin();
             }
+        }else{
+            new Modal("existem campos inválidos", "Não conseguimos efetuar o login...");
         }
     }
 
