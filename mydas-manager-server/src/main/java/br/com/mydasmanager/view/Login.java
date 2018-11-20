@@ -31,6 +31,7 @@ public class Login extends JFrame {
     JLabel labelHasACode;
     JLabel labelCode;
     JLabel logo;
+    public static JPanel hide;
 
     /**
      * Action components
@@ -55,11 +56,11 @@ public class Login extends JFrame {
     private static final int DIFERENCE_COMPONENTS_AND_BUTTON = HEIGHT_INPUT + 30;
 
     /**
-     * Notices 
+     * Notices
      */
     private static final String MESSAGE = "os campos não foram preenchidos corretamente";
     private static final String TITLE = "Não conseguimos efetuar o login";
-    
+
     public Login() {
 
         setUndecorated(true);
@@ -143,9 +144,14 @@ public class Login extends JFrame {
         sendLogin.setFocusPainted(false);
         sendLogin.setBorderPainted(false);
         sendLogin.setContentAreaFilled(false);
-
+        
+        hide = new JPanel();
+        hide.setBounds(0, 0, getWidth(), getHeight());
+        hide.setBackground(Colors.LIGTH_OPACITY);
+        hide.setVisible(false);
+        add(hide);
+        
         initializeLogin();
-
         setVisible(true);
     }
 
@@ -352,7 +358,7 @@ public class Login extends JFrame {
                 System.out.println(CustomerRepository.verifyLogin(customer));
                 hideContentLogin();
             }
-        }else{
+        } else {
             new Modal(TITLE, MESSAGE);
         }
     }
