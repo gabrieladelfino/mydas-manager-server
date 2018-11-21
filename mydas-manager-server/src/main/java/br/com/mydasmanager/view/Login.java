@@ -144,13 +144,13 @@ public class Login extends JFrame {
         sendLogin.setFocusPainted(false);
         sendLogin.setBorderPainted(false);
         sendLogin.setContentAreaFilled(false);
-        
+
         hide = new JPanel();
         hide.setBounds(0, 0, getWidth(), getHeight());
         hide.setBackground(Colors.LIGTH_OPACITY);
         hide.setVisible(false);
         add(hide);
-        
+
         initializeLogin();
         setVisible(true);
     }
@@ -355,8 +355,9 @@ public class Login extends JFrame {
             customer.setPassword(password.getText());
 
             if (CustomerRepository.verifyLogin(customer) != 0) {
-                System.out.println(CustomerRepository.verifyLogin(customer));
-                hideContentLogin();
+                System.out.println("ID: "+CustomerRepository.verifyLogin(customer));
+                dispose();
+                new Components(CustomerRepository.verifyLogin(customer));
             }
         } else {
             new Modal(TITLE, MESSAGE);
@@ -370,8 +371,8 @@ public class Login extends JFrame {
             customer.setCodeAcess(code.getText());
 
             if (CustomerRepository.verifyLogin(customer) != 0) {
-                System.out.println(CustomerRepository.verifyLogin(customer));
-                hideContentHasCode();
+                dispose();
+                new Components(CustomerRepository.verifyLogin(customer));
             }
         }
     }

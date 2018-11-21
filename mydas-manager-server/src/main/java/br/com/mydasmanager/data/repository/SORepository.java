@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 public class SORepository {
 
-    public static void insert(SOModel so) {
+    public static void insert(SOModel so, int id) {
 
         PreparedStatement pstm = MainConnection.excutePrepared(SOStatements.INSERT_SO);
 
@@ -20,11 +20,11 @@ public class SORepository {
             pstm.setString(2, so.getNameUser());
             pstm.setString(3, so.getSystemVersion());
             pstm.setString(4, CaptureDate.selectDate());
-            pstm.setInt(5, so.getDeviceId());
+            pstm.setInt(5, id);
 
             pstm.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerDeviceRepository.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SORepository.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

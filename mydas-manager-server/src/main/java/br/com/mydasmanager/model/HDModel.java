@@ -16,8 +16,4 @@ public class HDModel extends Initialize {
     public double getBytesWritten() {
         return toDouble(systemInfo.getOperatingSystem().getProcess(0).getBytesWritten());
     }
-
-    public int getDeviceId() {
-        return selectDeviceId();
-    }
 }

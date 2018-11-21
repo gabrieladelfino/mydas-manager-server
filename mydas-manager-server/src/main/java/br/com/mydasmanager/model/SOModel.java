@@ -15,8 +15,4 @@ public class SOModel extends Initialize {
     public String getNameUser() {
         return systemInfo.getOperatingSystem().getProcess(0).getUser();
     }
-
-    public int getDeviceId() {
-        return selectDeviceId();
-    }
 }

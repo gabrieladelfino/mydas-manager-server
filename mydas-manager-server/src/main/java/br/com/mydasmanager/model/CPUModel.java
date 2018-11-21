@@ -4,7 +4,7 @@ import br.com.mydasmanager.controller.Initialize;
 import java.text.DecimalFormat;
 
 public class CPUModel extends Initialize {
-
+    
     DecimalFormat df = new DecimalFormat("#,##");
     StringBuilder model = new StringBuilder(systemInfo.getHardware().getProcessor().getName());
     StringBuilder ghz = new StringBuilder(systemInfo.getHardware().getProcessor().getName());
@@ -27,9 +27,5 @@ public class CPUModel extends Initialize {
 
     public String getGhz() {
         return ghz.replace(0, ghz.indexOf("@") + 2, "").toString();
-    }
-
-    public int getDeviceId() {
-        return selectDeviceId();
     }
 }

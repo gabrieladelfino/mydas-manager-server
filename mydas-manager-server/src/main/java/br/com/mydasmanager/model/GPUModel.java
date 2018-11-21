@@ -30,8 +30,4 @@ public class GPUModel extends Initialize {
 
         return 0;
     }
-
-    public int getDeviceId() {
-        return selectDeviceId();
-    }
 }

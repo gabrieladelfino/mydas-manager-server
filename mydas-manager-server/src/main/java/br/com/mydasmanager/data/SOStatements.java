@@ -7,6 +7,6 @@ public class SOStatements {
             + ", systemversion "
             + ", nameuser"
             + ", datecapture"
-            + ", customerdevice)"
+            + ", deviceid)"
             + "VALUES (?, ?, ?, ?, ?)";
 }

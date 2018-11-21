@@ -3,11 +3,7 @@ package br.com.mydasmanager.model;
 import br.com.mydasmanager.controller.Initialize;
 
 public class RAMModel extends Initialize {
-
-    public int getDeviceId() {
-        return selectDeviceId();
-    }
-
+    
     public double getTotalmemory() {
         return toDouble(systemInfo.getHardware().getMemory().getTotal());
     }
