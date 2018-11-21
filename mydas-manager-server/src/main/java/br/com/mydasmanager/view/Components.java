@@ -82,7 +82,6 @@ public class Components extends JFrame {
         int deviceid = Initialize.selectDeviceId(customerid);
 
         try {
-
             Thread.sleep(Initialize.selectInterval(deviceid));
 
             for (;;) {
