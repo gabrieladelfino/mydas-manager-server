@@ -95,60 +95,23 @@ public class Components extends JFrame {
         getDevicesByCustomer(customerid);
     }
 
-    public JPanel getData(int customerid) {
-
-        int deviceid = DeviceRepository.selectDeviceId(customerid);
-
-        DefaultCategoryDataset ds = new DefaultCategoryDataset();
-        List<Double> r = RAMRepository.selectFreeMemory(deviceid);
-
-        for (int i = 0; i < r.size(); i++) {
-            ds.addValue(r.get(i), "máximo", i + "");
-        }
-
-        JFreeChart grafico = ChartFactory.createLineChart("Memório RAM disponivel", "Minuto",
-                "Valor", ds, PlotOrientation.VERTICAL, true, true, false);
-
-        JPanel p = new ChartPanel(grafico);
-        p.setSize(components.getWidth(), components.getHeight());
-        p.setLocation(0, 0);
-
-        return p;
-    }
-
-    public static void loadInformation(int customerid) {
-
-        int deviceid = Initialize.selectDeviceId(customerid);
-
-        try {
-            Thread.sleep(Initialize.selectInterval(deviceid));
-
-            for (;;) {
-                GPURepository.insert(new GPUModel(), deviceid);
-                CPURepository.insert(new CPUModel(), deviceid);
-                RAMRepository.insert(new RAMModel(), deviceid);
-                SORepository.insert(new SOModel(), deviceid);
-                HDRepository.insert(new HDModel(), deviceid);
-            }
-        } catch (InterruptedException ex) {
-            Logger.getLogger(Components.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
-
     private void getDevicesByCustomer(int customerid) {
 
         model.removeAllElements();
         devices = DeviceRepository.selectDevices(customerid);
 
         for (int i = 0; i < devices.size(); i++) {
-
+            
+            int deviceid = devices.get(i).getId();
+            
             machine = new JButton(devices.get(i).getMachineName());
             machine.setBackground(Colors.PALE_VIOLET_RED);
             machine.setOpaque(true);
             machine.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-
+                    dispose();
+                    new Graphics(deviceid);
                 }
 
                 @Override
