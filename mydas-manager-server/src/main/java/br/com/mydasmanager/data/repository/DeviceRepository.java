@@ -1,9 +1,8 @@
 package br.com.mydasmanager.data.repository;
 
-import br.com.mydasmanager.data.CustomerStatements;
 import br.com.mydasmanager.data.DeviceStatements;
 import br.com.mydasmanager.data.MainConnection;
-import br.com.mydasmanager.model.Device;
+import br.com.mydasmanager.model.DeviceModel;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -55,9 +54,10 @@ public class DeviceRepository {
         return 0;
     }
 
-    public static List<Device> selectDevices(int id) {
+    public static List<DeviceModel> selectDevices(int id) {
 
-        List<Device> data = new ArrayList();
+        List<DeviceModel> data = new ArrayList();
+        DeviceModel device;
 
         try {
             PreparedStatement pstm = MainConnection.excutePrepared(DeviceStatements.SELECT_DEVICES);
@@ -66,7 +66,10 @@ public class DeviceRepository {
             ResultSet rs = pstm.executeQuery();
 
             while (rs.next()) {
-                
+                device = new DeviceModel();
+                device.setMachineName(rs.getString("machinename"));
+                device.setId(rs.getInt("id"));
+                data.add(device);
             }
         } catch (SQLException ex) {
             Logger.getLogger(CustomerRepository.class.getName()).log(Level.SEVERE, null, ex);

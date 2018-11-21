@@ -9,10 +9,26 @@ package br.com.mydasmanager.model;
  *
  * @author Gabriela Garcia
  */
-public class Device {
+public class DeviceModel {
     
     private String machineName;
     private int id;
+
+    public String getMachineName() {
+        return machineName;
+    }
+
+    public void setMachineName(String machineName) {
+        this.machineName = machineName;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
     
 }
