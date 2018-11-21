@@ -24,7 +24,7 @@ public class GPURepository {
 
             pstm.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerDeviceRepository.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(GPURepository.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

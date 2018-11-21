@@ -1,6 +1,5 @@
 package br.com.mydasmanager.controller;
 
-import br.com.mydasmanager.data.repository.CustomerDeviceRepository;
 import br.com.mydasmanager.data.repository.DeviceRepository;
 import oshi.SystemInfo;
 import oshi.software.os.OperatingSystem;
@@ -18,8 +17,8 @@ public abstract class Initialize {
     protected Components components = JSensors.get.components();
     protected List<Gpu> gpus = components.gpus;
 
-    public static int selectCustomerDeviceId(int customerid, int deviceid) {
-        return CustomerDeviceRepository.selectCustomerDeviceId(customerid, deviceid);
+    public static int selectDeviceId(int customerid) {
+        return DeviceRepository.selectDeviceId(customerid);
     }
 
     public static int selectInterval(int id) {

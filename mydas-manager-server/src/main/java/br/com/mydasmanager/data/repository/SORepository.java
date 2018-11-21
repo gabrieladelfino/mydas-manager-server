@@ -24,7 +24,7 @@ public class SORepository {
 
             pstm.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerDeviceRepository.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(SORepository.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }

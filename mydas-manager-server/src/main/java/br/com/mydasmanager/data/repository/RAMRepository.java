@@ -28,24 +28,25 @@ public class RAMRepository {
 
             pstm.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerDeviceRepository.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RAMRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static List<Double> selectFreeMemory() {
+    public static List<Double> selectFreeMemory(int id) {
 
         List<Double> data = new ArrayList();
 
         try {
             PreparedStatement pstm = MainConnection.excutePrepared(RAMStatements.SELECT_FREE_MEMORY);
-
+            pstm.setInt(1, id);
+            
             ResultSet rs = pstm.executeQuery();
 
             while (rs.next()) {
                 data.add(rs.getDouble("freememory"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerDeviceRepository.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(RAMRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return data;

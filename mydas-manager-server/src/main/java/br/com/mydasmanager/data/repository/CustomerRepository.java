@@ -29,7 +29,7 @@ public class CustomerRepository {
                 return rs.getInt("id");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerDeviceRepository.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CustomerRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return 0;
@@ -46,29 +46,9 @@ public class CustomerRepository {
                 return rs.getInt("id");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerDeviceRepository.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CustomerRepository.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return 0;
-    }
-
-    public static List<String> selectDevice(int id) {
-
-        List<String> data = new ArrayList();
-
-        try {
-            PreparedStatement pstm = MainConnection.excutePrepared(CustomerStatements.SELECT_DEVICE);
-            pstm.setInt(1, id);
-            
-            ResultSet rs = pstm.executeQuery();
-
-            while (rs.next()) {
-                data.add(rs.getString("machinename"));
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(CustomerDeviceRepository.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        return data;
     }
 }

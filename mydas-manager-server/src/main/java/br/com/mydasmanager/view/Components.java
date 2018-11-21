@@ -3,6 +3,7 @@ package br.com.mydasmanager.view;
 import br.com.mydasmanager.controller.Initialize;
 import br.com.mydasmanager.data.repository.CPURepository;
 import br.com.mydasmanager.data.repository.CustomerRepository;
+import br.com.mydasmanager.data.repository.DeviceRepository;
 import br.com.mydasmanager.data.repository.GPURepository;
 import br.com.mydasmanager.data.repository.HDRepository;
 import br.com.mydasmanager.data.repository.RAMRepository;
@@ -29,13 +30,15 @@ import org.jfree.data.category.DefaultCategoryDataset;
  */
 public class Components extends JFrame {
 
+    /**
+     * Estrutural components
+     */
     JPanel components;
-    static int id;
 
     public Components(int customerid) {
 
         setUndecorated(true);
-        setSize(600, 550);
+        setSize(1200, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
@@ -43,21 +46,22 @@ public class Components extends JFrame {
 
         components = new JPanel();
         components = new GradientPanel(Colors.BLACK, Colors.MEDIUM_BLACK);
-        components.setSize(500, 550);
+        components.setSize(300, 300);
         components.setLocation(0, 0);
         components.setLayout(null);
-        //add(getData());
 
         setVisible(true);
-        getDevicesByCustomer(id);
+
+        add(getData(customerid));
+        getDevicesByCustomer(customerid);
     }
 
-    public JPanel getData() {
+    public JPanel getData(int customerid) {
+        
+        int deviceid = DeviceRepository.selectDeviceId(customerid);
 
         DefaultCategoryDataset ds = new DefaultCategoryDataset();
-        List<Double> r = RAMRepository.selectFreeMemory();
-
-        System.out.println(r.size());
+        List<Double> r = RAMRepository.selectFreeMemory(deviceid);
 
         for (int i = 0; i < r.size(); i++) {
             ds.addValue(r.get(i), "máximo", i + "");
@@ -67,26 +71,26 @@ public class Components extends JFrame {
                 "Valor", ds, PlotOrientation.VERTICAL, true, true, false);
 
         JPanel p = new ChartPanel(grafico);
-        p.setSize(getWidth(), getHeight());
+        p.setSize(components.getWidth(), components.getHeight());
         p.setLocation(0, 0);
 
         return p;
     }
 
-    public static void loadInformation(int customerid, int deviceid) {
+    public static void loadInformation(int customerid) {
 
-        id = Initialize.selectCustomerDeviceId(customerid, deviceid);
+        int deviceid = Initialize.selectDeviceId(customerid);
 
         try {
 
-            Thread.sleep(Initialize.selectInterval(id));
+            Thread.sleep(Initialize.selectInterval(deviceid));
 
             for (;;) {
-                GPURepository.insert(new GPUModel(), id);
-                CPURepository.insert(new CPUModel(), id);
-                RAMRepository.insert(new RAMModel(), id);
-                SORepository.insert(new SOModel(), id);
-                HDRepository.insert(new HDModel(), id);
+                GPURepository.insert(new GPUModel(), deviceid);
+                CPURepository.insert(new CPUModel(), deviceid);
+                RAMRepository.insert(new RAMModel(), deviceid);
+                SORepository.insert(new SOModel(), deviceid);
+                HDRepository.insert(new HDModel(), deviceid);
             }
         } catch (InterruptedException ex) {
             Logger.getLogger(Components.class.getName()).log(Level.SEVERE, null, ex);
@@ -94,11 +98,6 @@ public class Components extends JFrame {
     }
 
     private void getDevicesByCustomer(int id) {
-        List<String> devices = CustomerRepository.selectDevice(id);
-        System.out.println("Entrou: "+CustomerRepository.selectDevice(id).size());
 
-        for (int i = 0; i < devices.size(); i++) {
-            System.out.println("Device " + i + ": " + devices.get(i));
-        }
     }
 }
