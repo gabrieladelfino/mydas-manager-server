@@ -12,4 +12,5 @@ public class HDStatements {
             + ", deviceid)"
             + "VALUES(?, ?, ?)";
     
+    public static final String SELECT_BYTES_READ = "select bytesread from hd where deviceid = ?";
 }

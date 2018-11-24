@@ -72,7 +72,7 @@ public class Components extends JFrame {
         setLayout(null);
         this.getContentPane().setBackground(Colors.WHITE);
 
-        components = new GradientPanel(Colors.BLACK, Colors.MEDIUM_BLACK);
+        components = new JPanel();
         components.setSize(getWidth(), getHeight());
         components.setLocation(0, 0);
         components.setLayout(null);
