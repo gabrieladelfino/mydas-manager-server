@@ -157,7 +157,7 @@ public class Login extends JFrame {
 
     private void initializeLogin() {
 
-        contentLogin = new GradientPanel(Colors.BLACK, Colors.MEDIUM_BLACK);
+        contentLogin = new JPanel();
         contentLogin.setSize(500, 550);
         contentLogin.setLocation(0, 0);
         contentLogin.setLayout(null);
@@ -279,7 +279,7 @@ public class Login extends JFrame {
 
         hideContentLogin();
 
-        contentHasCode = new GradientPanel(Colors.BLACK, Colors.MEDIUM_BLACK);
+        contentHasCode = new JPanel();
         contentHasCode.setSize(500, 550);
         contentHasCode.setLocation(0, 0);
         contentHasCode.setLayout(null);

@@ -7,7 +7,7 @@ public class RAMStatements {
             + ", freememory"
             + ", datecapture"
             + ", deviceid"
-            + ", memoryuse)"
+            + ", currentuse)"
             + "VALUES (?, ?, ?, ?, ?)";
 
     public static final String SELECT_FREE_MEMORY = "SELECT * FROM ram WHERE deviceid =  ?";
