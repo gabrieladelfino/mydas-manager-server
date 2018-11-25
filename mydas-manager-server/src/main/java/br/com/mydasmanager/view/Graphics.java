@@ -39,7 +39,6 @@ public class Graphics extends JFrame {
     static JPanel panel;
     static JPanel p;
     static DefaultListModel model;
-    static JFrame frame;
 
     public Graphics(int deviceid) {
 
@@ -54,13 +53,11 @@ public class Graphics extends JFrame {
         panel.setSize(getWidth(), getHeight());
         panel.setOpaque(true);
         panel.setPreferredSize(new Dimension(300, 300));
-        panel.setBackground(Colors.MEDIUM_BLACK);
+        panel.setVisible(true);
 
         panel.add(getData(deviceid, panel.getWidth(), panel.getHeight()));
 
         add(panel);
-
-        frame = this;
 
         setVisible(true);
         loadInformation(deviceid);
@@ -90,6 +87,7 @@ public class Graphics extends JFrame {
     }
 
     public void loadInformation(int deviceid) {
+
         while (true) {
             try {
 
@@ -109,6 +107,7 @@ public class Graphics extends JFrame {
             panel.add(getData(deviceid, panel.getWidth(), panel.getHeight()));
             panel.revalidate();
             panel.repaint();
+
         }
     }
 }
