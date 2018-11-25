@@ -44,7 +44,7 @@ public class MainConnection {
             Statement statement = getConnection().createStatement();
             ResultSet rs = statement.executeQuery(query);
 
-            LOGGER.info("Executou a operação.");
+            //LOGGER.info("Executou a operação.");
 
             return rs;
 
@@ -58,7 +58,7 @@ public class MainConnection {
     public static PreparedStatement excutePrepared(String query) {
         try {
             PreparedStatement pstm = getConnection().prepareStatement(query);
-            LOGGER.info("Executou a operação.");
+            //LOGGER.info("Executou a operação.");
 
             return pstm;
 

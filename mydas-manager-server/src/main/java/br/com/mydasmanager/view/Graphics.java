@@ -14,15 +14,16 @@ import br.com.mydasmanager.model.CPUModel;
 import br.com.mydasmanager.model.GPUModel;
 import br.com.mydasmanager.model.HDModel;
 import br.com.mydasmanager.model.RAMModel;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.util.List;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -35,8 +36,10 @@ import org.jfree.data.category.DefaultCategoryDataset;
  */
 public class Graphics extends JFrame {
 
-    static JFrame components;
+    static JPanel panel;
     static JPanel p;
+    static DefaultListModel model;
+    static JFrame frame;
 
     public Graphics(int deviceid) {
 
@@ -45,22 +48,31 @@ public class Graphics extends JFrame {
         setLocationRelativeTo(null);
         setLayout(null);
         this.getContentPane().setBackground(Colors.LIGTH_GRAY);
+
+        panel = new JPanel();
+        panel.setLocation(10, 10);
+        panel.setSize(getWidth(), getHeight());
+        panel.setOpaque(true);
+        panel.setPreferredSize(new Dimension(300, 300));
+
+        panel.add(getData(deviceid, panel.getWidth(), panel.getHeight()));
+
+        add(panel);
+
+        frame = this;
+
         setVisible(true);
-
-        components = this;
-        components.add(getData(deviceid));
-
         loadInformation(deviceid);
     }
 
-    public static JPanel getData(int deviceid) {
+    public static JPanel getData(int deviceid, int width, int heigth) {
 
-        System.out.println("getData: " + deviceid);
+        System.out.println("Desenhando gráfico");
 
         DefaultCategoryDataset ds = new DefaultCategoryDataset();
         List<Double> r = HDRepository.selectBytesRead(deviceid);
 
-        System.out.println("Tamanho dos dados: " + r.size());
+        System.out.println("Quantidade de dados: " + r.size());
 
         for (int i = 0; i < r.size(); i++) {
             ds.addValue(r.get(i), "máximo", i + "");
@@ -70,50 +82,34 @@ public class Graphics extends JFrame {
                 "Valor", ds, PlotOrientation.VERTICAL, true, true, false);
 
         p = new ChartPanel(grafico);
-        p.setSize(components.getWidth(), components.getHeight());
+        p.setSize(width, heigth);
         p.setLocation(0, 0);
 
         return p;
     }
 
-    public static void loadInformation(int deviceid) {
-
-        LoadInformation task = new LoadInformation(deviceid);
-        System.out.println("Processando a tarefa ...");
-
-        Future<Boolean> future = threadpool.submit(task);
-
-        for (;;) {
+    public void loadInformation(int deviceid) {
+        while (true) {
             try {
-                System.out.println("A tarefa ainda não foi processada!");
-                components.remove(p);
-                components.add(getData(deviceid));
-                Thread.sleep(Initialize.selectInterval(deviceid));
+
+                System.out.println("Entrou");
+
+                Thread.sleep(100);
+
+                RAMRepository.insert(new RAMModel(), deviceid);
+                CPURepository.insert(new CPUModel(), deviceid);
+                GPURepository.insert(new GPUModel(), deviceid);
+                HDRepository.insert(new HDModel(), deviceid);
+
+                System.out.println("Executou");
             } catch (InterruptedException ex) {
                 Logger.getLogger(Graphics.class.getName()).log(Level.SEVERE, null, ex);
             }
+
+            panel.remove(p);
+            panel.add(getData(deviceid, panel.getWidth(), panel.getHeight()));
+            panel.revalidate();
+            panel.repaint();
         }
     }
-
-    private static final ExecutorService threadpool = Executors.newFixedThreadPool(3);
-
-    private static class LoadInformation implements Callable<Boolean> {
-
-        private int deviceid;
-
-        public LoadInformation(int deviceid) {
-            this.deviceid = deviceid;
-        }
-
-        @Override
-        public Boolean call() {
-            RAMRepository.insert(new RAMModel(), deviceid);
-            CPURepository.insert(new CPUModel(), deviceid);
-            GPURepository.insert(new GPUModel(), deviceid);
-            HDRepository.insert(new HDModel(), deviceid);
-            return true;
-        }
-    }
-    
-    //threadpool.shutdown();
 }
