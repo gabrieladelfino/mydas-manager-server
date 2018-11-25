@@ -92,9 +92,7 @@ public class Graphics extends JFrame {
         while (true) {
             try {
 
-                System.out.println("Entrou");
-
-                Thread.sleep(100);
+                Thread.sleep(Initialize.selectInterval(deviceid));
 
                 RAMRepository.insert(new RAMModel(), deviceid);
                 CPURepository.insert(new CPUModel(), deviceid);
