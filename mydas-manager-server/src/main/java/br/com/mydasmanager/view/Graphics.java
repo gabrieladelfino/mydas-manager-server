@@ -47,13 +47,14 @@ public class Graphics extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
-        this.getContentPane().setBackground(Colors.LIGTH_GRAY);
+        this.getContentPane().setBackground(Colors.MEDIUM_BLACK);
 
         panel = new JPanel();
         panel.setLocation(10, 10);
         panel.setSize(getWidth(), getHeight());
         panel.setOpaque(true);
         panel.setPreferredSize(new Dimension(300, 300));
+        panel.setBackground(Colors.MEDIUM_BLACK);
 
         panel.add(getData(deviceid, panel.getWidth(), panel.getHeight()));
 

@@ -36,8 +36,6 @@ public class Login extends JFrame {
     /**
      * Action components
      */
-    JLabel close;
-    JLabel minimize;
     JTextField login;
     JPasswordField password;
     JButton sendLogin;
@@ -63,79 +61,15 @@ public class Login extends JFrame {
 
     public Login() {
 
-        setUndecorated(true);
         setSize(500, 550);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
-        this.getContentPane().setBackground(Colors.WHITE);
+        this.getContentPane().setBackground(Colors.MEDIUM_BLACK);
 
         logo = new DrawLogo();
         logo.setSize(200, 100);
         logo.setLocation(120, 80);
-
-        close = new JLabel();
-        close.setBounds(450, 20, 32, 32);
-        close.setOpaque(false);
-        close.setIcon(new ImageIcon("img/menu-bar/close-white.png"));
-        close.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                dispose();
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
-
-        minimize = new JLabel();
-        minimize.setSize(32, 32);
-        minimize.setLocation(400, 20);
-        minimize.setOpaque(false);
-        minimize.setIcon(new ImageIcon("img/menu-bar/minimize-line-white.png"));
-        minimize.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                setExtendedState(JFrame.ICONIFIED);
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
 
         sendLogin = new RoundJButton();
         sendLogin.setText("Entrar");
@@ -161,9 +95,7 @@ public class Login extends JFrame {
         contentLogin.setSize(500, 550);
         contentLogin.setLocation(0, 0);
         contentLogin.setLayout(null);
-
-        contentLogin.add(close);
-        contentLogin.add(minimize);
+        contentLogin.setBackground(Colors.MEDIUM_BLACK);
 
         labelLogin = new JLabel("Email ou login");
         labelLogin.setForeground(Colors.WHITE);
@@ -283,9 +215,7 @@ public class Login extends JFrame {
         contentHasCode.setSize(500, 550);
         contentHasCode.setLocation(0, 0);
         contentHasCode.setLayout(null);
-
-        contentHasCode.add(close);
-        contentHasCode.add(minimize);
+        contentHasCode.setBackground(Colors.MEDIUM_BLACK);
 
         labelCode = new JLabel("Código de acesso");
         labelCode.setForeground(Colors.WHITE);

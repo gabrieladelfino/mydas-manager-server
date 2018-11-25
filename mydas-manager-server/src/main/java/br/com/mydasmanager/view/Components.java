@@ -3,6 +3,7 @@ package br.com.mydasmanager.view;
 import br.com.mydasmanager.data.repository.DeviceRepository;
 import br.com.mydasmanager.model.DeviceModel;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -38,12 +39,13 @@ public class Components extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
-        this.getContentPane().setBackground(Colors.WHITE);
+        this.getContentPane().setBackground(Colors.MEDIUM_BLACK);
 
         components = new JPanel();
         components.setSize(getWidth(), getHeight());
         components.setLocation(0, 0);
         components.setLayout(null);
+        components.setBackground(Colors.MEDIUM_BLACK);
         add(components);
 
         panel = new JPanel();
