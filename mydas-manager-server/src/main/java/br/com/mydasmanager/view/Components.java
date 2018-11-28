@@ -93,10 +93,8 @@ public class Components extends JFrame {
             machine.setVerticalAlignment(SwingConstants.CENTER);
             machine.setSize(150, 60);
             if (i == 0) {
-                System.out.println("Entrou no primeiro");
                 machine.setLocation(10, 10);
             } else {
-                System.out.println("Entrou nos outros");
                 machine.setLocation((panel.getComponent(i - 1).getX() + machine.getWidth())+30, 10);
             }
             machine.setOpaque(true);
