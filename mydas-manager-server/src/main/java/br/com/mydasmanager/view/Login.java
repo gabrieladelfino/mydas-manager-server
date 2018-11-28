@@ -1,12 +1,12 @@
 package br.com.mydasmanager.view;
 
 import br.com.mydasmanager.data.repository.CustomerRepository;
+import br.com.mydasmanager.data.repository.DeviceRepository;
 import br.com.mydasmanager.model.Customer;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -285,9 +285,10 @@ public class Login extends JFrame {
             customer.setPassword(password.getText());
 
             if (CustomerRepository.verifyLogin(customer) != 0) {
-                System.out.println("ID: "+CustomerRepository.verifyLogin(customer));
                 dispose();
-                new Components(CustomerRepository.verifyLogin(customer));
+                int customerid = CustomerRepository.verifyLogin(customer);
+                int deviceid = DeviceRepository.selectDeviceId(customerid);
+                new Components(customerid);
             }
         } else {
             new Modal(TITLE, MESSAGE);
@@ -302,7 +303,9 @@ public class Login extends JFrame {
 
             if (CustomerRepository.verifyLogin(customer) != 0) {
                 dispose();
-                new Components(CustomerRepository.verifyLogin(customer));
+                int customerid = CustomerRepository.verifyLogin(customer);
+                int deviceid = DeviceRepository.selectDeviceId(customerid);
+                new Components(customerid);
             }
         }
     }
