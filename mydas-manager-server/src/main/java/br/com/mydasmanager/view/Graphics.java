@@ -19,6 +19,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultListModel;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import org.jfree.chart.ChartFactory;
@@ -31,7 +32,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
  *
  * @author Gabriela Garcia
  */
-public class Graphics extends JFrame {
+public class Graphics extends JDialog {
 
     static boolean isDraw = false;
     static JPanel panel;
@@ -40,19 +41,17 @@ public class Graphics extends JFrame {
 
     public Graphics(int deviceid) {
 
-        System.out.println(deviceid);
-
-        setSize(1200, 500);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setModal(true);
+        setSize(800, 500);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
-        this.getContentPane().setBackground(Colors.MEDIUM_BLACK);
+        this.getContentPane().setBackground(Colors.WHITE);
 
         panel = new JPanel();
-        panel.setLocation(10, 10);
+        panel.setLocation(0, 0);
         panel.setSize(getWidth(), getHeight());
         panel.setOpaque(true);
-        panel.setPreferredSize(new Dimension(300, 300));
         panel.setVisible(true);
         getData(deviceid, getWidth(), getHeight());
         add(panel);

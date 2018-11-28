@@ -101,7 +101,6 @@ public class Components extends JFrame {
             machine.addMouseListener(new MouseListener() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
-                    dispose();
                     new Graphics(deviceid);
                 }
 
