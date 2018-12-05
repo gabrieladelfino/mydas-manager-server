@@ -1,6 +1,5 @@
 package br.com.mydasmanager.view;
 
-import br.com.mydasmanager.controller.Program;
 import br.com.mydasmanager.data.repository.CustomerRepository;
 import br.com.mydasmanager.data.repository.DeviceRepository;
 import br.com.mydasmanager.model.Customer;
@@ -349,7 +348,7 @@ public class Login extends JFrame {
             WebhookResponse response = slack.send(url, payload);
 
         } catch (IOException ex) {
-            Logger.getLogger(Program.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }
