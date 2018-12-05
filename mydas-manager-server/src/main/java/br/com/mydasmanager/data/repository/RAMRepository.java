@@ -1,6 +1,5 @@
 package br.com.mydasmanager.data.repository;
 
-import br.com.mydasmanager.data.MainConnection;
 import br.com.mydasmanager.data.RAMStatements;
 import br.com.mydasmanager.controller.CaptureDate;
 import br.com.mydasmanager.model.RAMModel;

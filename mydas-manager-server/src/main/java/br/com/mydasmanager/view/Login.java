@@ -1,5 +1,6 @@
 package br.com.mydasmanager.view;
 
+import br.com.mydasmanager.controller.EstruturalLog;
 import br.com.mydasmanager.data.repository.CustomerRepository;
 import br.com.mydasmanager.data.repository.DeviceRepository;
 import br.com.mydasmanager.model.Customer;
@@ -308,6 +309,7 @@ public class Login extends JFrame {
             customer.setCodeAcess(code.getText());
 
             if (CustomerRepository.verifyLogin(customer) != 0) {
+                EstruturalLog.log("INFO", "Login efetuado com sucesso", "login_");
                 dispose();
                 int customerid = CustomerRepository.verifyLogin(customer);
                 int deviceid = DeviceRepository.selectDeviceId(customerid);

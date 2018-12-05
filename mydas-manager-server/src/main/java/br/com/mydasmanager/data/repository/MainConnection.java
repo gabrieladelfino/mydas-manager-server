@@ -1,5 +1,6 @@
-package br.com.mydasmanager.data;
+package br.com.mydasmanager.data.repository;
 
+import br.com.mydasmanager.controller.EstruturalLog;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -23,8 +24,8 @@ public class MainConnection {
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             return DriverManager.getConnection(_URL);
-        } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("Erro ou classe não encontrada: " + e.getMessage());
+        } catch (ClassNotFoundException | SQLException ex) {
+             EstruturalLog.log("ERROR", ex.getMessage(), "log_mainConnection_");
             return null;
         }
     }
@@ -43,29 +44,28 @@ public class MainConnection {
         try {
             Statement statement = getConnection().createStatement();
             ResultSet rs = statement.executeQuery(query);
-
-            //LOGGER.info("Executou a operação.");
-
+            EstruturalLog.log("INFO", "Operação executada", "log_mainConnection_");
             return rs;
 
-        } catch (SQLException e) {
-            LOGGER.error(e.getMessage());
+        } catch (SQLException ex) {
+            EstruturalLog.log("ERROR", ex.getMessage(), "log_mainConnection_");
         }
-
+        
+        EstruturalLog.log("ERROR", "Operação executada", "log_mainConnection_");
         return null;
     }
 
     public static PreparedStatement excutePrepared(String query) {
         try {
             PreparedStatement pstm = getConnection().prepareStatement(query);
-            //LOGGER.info("Executou a operação.");
-
+            EstruturalLog.log("INFO", "Operação executada", "log_mainConnection_");
             return pstm;
 
-        } catch (SQLException e) {
-            LOGGER.error(e.getMessage());
+        } catch (SQLException ex) {
+            EstruturalLog.log("ERROR", ex.getMessage(), "log_mainConnection_");
         }
 
+        EstruturalLog.log("ERROR", "Ocorreu um erro inesperado", "log_mainConnection_");
         return null;
     }
 }

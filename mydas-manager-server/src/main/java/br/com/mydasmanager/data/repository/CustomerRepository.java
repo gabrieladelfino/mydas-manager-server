@@ -1,7 +1,6 @@
 package br.com.mydasmanager.data.repository;
 
 import br.com.mydasmanager.data.CustomerStatements;
-import br.com.mydasmanager.data.MainConnection;
 import br.com.mydasmanager.model.Customer;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

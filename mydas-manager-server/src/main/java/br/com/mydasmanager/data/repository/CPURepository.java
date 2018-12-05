@@ -1,9 +1,9 @@
 package br.com.mydasmanager.data.repository;
 
 import br.com.mydasmanager.data.CPUStatements;
-import br.com.mydasmanager.data.MainConnection;
 import br.com.mydasmanager.model.CPUModel;
 import br.com.mydasmanager.controller.CaptureDate;
+import br.com.mydasmanager.controller.EstruturalLog;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -26,7 +26,7 @@ public class CPURepository {
 
             pstm.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(CPURepository.class.getName()).log(Level.SEVERE, null, ex);
+            EstruturalLog.log("ERROR", ex.getMessage(), "CPURepository_");
         }
     }
 }
