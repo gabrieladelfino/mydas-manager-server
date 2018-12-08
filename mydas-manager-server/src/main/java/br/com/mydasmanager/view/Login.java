@@ -90,7 +90,7 @@ public class Login extends JFrame {
     }
 
     private void initializeLogin() {
-        
+
         contentLogin = new JPanel();
         contentLogin.setSize(500, 550);
         contentLogin.setLocation(0, 0);
@@ -272,7 +272,7 @@ public class Login extends JFrame {
             }
         });
         contentHasCode.add(sendCode);
-        
+
         labelHasACode = new JLabel("Voltar para o login");
         labelHasACode.setForeground(Colors.WHITE);
         labelHasACode.setSize(WIDTH_COMPONENT, HEIGHT_LABEL);
@@ -281,7 +281,7 @@ public class Login extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 initializeLogin();
-                hideContentHasCode();     
+                hideContentHasCode();
             }
 
             @Override
@@ -334,7 +334,7 @@ public class Login extends JFrame {
 
             if (CustomerRepository.verifyLogin(customer) != 0) {
                 dispose();
-                int customerid = CustomerRepository.verifyLogin(customer);                
+                int customerid = CustomerRepository.verifyLogin(customer);
                 int deviceid = DeviceRepository.selectDeviceId(customerid);
                 new Components(customerid, deviceid);
             }
@@ -345,10 +345,10 @@ public class Login extends JFrame {
 
     private void verifyHasCode() {
         if (verifyFields(code.getText())) {
-            
+
             Customer customer = new Customer();
             customer.setCodeAcess(code.getText());
-          
+
             if (CustomerRepository.verifyCode(customer) != 0) {
                 EstruturalLog.log("INFO", "Login efetuado com sucesso", "login_");
                 dispose();
@@ -358,10 +358,9 @@ public class Login extends JFrame {
                 new Components(customerid, deviceid);
 
                 sendMessage();
-   
 
             }
-        }else {
+        } else {
             new Modal(TITLE, MESSAGE);
         }
     }
@@ -390,12 +389,12 @@ public class Login extends JFrame {
                     .channel("#general")
                     .username("username")
                     .iconEmoji(":smile_cat:")
-                    .text("message")
+                    .text("Login efetuado com sucesso, liberação para capturar dados.")
                     .build();
 
             Slack slack = Slack.getInstance();
             WebhookResponse response = slack.send(url, payload);
-
+            EstruturalLog.log("INFO", response.getMessage(), url);
         } catch (IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
