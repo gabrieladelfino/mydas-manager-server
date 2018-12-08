@@ -10,7 +10,7 @@ public class Customer {
     private String password;
     private String codeAcess;
     
-    private String id;
+    private int id;
     
     public String getUserName() {
         return userName;
@@ -28,11 +28,11 @@ public class Customer {
         this.password = password;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

@@ -7,12 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 public class MainConnection {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(MainConnection.class);
 
     public static Connection getConnection() {
 
@@ -23,11 +19,14 @@ public class MainConnection {
 
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+            EstruturalLog.log("INFO", "Executou a operação.", MainConnection.class.getName());
             return DriverManager.getConnection(_URL);
         } catch (ClassNotFoundException | SQLException ex) {
-             EstruturalLog.log("ERROR", ex.getMessage(), "log_mainConnection_");
+            EstruturalLog.log("ERROR", "Classe não encontrada: "+ex.getMessage(), ex.getClass().getName());
+            return DriverManager.getConnection(_URL);
+        } 
             return null;
-        }
+        
     }
 
     public static void closeConnection(Connection conn) {
@@ -35,8 +34,8 @@ public class MainConnection {
             if (conn != null) {
                 conn.close();
             }
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
+        } catch (SQLException ex) {
+            EstruturalLog.log("ERROR", ex.getMessage(), ex.getClass().getName());
         }
     }
 
@@ -44,28 +43,27 @@ public class MainConnection {
         try {
             Statement statement = getConnection().createStatement();
             ResultSet rs = statement.executeQuery(query);
-            EstruturalLog.log("INFO", "Operação executada", "log_mainConnection_");
+
+            EstruturalLog.log("INFO", "Executou a operação.", MainConnection.class.getName());
+
             return rs;
 
         } catch (SQLException ex) {
-            EstruturalLog.log("ERROR", ex.getMessage(), "log_mainConnection_");
+            EstruturalLog.log("ERROR", ex.getMessage(), ex.getClass().getName());
         }
-        
-        EstruturalLog.log("ERROR", "Operação executada", "log_mainConnection_");
         return null;
     }
 
     public static PreparedStatement excutePrepared(String query) {
         try {
             PreparedStatement pstm = getConnection().prepareStatement(query);
-            EstruturalLog.log("INFO", "Operação executada", "log_mainConnection_");
+            EstruturalLog.log("INFO", "Executou a operação.", MainConnection.class.getName());
             return pstm;
 
         } catch (SQLException ex) {
-            EstruturalLog.log("ERROR", ex.getMessage(), "log_mainConnection_");
+            EstruturalLog.log("ERROR", ex.getMessage(), ex.getClass().getName());
         }
 
-        EstruturalLog.log("ERROR", "Ocorreu um erro inesperado", "log_mainConnection_");
         return null;
     }
 }

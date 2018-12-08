@@ -24,7 +24,7 @@ public class CPURepository {
 
             pstm.execute();
         } catch (SQLException ex) {
-            EstruturalLog.log("ERROR", ex.getMessage(), "CPURepository_");
+            EstruturalLog.log("ERROR", ex.getMessage(), ex.getClass().getName());
         }
     }
 }

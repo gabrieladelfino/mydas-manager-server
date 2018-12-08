@@ -2,11 +2,10 @@ package br.com.mydasmanager.data.repository;
 
 import br.com.mydasmanager.data.GPUStatements;
 import br.com.mydasmanager.controller.CaptureDate;
+import br.com.mydasmanager.controller.EstruturalLog;
 import br.com.mydasmanager.model.GPUModel;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class GPURepository {
 
@@ -23,7 +22,7 @@ public class GPURepository {
 
             pstm.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(GPURepository.class.getName()).log(Level.SEVERE, null, ex);
+            EstruturalLog.log("ERROR", ex.getMessage(), ex.getClass().getName());
         }
     }
 }

@@ -1,12 +1,11 @@
 package br.com.mydasmanager.data.repository;
 
+import br.com.mydasmanager.controller.EstruturalLog;
 import br.com.mydasmanager.data.CustomerStatements;
 import br.com.mydasmanager.model.Customer;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -49,5 +48,22 @@ public class CustomerRepository {
         }
 
         return 0;
+    }
+    
+    public static String getName(int customerid) {
+        try {
+            PreparedStatement pstm = MainConnection.excutePrepared(CustomerStatements.SELECT_NAME);
+            pstm.setInt(1, customerid);
+
+            ResultSet rs = pstm.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("name");
+            }
+        } catch (SQLException ex) {
+            EstruturalLog.log("ERROR", ex.getMessage(), ex.getClass().getName());
+        }
+
+        return "";
     }
 }

@@ -1,5 +1,6 @@
 package br.com.mydasmanager.data.repository;
 
+import br.com.mydasmanager.controller.EstruturalLog;
 import br.com.mydasmanager.data.DeviceStatements;
 import br.com.mydasmanager.model.DeviceModel;
 import java.sql.PreparedStatement;
@@ -28,7 +29,7 @@ public class DeviceRepository {
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(DeviceRepository.class.getName()).log(Level.SEVERE, null, ex);
+            EstruturalLog.log("ERROR", ex.getMessage(), ex.getClass().getName());
         }
 
         return 0;
@@ -42,12 +43,12 @@ public class DeviceRepository {
 
             ResultSet rs = pstm.executeQuery();
 
-            while (rs.next()) {
+            if (rs.next()) {
                 return rs.getInt("id");
             }
 
         } catch (SQLException ex) {
-            Logger.getLogger(DeviceRepository.class.getName()).log(Level.SEVERE, null, ex);
+            EstruturalLog.log("ERROR", ex.getMessage(), ex.getClass().getName());
         }
 
         return 0;
@@ -71,7 +72,7 @@ public class DeviceRepository {
                 data.add(device);
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerRepository.class.getName()).log(Level.SEVERE, null, ex);
+            EstruturalLog.log("ERROR", ex.getMessage(), ex.getClass().getName());
         }
 
         return data;

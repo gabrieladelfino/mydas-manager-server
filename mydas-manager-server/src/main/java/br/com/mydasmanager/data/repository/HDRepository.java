@@ -1,5 +1,6 @@
 package br.com.mydasmanager.data.repository;
 
+import br.com.mydasmanager.controller.EstruturalLog;
 import br.com.mydasmanager.data.HDStatements;
 import br.com.mydasmanager.model.HDModel;
 import java.sql.PreparedStatement;
@@ -44,7 +45,7 @@ public class HDRepository {
                 data.add(rs.getDouble(1));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(RAMRepository.class.getName()).log(Level.SEVERE, null, ex);
+            EstruturalLog.log("ERROR", ex.getMessage(), ex.getClass().getName());
         }
 
         return data;
