@@ -327,8 +327,7 @@ public class Login extends JFrame {
 
             if (CustomerRepository.verifyLogin(customer) != 0) {
                 dispose();
-                int customerid = CustomerRepository.verifyLogin(customer);
-                System.out.println("Entrou");
+                int customerid = CustomerRepository.verifyLogin(customer);                
                 new Components(customerid);
             }
         } else {
@@ -344,8 +343,7 @@ public class Login extends JFrame {
 
             if (CustomerRepository.verifyCode(customer) != 0) {
                 dispose();
-                int customerid = CustomerRepository.verifyCode(customer);
-                System.out.println("Entrou");
+                int customerid = CustomerRepository.verifyCode(customer);                
                 new Components(customerid);
             }
         }else {

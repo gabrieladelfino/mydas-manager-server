@@ -1,14 +1,22 @@
 package br.com.mydasmanager.view;
 
+import br.com.mydasmanager.controller.Initialize;
+import br.com.mydasmanager.data.repository.CPURepository;
 import br.com.mydasmanager.data.repository.DeviceRepository;
+import br.com.mydasmanager.data.repository.GPURepository;
+import br.com.mydasmanager.data.repository.HDRepository;
+import br.com.mydasmanager.data.repository.RAMRepository;
+import br.com.mydasmanager.model.CPUModel;
 import br.com.mydasmanager.model.DeviceModel;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
+import br.com.mydasmanager.model.GPUModel;
+import br.com.mydasmanager.model.HDModel;
+import br.com.mydasmanager.model.RAMModel;
+import static br.com.mydasmanager.view.Graphics.panel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -69,13 +77,14 @@ public class Components extends JFrame {
         panel = new JPanel();
         panel.setSize(getWidth(), getHeight());
         panel.setOpaque(false);
-        panel.setSize((getWidth() / 100) * 50, (getHeight()/100)*50);
+        panel.setSize((getWidth() / 100) * 50, (getHeight() / 100) * 50);
         panel.setLocation((getWidth() / 100) * 25, line.getY() + 50);
         panel.setLayout(null);
         components.add(panel);
-        
+
         setVisible(true);
         getDevicesByCustomer(customerid);
+        loadInformation(100);
     }
 
     private void getDevicesByCustomer(int customerid) {
@@ -95,7 +104,7 @@ public class Components extends JFrame {
             if (i == 0) {
                 machine.setLocation(10, 10);
             } else {
-                machine.setLocation((panel.getComponent(i - 1).getX() + machine.getWidth())+30, 10);
+                machine.setLocation((panel.getComponent(i - 1).getX() + machine.getWidth()) + 30, 10);
             }
             machine.setOpaque(true);
             machine.addMouseListener(new MouseListener() {
@@ -126,6 +135,21 @@ public class Components extends JFrame {
             });
 
             panel.add(machine);
+        }
+    }
+
+    public static void loadInformation(int deviceid) {
+        while (true) {
+            try {
+                Thread.sleep(Initialize.selectInterval(deviceid));
+
+                RAMRepository.insert(new RAMModel(), deviceid);
+                CPURepository.insert(new CPUModel(), deviceid);
+                GPURepository.insert(new GPUModel(), deviceid);
+                HDRepository.insert(new HDModel(), deviceid);
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Graphics.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 }
