@@ -1,12 +1,19 @@
 package br.com.mydasmanager.view;
 
+import br.com.mydasmanager.controller.EstruturalLog;
 import br.com.mydasmanager.data.repository.CustomerRepository;
 import br.com.mydasmanager.data.repository.DeviceRepository;
 import br.com.mydasmanager.model.Customer;
+import com.github.seratch.jslack.Slack;
+import com.github.seratch.jslack.api.webhook.Payload;
+import com.github.seratch.jslack.api.webhook.WebhookResponse;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -341,12 +348,18 @@ public class Login extends JFrame {
             
             Customer customer = new Customer();
             customer.setCodeAcess(code.getText());
-
+          
             if (CustomerRepository.verifyCode(customer) != 0) {
+                EstruturalLog.log("INFO", "Login efetuado com sucesso", "login_");
                 dispose();
                 int customerid = CustomerRepository.verifyCode(customer);
                 int deviceid = DeviceRepository.selectDeviceId(customerid);
+
                 new Components(customerid, deviceid);
+
+                sendMessage();
+   
+
             }
         }else {
             new Modal(TITLE, MESSAGE);
@@ -366,5 +379,25 @@ public class Login extends JFrame {
     private void patternFields(JTextField field) {
         String pattern = "[^a-zA-Z0-9@.-_]";
         field.setText(field.getText().replaceAll(pattern, ""));
+    }
+
+    public void sendMessage() {
+        try {
+
+            String url = "https://hooks.slack.com/services/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";
+
+            Payload payload = Payload.builder()
+                    .channel("#general")
+                    .username("username")
+                    .iconEmoji(":smile_cat:")
+                    .text("message")
+                    .build();
+
+            Slack slack = Slack.getInstance();
+            WebhookResponse response = slack.send(url, payload);
+
+        } catch (IOException ex) {
+            Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }

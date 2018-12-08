@@ -1,0 +1,3 @@
+[INFO] [05-12-2018 07:43:25] Operação executada
+[INFO] [05-12-2018 07:43:25] Operação executada
+[INFO] [05-12-2018 07:43:26] Operação executada

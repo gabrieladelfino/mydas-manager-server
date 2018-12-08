@@ -23,8 +23,10 @@ public class MainConnection {
             return DriverManager.getConnection(_URL);
         } catch (ClassNotFoundException | SQLException ex) {
             EstruturalLog.log("ERROR", "Classe não encontrada: "+ex.getMessage(), ex.getClass().getName());
+            return DriverManager.getConnection(_URL);
+        } 
             return null;
-        }
+        
     }
 
     public static void closeConnection(Connection conn) {
@@ -49,7 +51,6 @@ public class MainConnection {
         } catch (SQLException ex) {
             EstruturalLog.log("ERROR", ex.getMessage(), ex.getClass().getName());
         }
-
         return null;
     }
 
