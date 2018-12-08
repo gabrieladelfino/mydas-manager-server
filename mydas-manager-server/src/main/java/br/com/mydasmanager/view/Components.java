@@ -2,7 +2,6 @@ package br.com.mydasmanager.view;
 
 import br.com.mydasmanager.controller.Initialize;
 import br.com.mydasmanager.data.repository.CPURepository;
-import br.com.mydasmanager.data.repository.DeviceRepository;
 import br.com.mydasmanager.data.repository.GPURepository;
 import br.com.mydasmanager.data.repository.HDRepository;
 import br.com.mydasmanager.data.repository.RAMRepository;
@@ -11,12 +10,12 @@ import br.com.mydasmanager.model.DeviceModel;
 import br.com.mydasmanager.model.GPUModel;
 import br.com.mydasmanager.model.HDModel;
 import br.com.mydasmanager.model.RAMModel;
-import static br.com.mydasmanager.view.Graphics.panel;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -38,6 +37,9 @@ public class Components extends JFrame {
     List<DeviceModel> devices;
     JLabel customerName;
     JLabel line;
+    JButton lbl;
+    JButton isBreak;
+    static Thread t = new Thread();
 
     /**
      *
@@ -45,7 +47,7 @@ public class Components extends JFrame {
      */
     public Components(int customerid) {
 
-        setSize(1200, 500);
+        setSize(500, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
@@ -74,79 +76,87 @@ public class Components extends JFrame {
         line.setBackground(Colors.PALE_VIOLET_RED);
         components.add(line);
 
-        panel = new JPanel();
-        panel.setSize(getWidth(), getHeight());
-        panel.setOpaque(false);
-        panel.setSize((getWidth() / 100) * 50, (getHeight() / 100) * 50);
-        panel.setLocation((getWidth() / 100) * 25, line.getY() + 50);
-        panel.setLayout(null);
-        components.add(panel);
+        lbl = new JButton("Clique aqui para iniciar");
+        lbl.setSize(300, 20);
+        lbl.setLocation(100, line.getY() + 50);
+        lbl.setForeground(Colors.WHITE);
+        lbl.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                lbl.setText("Capturando dados...");
+                new Modal("Vamos iniciar", "estamos capturando os dados da máquina, você pode parar a qualquer momento clicando em interromper");
+                loadInformation(101);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+
+        });
+        components.add(lbl);
+
+        isBreak = new JButton("Interromper");
+        isBreak.setSize(300, 20);
+        isBreak.setLocation(100, lbl.getY() + 30);
+        isBreak.setForeground(Colors.WHITE);
+        isBreak.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("Clicou");
+                t.stop();
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+
+        });
+        components.add(isBreak);
 
         setVisible(true);
-        getDevicesByCustomer(customerid);
-        loadInformation(100);
-    }
-
-    private void getDevicesByCustomer(int customerid) {
-
-        devices = DeviceRepository.selectDevices(customerid);
-
-        for (int i = 0; i < devices.size(); i++) {
-
-            int deviceid = devices.get(i).getId();
-
-            JLabel machine = new JLabel(devices.get(i).getMachineName());
-            machine.setBackground(Colors.WHITE);
-            machine.setOpaque(true);
-            machine.setHorizontalAlignment(SwingConstants.CENTER);
-            machine.setVerticalAlignment(SwingConstants.CENTER);
-            machine.setSize(150, 60);
-            if (i == 0) {
-                machine.setLocation(10, 10);
-            } else {
-                machine.setLocation((panel.getComponent(i - 1).getX() + machine.getWidth()) + 30, 10);
-            }
-            machine.setOpaque(true);
-            machine.addMouseListener(new MouseListener() {
-                @Override
-                public void mouseClicked(MouseEvent e) {
-                    new Graphics(deviceid);
-                }
-
-                @Override
-                public void mousePressed(MouseEvent e) {
-
-                }
-
-                @Override
-                public void mouseReleased(MouseEvent e) {
-
-                }
-
-                @Override
-                public void mouseEntered(MouseEvent e) {
-
-                }
-
-                @Override
-                public void mouseExited(MouseEvent e) {
-
-                }
-            });
-
-            panel.add(machine);
-        }
     }
 
     public static void loadInformation(int deviceid) {
         while (true) {
             try {
-                Thread.sleep(Initialize.selectInterval(deviceid));
-
+                System.out.println("Terminou");
                 RAMRepository.insert(new RAMModel(), deviceid);
                 CPURepository.insert(new CPUModel(), deviceid);
                 GPURepository.insert(new GPUModel(), deviceid);
                 HDRepository.insert(new HDModel(), deviceid);
+                t.sleep(Initialize.selectInterval(deviceid));
             } catch (InterruptedException ex) {
                 Logger.getLogger(Graphics.class.getName()).log(Level.SEVERE, null, ex);
             }

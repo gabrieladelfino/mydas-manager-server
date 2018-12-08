@@ -241,7 +241,6 @@ public class Login extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 verifyHasCode();
-                System.out.println("Entrou");
             }
 
             @Override

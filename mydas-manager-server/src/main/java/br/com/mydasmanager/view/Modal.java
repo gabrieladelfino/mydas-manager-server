@@ -4,6 +4,7 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.geom.RoundRectangle2D;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -16,12 +17,12 @@ public class Modal extends JDialog {
     JLabel message;
     JLabel title;
     JLabel line;
-    
+
     /**
      * Action components
      */
-    JLabel agree;
-    
+    JButton agree;
+
     /**
      * Size and location components
      */
@@ -34,7 +35,7 @@ public class Modal extends JDialog {
     public Modal(String title, String message) {
 
         Login.hide.setVisible(true);
-        
+
         setModal(true);
         setSize(400, 250);
         setLayout(null);
@@ -42,7 +43,7 @@ public class Modal extends JDialog {
         setLocationRelativeTo(null);
         setUndecorated(true);
         this.getContentPane().setBackground(Colors.WHITE);
-        
+
         this.title = new JLabel(title);
         this.title.setSize(WIDTH_COMPONENT, HEIGHT_COMPONENT);
         this.title.setLocation(AXIS_X, AXIS_Y);
@@ -59,17 +60,24 @@ public class Modal extends JDialog {
 
         line = new JLabel();
         line.setSize(WIDTH_COMPONENT, 2);
-        line.setLocation(AXIS_X, this.message.getY() + DIFERENCE);
+        line.setLocation(AXIS_X, this.message.getY() + DIFERENCE + 10);
         line.setBackground(Colors.LIGTH_GRAY);
         line.setOpaque(true);
         add(line);
 
-        agree = new JLabel();
+        agree = new RoundJButton();
+        agree.setText("Entendi");
         agree.setIcon(new ImageIcon("img/tick.png"));
-        agree.setSize(WIDTH_COMPONENT, HEIGHT_COMPONENT);
-        agree.setLocation(AXIS_X, line.getY() + DIFERENCE);
+        agree.setSize(WIDTH_COMPONENT, 35);
+        agree.setLocation(AXIS_X, line.getY() + 25);
         agree.setBackground(Colors.MEDIUM_VIOLET_RED);
-        agree.setOpaque(true);
+        agree.setForeground(Colors.WHITE);
+        agree.setOpaque(false);
+        agree.setFocusPainted(false);
+        agree.setBorderPainted(false);
+        agree.setContentAreaFilled(false);
+        agree.setHorizontalAlignment(SwingConstants.CENTER);
+        agree.setVerticalAlignment(SwingConstants.CENTER);
         agree.addMouseListener(new MouseListener() {
 
             @Override

@@ -23,19 +23,19 @@ public class RoundJButton extends JButton {
     }
 
     protected void paintComponent(Graphics g) {
-        g.setColor(Colors.WHITE);
-        g.fillRoundRect(0, 0, getWidth(), getHeight(), 9, 9);
+        g.setColor(getBackground());
+        g.fillRoundRect(0, 0, getWidth(), getHeight(), 4, 4);
         super.paintComponent(g);
     }
 
     protected void paintBorder(Graphics g) {
         g.setColor(getBackground());
-        g.drawRoundRect(0, 0, getWidth(), getHeight(), 9, 9);
+        g.drawRoundRect(0, 0, getWidth(), getHeight(), 4, 4);
     }
 
     public boolean contains(int x, int y) {
         if (shape == null || !shape.getBounds().equals(getBounds())) {
-            shape = new RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), 9, 9);
+            shape = new RoundRectangle2D.Float(0, 0, getWidth(), getHeight(), 4, 4);
         }
         
         return shape.contains(x, y);

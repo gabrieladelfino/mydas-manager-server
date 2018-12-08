@@ -75,7 +75,7 @@
                             <archive>
                                 <manifest>
                                     <mainClass>
-                                        App
+                                        br.com.mydasmanager.controller.App
                                     </mainClass>
                                 </manifest>
                             </archive>
