@@ -94,7 +94,7 @@ public class Components extends JFrame {
             public void mouseClicked(MouseEvent e) {
                 lbl.setText("Capturando dados...");
                 lbl.setBackground(Colors.BLACK);
-                new Modal("Vamos iniciar", "estamos capturando os dados da máquina, você pode parar a qualquer momento clicando em interromper");
+                new Modal("Iniciando...", "relaxa, vamos guardar todas as informações");
                 loadInformation(101);
             }
 
