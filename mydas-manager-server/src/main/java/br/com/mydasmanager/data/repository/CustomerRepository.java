@@ -1,7 +1,7 @@
 package br.com.mydasmanager.data.repository;
 
+import br.com.mydasmanager.controller.EstruturalLog;
 import br.com.mydasmanager.data.CustomerStatements;
-import br.com.mydasmanager.data.MainConnection;
 import br.com.mydasmanager.model.Customer;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -61,7 +61,7 @@ public class CustomerRepository {
                 return rs.getString("name");
             }
         } catch (SQLException ex) {
-            Logger.getLogger(CustomerRepository.class.getName()).log(Level.SEVERE, null, ex);
+            EstruturalLog.log("ERROR", ex.getMessage(), ex.getClass().getName());
         }
 
         return "";

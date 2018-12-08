@@ -1,6 +1,7 @@
 package br.com.mydasmanager.view;
 
 import br.com.mydasmanager.data.repository.CustomerRepository;
+import br.com.mydasmanager.data.repository.DeviceRepository;
 import br.com.mydasmanager.model.Customer;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -327,7 +328,8 @@ public class Login extends JFrame {
             if (CustomerRepository.verifyLogin(customer) != 0) {
                 dispose();
                 int customerid = CustomerRepository.verifyLogin(customer);                
-                new Components(customerid);
+                int deviceid = DeviceRepository.selectDeviceId(customerid);
+                new Components(customerid, deviceid);
             }
         } else {
             new Modal(TITLE, MESSAGE);
@@ -342,8 +344,9 @@ public class Login extends JFrame {
 
             if (CustomerRepository.verifyCode(customer) != 0) {
                 dispose();
-                int customerid = CustomerRepository.verifyCode(customer);                
-                new Components(customerid);
+                int customerid = CustomerRepository.verifyCode(customer);
+                int deviceid = DeviceRepository.selectDeviceId(customerid);
+                new Components(customerid, deviceid);
             }
         }else {
             new Modal(TITLE, MESSAGE);

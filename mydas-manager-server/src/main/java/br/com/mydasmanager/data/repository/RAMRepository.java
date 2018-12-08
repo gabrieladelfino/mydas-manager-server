@@ -1,8 +1,8 @@
 package br.com.mydasmanager.data.repository;
 
-import br.com.mydasmanager.data.MainConnection;
 import br.com.mydasmanager.data.RAMStatements;
 import br.com.mydasmanager.controller.CaptureDate;
+import br.com.mydasmanager.controller.EstruturalLog;
 import br.com.mydasmanager.model.RAMModel;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,7 +28,7 @@ public class RAMRepository {
 
             pstm.execute();
         } catch (SQLException ex) {
-            Logger.getLogger(RAMRepository.class.getName()).log(Level.SEVERE, null, ex);
+            EstruturalLog.log("ERROR", ex.getMessage(), ex.getClass().getName());
         }
     }
 
@@ -46,7 +46,7 @@ public class RAMRepository {
                 data.add(rs.getDouble("freememory"));
             }
         } catch (SQLException ex) {
-            Logger.getLogger(RAMRepository.class.getName()).log(Level.SEVERE, null, ex);
+            EstruturalLog.log("ERROR", ex.getMessage(), ex.getClass().getName());
         }
 
         return data;

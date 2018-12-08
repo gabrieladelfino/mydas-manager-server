@@ -29,7 +29,7 @@ public class App {
             
             Slack slack = Slack.getInstance();
             WebhookResponse response = slack.send(url, payload);
-            
+            response.getMessage();
         } catch (IOException ex) {
             Logger.getLogger(App.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -44,8 +44,9 @@ public class Components extends JFrame {
     /**
      *
      * @param customerid
+     * @param deviceid
      */
-    public Components(int customerid) {
+    public Components(int customerid, int deviceid) {
 
         setSize(500, 550);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -95,7 +96,7 @@ public class Components extends JFrame {
                 lbl.setText("Capturando dados...");
                 lbl.setBackground(Colors.BLACK);
                 new Modal("Iniciando...", "relaxa, vamos guardar todas as informações");
-                loadInformation(101);
+                loadInformation(deviceid);
             }
 
             @Override
@@ -137,7 +138,7 @@ public class Components extends JFrame {
         graphics.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new Graphics(100);
+                new Graphics(deviceid);
             }
 
             @Override
@@ -169,7 +170,6 @@ public class Components extends JFrame {
     public static void loadInformation(int deviceid) {
         while (true) {
             try {
-                System.out.println("Terminou");
                 RAMRepository.insert(new RAMModel(), deviceid);
                 CPURepository.insert(new CPUModel(), deviceid);
                 GPURepository.insert(new GPUModel(), deviceid);
