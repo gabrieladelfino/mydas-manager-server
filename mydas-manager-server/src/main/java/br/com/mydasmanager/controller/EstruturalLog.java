@@ -16,7 +16,6 @@ public class EstruturalLog {
 
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(fileName + date + ".txt", true))) {
             writer.write(content);
-            System.out.println("Entrou na estrutura");
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }
