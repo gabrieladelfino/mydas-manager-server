@@ -1,7 +1,6 @@
 package br.com.mydasmanager.view;
 
 import br.com.mydasmanager.data.repository.CustomerRepository;
-import br.com.mydasmanager.data.repository.DeviceRepository;
 import br.com.mydasmanager.model.Customer;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -31,6 +30,7 @@ public class Login extends JFrame {
     JLabel labelHasACode;
     JLabel labelCode;
     JLabel logo;
+    JButton sendCode;
     public static JPanel hide;
 
     /**
@@ -71,14 +71,6 @@ public class Login extends JFrame {
         logo.setSize(200, 100);
         logo.setLocation(120, 80);
 
-        sendLogin = new RoundJButton();
-        sendLogin.setText("Entrar");
-        sendLogin.setSize(WIDTH_COMPONENT, HEIGHT_INPUT);
-        sendLogin.setOpaque(false);
-        sendLogin.setFocusPainted(false);
-        sendLogin.setBorderPainted(false);
-        sendLogin.setContentAreaFilled(false);
-
         hide = new JPanel();
         hide.setBounds(0, 0, getWidth(), getHeight());
         hide.setBackground(Colors.LIGTH_OPACITY);
@@ -90,7 +82,7 @@ public class Login extends JFrame {
     }
 
     private void initializeLogin() {
-
+        
         contentLogin = new JPanel();
         contentLogin.setSize(500, 550);
         contentLogin.setLocation(0, 0);
@@ -138,6 +130,13 @@ public class Login extends JFrame {
         password.setHorizontalAlignment(SwingConstants.CENTER);
         contentLogin.add(password);
 
+        sendLogin = new RoundJButton();
+        sendLogin.setText("Entrar");
+        sendLogin.setSize(WIDTH_COMPONENT, HEIGHT_INPUT);
+        sendLogin.setOpaque(false);
+        sendLogin.setFocusPainted(false);
+        sendLogin.setBorderPainted(false);
+        sendLogin.setContentAreaFilled(false);
         sendLogin.setLocation(AXIS_X, password.getY() + DIFERENCE_COMPONENTS_AND_BUTTON);
         sendLogin.addMouseListener(new MouseListener() {
             @Override
@@ -230,11 +229,19 @@ public class Login extends JFrame {
         code.setHorizontalAlignment(SwingConstants.CENTER);
         contentHasCode.add(code);
 
-        sendLogin.setLocation(AXIS_X, code.getY() + DIFERENCE_COMPONENTS_AND_BUTTON);
-        sendLogin.addMouseListener(new MouseListener() {
+        sendCode = new RoundJButton();
+        sendCode.setText("Entrar");
+        sendCode.setSize(WIDTH_COMPONENT, HEIGHT_INPUT);
+        sendCode.setOpaque(false);
+        sendCode.setFocusPainted(false);
+        sendCode.setBorderPainted(false);
+        sendCode.setContentAreaFilled(false);
+        sendCode.setLocation(AXIS_X, code.getY() + DIFERENCE_COMPONENTS_AND_BUTTON);
+        sendCode.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 verifyHasCode();
+                System.out.println("Entrou");
             }
 
             @Override
@@ -257,7 +264,41 @@ public class Login extends JFrame {
 
             }
         });
-        contentHasCode.add(sendLogin);
+        contentHasCode.add(sendCode);
+        
+        labelHasACode = new JLabel("Voltar para o login");
+        labelHasACode.setForeground(Colors.WHITE);
+        labelHasACode.setSize(WIDTH_COMPONENT, HEIGHT_LABEL);
+        labelHasACode.setLocation(AXIS_X, sendLogin.getY() + labelHasACode.getHeight() + 10);
+        labelHasACode.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                initializeLogin();
+                hideContentHasCode();     
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+
+        });
+        contentLogin.add(labelHasACode);
 
         contentHasCode.add(logo);
         add(contentHasCode);
@@ -287,7 +328,7 @@ public class Login extends JFrame {
             if (CustomerRepository.verifyLogin(customer) != 0) {
                 dispose();
                 int customerid = CustomerRepository.verifyLogin(customer);
-                int deviceid = DeviceRepository.selectDeviceId(customerid);
+                System.out.println("Entrou");
                 new Components(customerid);
             }
         } else {
@@ -297,16 +338,18 @@ public class Login extends JFrame {
 
     private void verifyHasCode() {
         if (verifyFields(code.getText())) {
-
+            
             Customer customer = new Customer();
             customer.setCodeAcess(code.getText());
 
-            if (CustomerRepository.verifyLogin(customer) != 0) {
+            if (CustomerRepository.verifyCode(customer) != 0) {
                 dispose();
-                int customerid = CustomerRepository.verifyLogin(customer);
-                int deviceid = DeviceRepository.selectDeviceId(customerid);
+                int customerid = CustomerRepository.verifyCode(customer);
+                System.out.println("Entrou");
                 new Components(customerid);
             }
+        }else {
+            new Modal(TITLE, MESSAGE);
         }
     }
 
