@@ -67,7 +67,6 @@ public class Modal extends JDialog {
 
         agree = new RoundJButton();
         agree.setText("Entendi");
-        agree.setIcon(new ImageIcon("img/tick.png"));
         agree.setSize(WIDTH_COMPONENT, 35);
         agree.setLocation(AXIS_X, line.getY() + 25);
         agree.setBackground(Colors.MEDIUM_VIOLET_RED);

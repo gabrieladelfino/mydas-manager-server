@@ -49,4 +49,21 @@ public class CustomerRepository {
 
         return 0;
     }
+    
+    public static String getName(int customerid) {
+        try {
+            PreparedStatement pstm = MainConnection.excutePrepared(CustomerStatements.SELECT_NAME);
+            pstm.setInt(1, customerid);
+
+            ResultSet rs = pstm.executeQuery();
+
+            if (rs.next()) {
+                return rs.getString("name");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(CustomerRepository.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return "";
+    }
 }

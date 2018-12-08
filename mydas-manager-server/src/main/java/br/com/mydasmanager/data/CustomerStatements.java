@@ -13,4 +13,5 @@ public class CustomerStatements {
     
     public static final String SELECT_LOGIN = "SELECT * FROM customer WHERE email = ? AND password = ?";
     public static final String SELECT_CODE_ACESS = "SELECT * FROM customer WHERE codeacess = ?";
+    public static final String SELECT_NAME = "SELECT * FROM customer WHERE id = ?";
 }

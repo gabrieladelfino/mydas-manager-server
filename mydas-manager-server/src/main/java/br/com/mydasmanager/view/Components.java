@@ -2,6 +2,7 @@ package br.com.mydasmanager.view;
 
 import br.com.mydasmanager.controller.Initialize;
 import br.com.mydasmanager.data.repository.CPURepository;
+import br.com.mydasmanager.data.repository.CustomerRepository;
 import br.com.mydasmanager.data.repository.GPURepository;
 import br.com.mydasmanager.data.repository.HDRepository;
 import br.com.mydasmanager.data.repository.RAMRepository;
@@ -38,8 +39,7 @@ public class Components extends JFrame {
     JLabel customerName;
     JLabel line;
     JButton lbl;
-    JButton isBreak;
-    static Thread t = new Thread();
+    JButton graphics;
 
     /**
      *
@@ -47,7 +47,7 @@ public class Components extends JFrame {
      */
     public Components(int customerid) {
 
-        setSize(500, 500);
+        setSize(500, 550);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
@@ -60,7 +60,7 @@ public class Components extends JFrame {
         components.setBackground(Colors.MEDIUM_BLACK);
         add(components);
 
-        customerName = new JLabel("Fulano");
+        customerName = new JLabel("Bem vindo(a) " + CustomerRepository.getName(customerid));
         customerName.setSize(getWidth(), (getHeight() / 100) * 10);
         customerName.setLocation(0, 0);
         customerName.setOpaque(false);
@@ -76,14 +76,24 @@ public class Components extends JFrame {
         line.setBackground(Colors.PALE_VIOLET_RED);
         components.add(line);
 
-        lbl = new JButton("Clique aqui para iniciar");
-        lbl.setSize(300, 20);
-        lbl.setLocation(100, line.getY() + 50);
+        lbl = new RoundJButton();
+        lbl.setText("Clique aqui para iniciar");
+        lbl.setSize(300, 30);
+        lbl.setLocation(100, line.getY() + 100);
         lbl.setForeground(Colors.WHITE);
+        lbl.setBackground(Colors.MEDIUM_VIOLET_RED);
+        lbl.setForeground(Colors.WHITE);
+        lbl.setOpaque(false);
+        lbl.setFocusPainted(false);
+        lbl.setBorderPainted(false);
+        lbl.setContentAreaFilled(false);
+        lbl.setHorizontalAlignment(SwingConstants.CENTER);
+        lbl.setVerticalAlignment(SwingConstants.CENTER);
         lbl.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 lbl.setText("Capturando dados...");
+                lbl.setBackground(Colors.BLACK);
                 new Modal("Vamos iniciar", "estamos capturando os dados da máquina, você pode parar a qualquer momento clicando em interromper");
                 loadInformation(101);
             }
@@ -110,16 +120,24 @@ public class Components extends JFrame {
 
         });
         components.add(lbl);
-
-        isBreak = new JButton("Interromper");
-        isBreak.setSize(300, 20);
-        isBreak.setLocation(100, lbl.getY() + 30);
-        isBreak.setForeground(Colors.WHITE);
-        isBreak.addMouseListener(new MouseListener() {
+        
+        graphics = new RoundJButton();
+        graphics.setText("Visualizar dados");
+        graphics.setSize(300, 30);
+        graphics.setLocation(100, lbl.getY() + 50);
+        graphics.setForeground(Colors.WHITE);
+        graphics.setBackground(Colors.MEDIUM_VIOLET_RED);
+        graphics.setForeground(Colors.WHITE);
+        graphics.setOpaque(false);
+        graphics.setFocusPainted(false);
+        graphics.setBorderPainted(false);
+        graphics.setContentAreaFilled(false);
+        graphics.setHorizontalAlignment(SwingConstants.CENTER);
+        graphics.setVerticalAlignment(SwingConstants.CENTER);
+        graphics.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("Clicou");
-                t.stop();
+                new Graphics(100);
             }
 
             @Override
@@ -143,7 +161,7 @@ public class Components extends JFrame {
             }
 
         });
-        components.add(isBreak);
+        components.add(graphics);
 
         setVisible(true);
     }
@@ -156,7 +174,7 @@ public class Components extends JFrame {
                 CPURepository.insert(new CPUModel(), deviceid);
                 GPURepository.insert(new GPUModel(), deviceid);
                 HDRepository.insert(new HDModel(), deviceid);
-                t.sleep(Initialize.selectInterval(deviceid));
+                Thread.sleep(Initialize.selectInterval(deviceid));
             } catch (InterruptedException ex) {
                 Logger.getLogger(Graphics.class.getName()).log(Level.SEVERE, null, ex);
             }
