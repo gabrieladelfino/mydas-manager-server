@@ -121,7 +121,7 @@ public class Components extends JFrame {
 
         });
         components.add(lbl);
-        
+
         graphics = new RoundJButton();
         graphics.setText("Visualizar dados");
         graphics.setSize(300, 30);
@@ -168,16 +168,22 @@ public class Components extends JFrame {
     }
 
     public static void loadInformation(int deviceid) {
-        while (true) {
-            try {
-                RAMRepository.insert(new RAMModel(), deviceid);
-                CPURepository.insert(new CPUModel(), deviceid);
-                GPURepository.insert(new GPUModel(), deviceid);
-                HDRepository.insert(new HDModel(), deviceid);
-                Thread.sleep(Initialize.selectInterval(deviceid));
-            } catch (InterruptedException ex) {
-                Logger.getLogger(Graphics.class.getName()).log(Level.SEVERE, null, ex);
+        new Thread() {
+            @Override
+            public void run() {
+                while (true) {
+
+                    try {
+                        RAMRepository.insert(new RAMModel(), deviceid);
+                        CPURepository.insert(new CPUModel(), deviceid);
+                        GPURepository.insert(new GPUModel(), deviceid);
+                        HDRepository.insert(new HDModel(), deviceid);
+                        Thread.sleep(Initialize.selectInterval(deviceid));
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Graphics.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
             }
-        }
+        }.start();   
     }
 }

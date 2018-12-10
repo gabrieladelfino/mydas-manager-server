@@ -1,0 +1,12 @@
+[INFO] [10-12-2018 07:23:42] Executou a operação.
+[INFO] [10-12-2018 07:23:43] Executou a operação.
+[INFO] [10-12-2018 07:23:43] Executou a operação.
+[INFO] [10-12-2018 07:23:43] Executou a operação.
+[INFO] [10-12-2018 07:23:43] Executou a operação.
+[INFO] [10-12-2018 07:23:44] Executou a operação.
+[INFO] [10-12-2018 07:23:44] Executou a operação.
+[INFO] [10-12-2018 07:23:44] Executou a operação.
+[INFO] [10-12-2018 07:23:50] Executou a operação.
+[INFO] [10-12-2018 07:23:50] Executou a operação.
+[INFO] [10-12-2018 07:23:56] Executou a operação.
+[INFO] [10-12-2018 07:23:56] Executou a operação.
