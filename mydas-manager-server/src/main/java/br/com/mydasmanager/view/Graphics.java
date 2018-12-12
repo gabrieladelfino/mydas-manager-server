@@ -43,20 +43,20 @@ public class Graphics extends JDialog {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setLayout(null);
-        this.getContentPane().setBackground(Colors.WHITE);
-
+        
         panel = new JPanel();
         panel.setLocation(0, 0);
         panel.setSize(getWidth(), getHeight());
         panel.setOpaque(true);
         panel.setVisible(true);
-        getData(deviceid, getWidth(), getHeight());
+        panel.setBackground(Colors.WHITE);
+        getData(deviceid);
         add(panel);
 
         setVisible(true);
     }
 
-    public static void getData(int deviceid, int width, int heigth) {
+    public static void getData(int deviceid) {
 
         DefaultCategoryDataset ds = new DefaultCategoryDataset();
         List<Double> r = HDRepository.selectBytesRead(deviceid);
@@ -69,7 +69,7 @@ public class Graphics extends JDialog {
                 "Valor", ds, PlotOrientation.VERTICAL, true, true, false);
 
         p = new ChartPanel(grafico);
-        p.setSize(width, heigth);
+        p.setSize(panel.getWidth(), panel.getHeight());
         p.setLocation(0, 0);
         panel.add(p);
     }
